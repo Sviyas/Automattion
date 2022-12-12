@@ -1,5 +1,5 @@
 const { button, clicking_Button } = require('./Button');
-
+const { Strategies } = require('./Strategies');
 const { hold, take_screenShot } = require('../utils');
 
 const strategy_Tab = async function (arg, brwsr) {
@@ -7,7 +7,7 @@ const strategy_Tab = async function (arg, brwsr) {
   const strategyBuilder = await button(arg, "//a [@id ='header-link-StrategyBuilder']", '    Strategy Builder');
 
   if (strategyBuilder) {
-    console.log('     10.1   Successfully Navigate to Strategy Page');
+    console.log('    10.1   Successfully Navigate to Strategy Page');
 
     // ? Check Strategy Dashboard
     const strategyDash = await clicking_Button(arg, "//span[@id ='dashboard-btn']", '    Strategy Dashboard');
@@ -38,14 +38,9 @@ const strategy_Tab = async function (arg, brwsr) {
           );
 
           if (strategyFilter) {
-            // ??  Strategies
-            //
-            //
-            //
-            //
-            //
-            //
-            //
+            // ?
+            // ??  Strategy Builder
+            await Strategies(arg, "//p [contains(text(), 'Long Call')]", '    Long Call');
           } else {
             await hold(1000);
             await take_screenShot(arg, 'Strategy Filter');

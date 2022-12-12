@@ -3,8 +3,8 @@ const { take_screenShot, hold } = require('./utils');
 const { clicking_Button, click_Button } = require('./Strategy/Button');
 // const { futures_Tab } = require('./FuturesTab');
 // const { options_Tab } = require('./OptionsTab');
-const { charts_Tab } = require('./ChartsTab');
-// const { strategy_Tab } = require('./Strategy/StrategyTab');
+// const { charts_Tab } = require('./ChartsTab');
+const { strategy_Tab } = require('./Strategy/StrategyTab');
 // const { analysis_Tab } = require('./AnalysisTab');
 // const { fii_dii_Tab } = require('./FiiDii');
 
@@ -58,12 +58,12 @@ const testLogin = async (page, email, password) => {
     // await options_Tab(page);
 
     // ? chart Tab
-    console.log('    9     Navigating to Charts Tab');
-    await charts_Tab(page);
+    // console.log('    9     Navigating to Charts Tab');
+    // await charts_Tab(page);
 
     //  ? strategy  Tab
-    // console.log('    10     Navigating to Strategy Tab');
-    // await strategy_Tab(page);
+    console.log('    10     Navigating to Strategy Tab');
+    await strategy_Tab(page);
 
     // ? analysis Tab
     // console.log('11   Navigating to Analysis Tab');

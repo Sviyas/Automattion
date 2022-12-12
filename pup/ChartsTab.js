@@ -1,4 +1,4 @@
-const { OpenAndClose, clicking_Button } = require('./Strategy/Button.js');
+const { OpenAndClose, clicking_Button, button } = require('./Strategy/Button.js');
 const { hold, take_screenShot } = require('./utils.js');
 
 const charts_Tab = async function (arg, brwsr) {
@@ -35,10 +35,9 @@ const charts_Tab = async function (arg, brwsr) {
           // ? Next Option Interest
           await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
 
-          // ? Open Interest
-          const OI = await clicking_Button(arg, "//a [@id ='navlink-1']", '    Open Interest');
-
           console.log('    9.2   Navigate to Open Interest Page');
+          // ? Open Interest
+          const OI = await clicking_Button(arg, "//a [@id ='navlink-1']", '   Open Interest');
 
           if (OI) {
             await hold(1000);
@@ -119,9 +118,9 @@ const charts_Tab = async function (arg, brwsr) {
 
   await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
 
-  const greeks = await clicking_Button(arg, "//a [@id ='navlink-2']", '   Greeks');
-
   console.log('    9.3   Navigate to Greeks Page');
+
+  const greeks = await clicking_Button(arg, "//a [@id ='navlink-2']", '   Greeks');
 
   if (greeks) {
     // ? close tab
@@ -147,25 +146,25 @@ const charts_Tab = async function (arg, brwsr) {
         );
 
         if (greeks_DatePicker) {
+          await OpenAndClose(arg, "//div [@id ='charts-greeks-select-with-title-date']");
           await hold(1000);
           // ? Click Call button on chart
-          const call = await clicking_Button(arg, "//button [@id ='headlessui-switch-120']", '   Greek Call');
+          const call = await clicking_Button(arg, "//div [@id ='select-call-put-btn-true']", '   Greek Call');
 
           //  ?
           if (call) {
             await hold(1500);
             // ?  open again click Max Pain
-            await OpenAndClose(arg, "//button [@id ='headlessui-switch-152']");
+            await OpenAndClose(arg, "//span [contains(text(), 'Charts')]");
 
             // ? Max Pain Page
             console.log('    9.4   Navigate to MaxPain Page');
-            const maxpain = await clicking_Button(arg, "//a [@id ='navlink-3]", '   MaxPain');
 
-            if (maxpain) {
-              await hold(1000);
+            const maxPain = await clicking_Button(arg, "//a [@id ='navlink-3']", '   MaxPain');
+
+            if (maxPain) {
+              await OpenAndClose(arg, "//span [contains(text(), 'Charts')]");
               // ?
-              await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
-              // ? max pain dashbord
               const maxpain_Dash = await clicking_Button(arg, "//span [@id ='maxpain-btn']", '   MaxPain Dashboard');
 
               if (maxpain_Dash) {
@@ -190,7 +189,7 @@ const charts_Tab = async function (arg, brwsr) {
                     // ??   goto homepage
                     const hompage = await clicking_Button(arg, "//span [@id ='charts-btn']", '   Maxpain Homepage');
 
-                    if (hompage !== undefined) {
+                    if (!hompage) {
                       await hold(1000);
                       await take_screenShot(arg, 'Charts Home Page');
                     }

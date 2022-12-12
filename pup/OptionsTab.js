@@ -1,5 +1,5 @@
 const { hold, take_screenShot } = require('./utils.js');
-const { clicking_Button, OpenAndClose, click_Button } = require('./Strategy/Button');
+const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
 
 const options_Tab = async function (arg, brwsr) {
   // ? clicking option open and close tab

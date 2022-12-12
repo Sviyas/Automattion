@@ -10,7 +10,7 @@ const futures_Tab = async function (arg, brwsr) {
   // ? Dashboard Tab
   const futureDash = await clicking_Button(arg, "//p[contains(text(), 'Dashboard') ]", '    Futures Page');
 
-  console.log('    7.1   Navigate to Futures page');
+  console.log('    7.1   Navigate to dashboard page');
   if (!futureDash) {
     await hold(1000);
     await take_screenShot(arg, 'Future dashboard page');

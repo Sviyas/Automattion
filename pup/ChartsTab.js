@@ -1,8 +1,8 @@
+const { OpenAndClose, clicking_Button } = require('./Strategy/Button.js');
 const { hold } = require('./utils.js');
-const { ch_Op, ch_Clo } = require('./ChartsOpenClose');
 
 const charts_Tab = async function (arg, brwsr) {
-  await ch_Op(arg);
+  //  ? Chart Tab Open
 
   // Charts IV Smile
   const iv_Smile = await arg.$x("//p[contains(text(), 'IV Smile')]");

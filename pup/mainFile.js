@@ -1,8 +1,8 @@
 const puppeteer = require('puppeteer');
 const { take_screenShot, hold } = require('./utils');
 const { clicking_Button, click_Button } = require('./Strategy/Button');
-const { futures_Tab } = require('./FuturesTab');
-// const { options_Tab } = require('./OptionsTab');
+// const { futures_Tab } = require('./FuturesTab');
+const { options_Tab } = require('./OptionsTab');
 // const { charts_Tab } = require('./ChartsTab');
 // const { strategy_Tab } = require('./Strategy/StrategyTab');
 // const { analysis_Tab } = require('./AnalysisTab');
@@ -50,12 +50,12 @@ const testLogin = async (page, email, password) => {
     console.log('    6   login Successfull');
 
     // ? futures Tab
-    console.log('    7    Navigating to Futures Tab');
-    await futures_Tab(page);
+    // console.log('    7    Navigating to Futures Tab');
+    // await futures_Tab(page);
 
     // ? option Tab
-    // console.log('    8     Navigating to Options Tab');
-    // await options_Tab(page);
+    console.log('    8     Navigating to Options Tab');
+    await options_Tab(page);
 
     // ? chart Tab
     // console.log('    9     Navigating to Charts Tab');

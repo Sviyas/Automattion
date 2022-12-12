@@ -1,5 +1,4 @@
 const { hold, take_screenShot } = require('./utils.js');
-// const { OpenAndClose } = require('./openAndClose');
 const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
 
 // ? Futures Tab Clicking

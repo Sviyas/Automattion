@@ -1,6 +1,6 @@
 // // ? short call
 // $x("//p [contains(text(),'Long Call')]");
-// $x("//p [contains(text(),'Long Put')]");
+// $x("//p [contains(text(),'Short Call')]");
 // $x("//p [contains(text(),'Bull Call Spread')]");
 // $x("//p [contains(text(),'Bear Call Spread')]");
 // $x("//p [contains(text(),'Bull Put Spread')]");

@@ -4,9 +4,10 @@ const { clicking_Button, click_Button } = require('./Strategy/Button');
 // const { futures_Tab } = require('./FuturesTab');
 // const { options_Tab } = require('./OptionsTab');
 // const { charts_Tab } = require('./ChartsTab');
-// const { strategy_Tab } = require('./Strategy/StrategyTab');
-const { analysis_Tab } = require('./AnalysisTab');
+const { strategy_Tab } = require('./Strategy/StrategyTab');
+// const { analysis_Tab } = require('./AnalysisTab');
 // const { fii_dii_Tab } = require('./FiiDii');
+// const { user_icon } = require('./User');
 
 const idenftify = [];
 
@@ -26,7 +27,7 @@ const testLogin = async (page, email, password) => {
       await user[0].type(email);
       console.log('    2   email :', email);
     } else {
-      await take_screenShot(arg, 'User');
+      await take_screenShot(page, 'User');
     }
 
     // ? user password
@@ -36,10 +37,15 @@ const testLogin = async (page, email, password) => {
       await pass[0].click();
       await pass[0].type(password);
       console.log('    3   password :', password);
+    } else {
+      await take_screenShot(page, 'Password');
     }
 
     // ? Loggin Processing Page
-    await clicking_Button(page, "//button[contains(text(),'Continue')]", '4   Continue');
+    const login = await clicking_Button(page, "//button[contains(text(),'Continue')]", '4   Continue');
+    if (!login) {
+      await take_screenShot(page, 'login');
+    }
 
     await hold(2000);
 
@@ -55,36 +61,38 @@ const testLogin = async (page, email, password) => {
       console.log('    6   login Successfull');
 
       // ? futures Tab
-      console.log('    7     Navigating to Futures Tab');
-      await futures_Tab(page);
+      // console.log('    7     Navigating to Futures Tab');
+      // await futures_Tab(page);
 
       // ? option Tab
-      console.log('    8     Navigating to Options Tab');
-      await options_Tab(page);
+      // console.log('    8     Navigating to Options Tab');
+      // await options_Tab(page);
 
       // ? chart Tab
-      console.log('    9     Navigating to Charts Tab');
-      await charts_Tab(page);
+      // console.log('    9     Navigating to Charts Tab');
+      // await charts_Tab(page);
 
       //  ? strategy  Tab
       console.log('    10     Navigating to Strategy Tab');
       await strategy_Tab(page);
 
       // ? analysis Tab
-      console.log('    11   Navigating to Analysis Tab');
-      await analysis_Tab(page);
+      // console.log('    11   Navigating to Analysis Tab');
+      // await analysis_Tab(page);
 
       // ? FII_DII Tab
-      console.log('12    Navigating to FII/DII Tab');
-      await fii_dii_Tab(page);
+      // console.log('    12   Navigating to FII/DII Tab');
+      // await fii_dii_Tab(page);
 
+      // ? user icon
+      // await user_icon(page);
       // ? Icon Tab
-      await clicking_Button(page, "//img[@alt = 'User icon']", ' Icon');
+      // await clicking_Button(page, "//img[@alt = 'User icon']", ' Icon');
 
       //  ? user Logout
-      await click_Button(page, "//button[contains(text(), 'Logout') ]", ' Logout');
+      // await click_Button(page, "//button[contains(text(), 'Logout') ]", ' Logout');
 
-      console.log('     Logout Successfull');
+      // console.log('     Logout Successfull');
     }
   }
 };

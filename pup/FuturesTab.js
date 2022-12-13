@@ -13,8 +13,7 @@ const futures_Tab = async function (arg, brwsr) {
 
   console.log('    7.1   Navigate to dashboard page');
   if (!futureDash) {
-    idenfity.push(await take_screenShot('Future dashboard'));
-    await hold(1000);
+    // idenfity.push(await take_screenShot('Future dashboard'));
     await take_screenShot(arg, 'Future dashboard');
   }
   await hold(1000);
@@ -26,7 +25,6 @@ const futures_Tab = async function (arg, brwsr) {
   const checkDash = await clicking_Button(arg, "//span[contains(text(), 'dashboard')]", '    Futures Dashboard');
 
   if (!checkDash) {
-    await hold(1000);
     await take_screenShot(arg, 'Future Dashboard');
   }
 
@@ -40,7 +38,6 @@ const futures_Tab = async function (arg, brwsr) {
   );
 
   if (!futureDatepic) {
-    await hold(1000);
     await take_screenShot(arg, 'Future Date Picker');
   }
   await hold(1000);
@@ -52,7 +49,6 @@ const futures_Tab = async function (arg, brwsr) {
   const futureScreener = await clicking_Button(arg, "//p[contains(text(), 'Future Screener') ]", '    Future Screener');
 
   if (!futureScreener) {
-    await hold(1000);
     await take_screenShot(arg, 'Future Screener page');
   }
 
@@ -66,7 +62,6 @@ const futures_Tab = async function (arg, brwsr) {
   const screenerDash = await clicking_Button(arg, "//span[contains(text(), 'screener')]", '    Screener');
 
   if (!screenerDash) {
-    await hold(1000);
     await take_screenShot(arg, 'Future Screener Dashboard');
   }
   await hold(1000);
@@ -79,7 +74,6 @@ const futures_Tab = async function (arg, brwsr) {
   );
 
   if (!screenerDate) {
-    await hold(1000);
     await take_screenShot(arg, 'Screener Date Picker');
   }
 
@@ -95,7 +89,6 @@ const futures_Tab = async function (arg, brwsr) {
   await hold(1000);
 
   if (!screenerFilter) {
-    await hold(1000);
     await take_screenShot(arg, 'Screener Filter ');
   }
   // ? screener Table
@@ -106,7 +99,6 @@ const futures_Tab = async function (arg, brwsr) {
   );
 
   if (!screenerTable) {
-    await hold(1000);
     await take_screenShot(arg, 'Screener Table');
   }
   await hold(1000);
@@ -118,7 +110,6 @@ const futures_Tab = async function (arg, brwsr) {
   const futureHeatmap = await clicking_Button(arg, "//p[contains(text(), 'Heatmap')]", '    Heatmap');
 
   if (!futureHeatmap) {
-    await hold(1000);
     await take_screenShot(arg, 'Future Heatmap Page');
   }
   await hold(1000);
@@ -130,7 +121,6 @@ const futures_Tab = async function (arg, brwsr) {
   const futureHeat = await clicking_Button(arg, "//span[contains(text(), 'heatmap')]", '    Heatmap Dashboard');
 
   if (!futureHeat) {
-    await hold(1000);
     await take_screenShot(arg, 'Future Heatmap ');
   }
   await hold(1000);
@@ -143,7 +133,6 @@ const futures_Tab = async function (arg, brwsr) {
   );
 
   if (!heatmapDate) {
-    await hold(1000);
     await take_screenShot(arg, 'Heatmap Date Picker');
   }
   await hold(1000);
@@ -156,7 +145,6 @@ const futures_Tab = async function (arg, brwsr) {
   );
 
   if (!heatmapPrice) {
-    await hold(1000);
     await take_screenShot(arg, 'Heatmap Price');
   }
   await hold(1000);
@@ -169,7 +157,6 @@ const futures_Tab = async function (arg, brwsr) {
   );
 
   if (!heatmapFilter) {
-    await hold(1000);
     await take_screenShot(arg, 'Heatmap Filter');
   }
   await hold(1000);
@@ -178,15 +165,13 @@ const futures_Tab = async function (arg, brwsr) {
   const heatmapTable = await clicking_Button(arg, "//section[@id ='future-heatmap-id']", '    Heatmap Table');
 
   if (!heatmapTable) {
-    await hold(1000);
     await take_screenShot(arg, 'Heatmap Table');
   }
 
   // ? futures homepage
   const homepage = await clicking_Button(arg, "//span [@id ='futures-btn']", '    Futures Homepage');
   if (!homepage) {
-    // await hold(1000);
-    // await take_screenShot(arg, 'Homepage');
+    await take_screenShot(arg, 'Homepage');
   }
 };
 

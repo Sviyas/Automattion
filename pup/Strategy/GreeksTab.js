@@ -25,7 +25,7 @@ const greeksTab = async function (ag, id, label) {
 
       if (done) {
         // ? condition passed
-        await hold(1000);
+        await hold(2000);
 
         // ? Click to check Greeks Nifty Target Buttons
 
@@ -288,7 +288,7 @@ const greeksTab = async function (ag, id, label) {
               const strikereset = await clicking_Button(ag, "//p [@id ='iv-reset-btn']", '    Greeks Strikewise Reset');
 
               if (strikereset) {
-                await hold(1000);
+                await hold(2000);
                 // ? fetch values
                 const strikewiseReset = await (
                   await (await ag.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
@@ -300,8 +300,56 @@ const greeksTab = async function (ag, id, label) {
                 if (strikewiseResetVal !== strikewiseVal) {
                   console.log('        Greeks StrikeWise Reset Values : ', strikewiseResetVal);
 
-                  // ? condition passed
-                  await hold(2000);
+                  await hold(1000);
+                  //  ? clear strategies
+                  // ? set to LTP tab
+                  const editadd = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
+                  if (editadd) {
+                    await hold(1000);
+                    const clickLTp = await clicking_Button(
+                      ag,
+                      "//li [@id ='LTP-slider-header-btn']",
+                      '    Clear Reset To LTP'
+                    );
+
+                    if (clickLTp) {
+                      await hold(1000);
+                      // ? restore as positiion
+                      const restorePre = await clicking_Button(
+                        ag,
+                        "//div [@id ='atm-strike-index-ltp-CE-BUYc']",
+                        '    Restore LTP'
+                      );
+
+                      if (restorePre) {
+                        await hold(1000);
+                        const removeLTP = await clicking_Button(
+                          ag,
+                          "//div [@id ='atm-strike-index-ltp-PE-SELL']",
+                          '    Remove LTP SELL'
+                        );
+
+                        const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    Set LTP');
+
+                        if (done) {
+                          // ?? Stratgies Done
+                          // ? condition passed
+                          const hompage = await clicking_Button(
+                            ag,
+                            "//span [@id ='strategy-btn']",
+                            '    Strategy HomePage'
+                          );
+                          if (hompage) {
+                            console.log('         Strategies Finshed.....!');
+                          } else {
+                            await take_screenShot(ag, 'strategy Homepage');
+                          }
+                        }
+                      }
+                    } else {
+                      await take_screenShot(ag, 'Restore LTP');
+                    }
+                  }
                 } else {
                   // @ strike wise Reset
                   await take_screenShot(ag, 'Greeks Strike Reset');

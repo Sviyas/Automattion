@@ -7,6 +7,7 @@ const strategy_Tab = async function (arg, brwsr) {
   const strategyBuilder = await button(arg, "//a [@id ='header-link-StrategyBuilder']", '    Strategy Builder');
 
   if (strategyBuilder) {
+    await hold(1000);
     console.log('    10.1   Successfully Navigate to Strategy Page');
 
     // ? Check Strategy Dashboard
@@ -38,9 +39,11 @@ const strategy_Tab = async function (arg, brwsr) {
           );
 
           if (strategyFilter) {
-            // ?
             // ??  Strategy Builder
+            // ? long call
             await Strategies(arg, "//p [contains(text(), 'Long Call')]", '    Long Call');
+            // ? Short Call
+            await Strategies(arg, "//p [contains(text(),'Short Call')]", '    Short Call');
           } else {
             // @ts-expect-error
             await take_screenShot(arg, 'Strategy Filter');

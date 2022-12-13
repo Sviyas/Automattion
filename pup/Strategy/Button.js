@@ -1,3 +1,5 @@
+const { take_screenShot } = require('../utils');
+
 // ?? click button when length is 0
 const clicking_Button = async function (arg, id, label) {
   const clicking = await arg.$x(`${id}`);
@@ -9,13 +11,13 @@ const clicking_Button = async function (arg, id, label) {
   return clicking;
 };
 
-console.log('                         functionss', clicking_Button);
 //  ? if function does not exists capture the error
 const errorIdentfier = async function (funct) {
   try {
-    if (funct) {
-    }
-  } catch (error) {}
+    funct === undefined;
+  } catch (err) {
+    err.take_screenShot(arg);
+  }
 };
 
 // ?? click button when length is 1

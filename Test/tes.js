@@ -19,3 +19,29 @@ const { installMouseHelper } = require('./mouse');
 // const { options_Tab } = require('./OptionsTab');
 // const { options_Tab } = require('./OptionsTab');
 // const { options_Tab } = require('./OptionsTab');
+
+const strategBuilderSearch = await clicking_Button(
+  arg,
+  "//div [@id ='strategy-view-search']",
+  '    Strategy Builder Search'
+);
+if (strategBuilderSearch) {
+  // ? strategy builder date picker
+  const strategBuilderDatePicker = await clicking_Button(
+    arg,
+    "//div [@id ='strategy-view-select-with-title-date']",
+    '    Strategy Date Picker'
+  );
+
+  // ?
+  if (strategBuilderDatePicker) {
+    // ? conditin passed
+    // ? pending to add Greeks tab icon
+  } else {
+    // @ts-expect-error
+    await take_screenShot(arg, 'Strategy Builder Date picker');
+  }
+} else {
+  // @ts-expect-error
+  await take_screenShot(arg, 'Strategy Builder Search');
+}

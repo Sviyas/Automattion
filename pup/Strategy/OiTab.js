@@ -25,7 +25,7 @@ const OITab = async function (ag, id, label) {
 
         if (done) {
           // ? condition passed
-          await hold(1000);
+          await hold(2000);
 
           // ? Click to check OI Nifty Target Buttons
 
@@ -49,7 +49,7 @@ const OITab = async function (ag, id, label) {
 
           if (nifty_Decre) {
             // ? hold
-            await hold(1000);
+            await hold(2000);
             // ? nifty decrement button clicking
             const decrement = await (
               await (await ag.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
@@ -284,7 +284,7 @@ const OITab = async function (ag, id, label) {
                 const strikereset = await clicking_Button(ag, "//p [@id ='iv-reset-btn']", '    OI Strikewise Reset');
 
                 if (strikereset) {
-                  await hold(1000);
+                  await hold(2000);
                   // ? fetch values
                   const strikewiseReset = await (
                     await (await ag.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')

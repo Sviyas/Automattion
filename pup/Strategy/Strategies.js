@@ -281,7 +281,7 @@ const Strategies = async function (arg, id, label) {
                       );
 
                       if (strikereset) {
-                        await hold(1000);
+                        await hold(2000);
                         // ? fetch values
                         const strikewiseReset = await (
                           await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
@@ -345,32 +345,6 @@ const Strategies = async function (arg, id, label) {
     await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
     // ? Greeks Page
     await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
-
-    const strategBuilderSearch = await clicking_Button(
-      arg,
-      "//div [@id ='strategy-view-search']",
-      '    Strategy Builder Search'
-    );
-    if (strategBuilderSearch) {
-      // ? strategy builder date picker
-      const strategBuilderDatePicker = await clicking_Button(
-        arg,
-        "//div [@id ='strategy-view-select-with-title-date']",
-        '    Strategy Date Picker'
-      );
-
-      // ?
-      if (strategBuilderDatePicker) {
-        // ? conditin passed
-        // ? pending to add Greeks tab icon
-      } else {
-        // @ts-expect-error
-        await take_screenShot(arg, 'Strategy Builder Date picker');
-      }
-    } else {
-      // @ts-expect-error
-      await take_screenShot(arg, 'Strategy Builder Search');
-    }
   } else {
     // ! strategy
     await take_screenShot(arg, label);

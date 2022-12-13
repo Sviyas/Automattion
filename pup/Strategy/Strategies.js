@@ -6,6 +6,8 @@ const { greeksTab } = require('./GreeksTab');
 const Strategies = async function (arg, id, label) {
   const strategy = await clicking_Button(arg, id, label);
 
+  // ? Trades
+
   if (strategy) {
     console.log(`        👍  ${label} Button `);
     // ? hold
@@ -357,6 +359,34 @@ const Strategies = async function (arg, id, label) {
     await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
     // ? Greeks Page
     await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
+
+    const strategBuilderSearch = await clicking_Button(
+      arg,
+      "//div [@id ='strategy-view-search']",
+      '    Strategy Builder Search'
+    );
+    if (strategBuilderSearch) {
+      // ? strategy builder date picker
+      const strategBuilderDatePicker = await clicking_Button(
+        arg,
+        "//div [@id ='strategy-view-select-with-title-date']",
+        '    Strategy Date Picker'
+      );
+
+      // ?
+      if (strategBuilderDatePicker) {
+        // ? conditin passed
+        // ? pending to add Greeks tab icon
+      } else {
+        // ?
+        await hold(1000);
+        await take_screenShot(arg, 'Strategy Builder Date picker');
+      }
+    } else {
+      // ?
+      await hold(1000);
+      await take_screenShot(arg, 'Strategy Builder Search');
+    }
   } else {
     // ! strategy
     await hold(1000);

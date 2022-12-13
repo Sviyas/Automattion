@@ -9,6 +9,15 @@ const clicking_Button = async function (arg, id, label) {
   return clicking;
 };
 
+console.log('                         functionss', clicking_Button);
+//  ? if function does not exists capture the error
+const errorIdentfier = async function (funct) {
+  try {
+    if (funct) {
+    }
+  } catch (error) {}
+};
+
 // ?? click button when length is 1
 const click_Button = async function (arg, id, label) {
   const clicking = await arg.$x(`${id}`);

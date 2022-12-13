@@ -42,23 +42,23 @@ const strategy_Tab = async function (arg, brwsr) {
             // ??  Strategy Builder
             await Strategies(arg, "//p [contains(text(), 'Long Call')]", '    Long Call');
           } else {
-            await hold(1000);
+            // @ts-expect-error
             await take_screenShot(arg, 'Strategy Filter');
           }
         } else {
-          await hold(1000);
+          // @ts-expect-error
           await take_screenShot(arg, 'Strategy Date Picker');
         }
       } else {
-        await hold(1000);
+        // @ts-expect-error
         await take_screenShot(arg, 'Strategy Search');
       }
     } else {
-      await hold(1000);
+      // @ts-expect-error
       await take_screenShot(arg, 'Strategy Dashboard');
     }
   } else {
-    await hold(1000);
+    // @ts-expect-error
     await take_screenShot(arg, 'Strategy Builder');
   }
 };

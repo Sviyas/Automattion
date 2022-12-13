@@ -1,53 +1,47 @@
 const { hold } = require('./utils');
-const { analysis_Op } = require('./AnalysisOpenClose');
+// const { analysis_Op } = require('./AnalysisOpenClose');
+const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
 
 const analysis_Tab = async function (arg, brwsr) {
-  // open  tab
-  await analysis_Op(arg);
+  // ? clcik analysis page
+  await OpenAndClose(arg, "//a [@id ='navlink-0']");
 
-  //  open fundamental
-  const fundamental = await arg.$x("//p[contains(text(), 'Fundamental')]");
+  //  ? click Fundamental tab
+  const fundamental = await clicking_Button(arg, "//a [@id ='navlink-0']", '    Fundamental');
 
-  if (fundamental.length > 0) {
-    await fundamental[0].click();
-    await hold(2000);
-    console.log('11.1  Navigate to Fundamental Page');
-  }
+  if (fundamental) {
+    console.log('        11.1   Navigate to Analysis Page');
 
-  await analysis_Op(arg);
+    await hold(1000);
+    const fundamentalDate = await clicking_Button(
+      arg,
+      "//div [@id ='fundamental-select-with-title-date']",
+      '    Fechnical Date Picker'
+    );
 
-  //  open technical
-  const technical = await arg.$x("//p[contains(text(), 'Technical')]");
+    if (fundamentalDate) {
+      // ?
+      await OpenAndClose(arg, "//a [@id ='navlink-0']");
+      // ?
+      const technical = await clicking_Button(arg, "//a [@id ='navlink-1']", '    Technical');
 
-  if (technical.length > 0) {
-    await technical[0].click();
-    await hold(2000);
-    console.log('11.2  Navigatet to Technical Page');
-  }
+      if (technical) {
+        // ? click dashboard
+        await clicking_Button(arg, "//span [@id ='overview-btn']", '    Technical Dashboard');
 
-  //  overview button
-  const techOverview = await arg.$x("//p[contains(text(), 'Overview')]");
+        // ? click search
+        await clicking_Button(arg, "//div [@id ='technical-overview-search']", '    Technical Search');
 
-  if (techOverview.length > 0) {
-    await techOverview[0].click();
-    await hold(2000);
-    console.log(' Overview Button ');
-  }
+        // ? click date picker
+        await clicking_Button(
+          arg,
+          "//div [@id ='technical-overview-select-with-title-date']",
+          '    Technical Date Picker'
+        );
 
-  const techPage = await arg.$x("//p[contains(text(), 'Technical Page')]");
-
-  if (techPage.length > 0) {
-    await techPage[0].click();
-    await hold(2000);
-    console.log(' Technical Page Button ');
-  }
-
-  const pivotsPoint = await arg.$x("//p[contains(text(), 'Pivotspoint Table')]");
-
-  if (pivotsPoint.length > 0) {
-    await pivotsPoint[0].click();
-    await hold(2000);
-    console.log(' Pivotspoint Table Button');
+        await clicking_Button();
+      }
+    }
   }
 };
 

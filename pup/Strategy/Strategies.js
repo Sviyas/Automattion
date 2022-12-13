@@ -41,7 +41,6 @@ const Strategies = async function (arg, id, label) {
       //  ? conditionaly check button is working or not
       if (profitLoss === decrementValue) {
         // ! decrement button not working
-        await hold(1000);
         await take_screenShot(arg, 'Decrement Button');
       } else {
         // ? Clicking Nifty Increment button
@@ -58,7 +57,6 @@ const Strategies = async function (arg, id, label) {
 
           if (decrementValue === incrementValue) {
             // ! Increment button not working
-            await hold(1000);
             await take_screenShot(arg, 'Nifty Increment Button');
           } else {
             console.log('        Nifty Increment Values : ', incrementValue);
@@ -84,7 +82,6 @@ const Strategies = async function (arg, id, label) {
             await hold(1000);
           } else {
             // ! reset button  not working
-            await hold(1000);
             await take_screenShot(arg, 'Nifty Reset button');
           }
         }
@@ -163,7 +160,6 @@ const Strategies = async function (arg, id, label) {
 
           if (profitDateIncVal === profitDateDecVal) {
             // ! backward button
-            await hold(1000);
             await take_screenShot(arg, 'Expiry Backward');
           } else {
             // ? click Reset button
@@ -181,7 +177,6 @@ const Strategies = async function (arg, id, label) {
 
               if (profitDateResetVal !== expProftitValue) {
                 // ! expiry Reset
-                await hold(1000);
                 await take_screenShot(arg, 'Expiry Reset');
               } else {
                 console.log('        Expiry Reset Profit Loss Value : ', profitDateResetVal);
@@ -191,7 +186,6 @@ const Strategies = async function (arg, id, label) {
         }
       } else if (expProftitValue === profitDateIncVal) {
         // ! expiry forward button
-        await hold(1000);
         await take_screenShot(arg, 'Expiry Forward');
       }
     } //
@@ -312,46 +306,38 @@ const Strategies = async function (arg, id, label) {
                             await hold(1000);
                           } else {
                             // @ edit add
-                            await hold(1000);
                             await take_screenShot(arg, 'Edit');
                           }
                         } else {
                           // @ strike wise Reset
-                          await hold(1000);
                           await take_screenShot(arg, 'Strike Reset');
                         }
                       }
                     } else {
                       // @ strike wise decrement
-                      await hold(1000);
                       await take_screenShot(arg, 'Strike Decrement');
                     }
                   }
                 } else {
                   // ! Strikewise increment
-                  await hold(1000);
                   await take_screenShot(arg, 'Strikewise Increment');
                 }
               }
             } else {
               // ! Done
-              await hold(1000);
               await take_screenShot(arg, 'Done');
             }
           } else {
             // ! LTP Sell
-            await hold(1000);
             await take_screenShot(arg, 'LTP SELL');
           }
         }
       } else {
         // ! OPT
-        await hold(1000);
         await take_screenShot(arg, 'Strategy Date Picker');
       }
     } else {
       // ! strikewise
-      await hold(1000);
       await take_screenShot(arg, 'Edit Add');
     }
 
@@ -378,18 +364,15 @@ const Strategies = async function (arg, id, label) {
         // ? conditin passed
         // ? pending to add Greeks tab icon
       } else {
-        // ?
-        await hold(1000);
+        // @ts-expect-error
         await take_screenShot(arg, 'Strategy Builder Date picker');
       }
     } else {
-      // ?
-      await hold(1000);
+      // @ts-expect-error
       await take_screenShot(arg, 'Strategy Builder Search');
     }
   } else {
     // ! strategy
-    await hold(1000);
     await take_screenShot(arg, label);
   }
 };

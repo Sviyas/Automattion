@@ -1,4 +1,4 @@
-const { OpenAndClose, clicking_Button, button } = require('./Strategy/Button.js');
+const { OpenAndClose, clicking_Button } = require('./Strategy/Button.js');
 const { hold, take_screenShot } = require('./utils.js');
 
 const charts_Tab = async function (arg, brwsr) {
@@ -116,7 +116,6 @@ const charts_Tab = async function (arg, brwsr) {
 
   // ? Greeks Tab
 
-  // await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
   await OpenAndClose(arg, "//div [@id ='nav-Charts']");
   console.log('    9.3   Navigate to Greeks Page');
 
@@ -124,7 +123,7 @@ const charts_Tab = async function (arg, brwsr) {
 
   if (greeks) {
     // ? close tab
-    // await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
+
     await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
     // ? Greeks Dashboard
@@ -156,7 +155,7 @@ const charts_Tab = async function (arg, brwsr) {
           if (call) {
             await hold(1500);
             // ?  open again click Max Pain
-            // await OpenAndClose(arg, "//span [contains(text(), 'Charts')]");
+
             await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
             // ? Max Pain Page
@@ -165,7 +164,6 @@ const charts_Tab = async function (arg, brwsr) {
             const maxPain = await clicking_Button(arg, "//a [@id ='navlink-3']", '   MaxPain');
 
             if (maxPain) {
-              // await OpenAndClose(arg, "//span [contains(text(), 'Charts')]");
               await OpenAndClose(arg, "//div [@id ='nav-Charts']");
               // ?
               const maxpain_Dash = await clicking_Button(arg, "//span [@id ='maxpain-btn']", '   MaxPain Dashboard');

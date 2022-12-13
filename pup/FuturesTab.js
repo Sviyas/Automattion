@@ -1,5 +1,6 @@
 const { hold, take_screenShot } = require('./utils.js');
 const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
+const { idenfity } = require('./mainFile');
 
 // ? Futures Tab Clicking
 const futures_Tab = async function (arg, brwsr) {
@@ -12,8 +13,9 @@ const futures_Tab = async function (arg, brwsr) {
 
   console.log('    7.1   Navigate to dashboard page');
   if (!futureDash) {
+    idenfity.push(await take_screenShot('Future dashboard'));
     await hold(1000);
-    await take_screenShot(arg, 'Future dashboard page');
+    await take_screenShot(arg, 'Future dashboard');
   }
   await hold(1000);
 
@@ -183,8 +185,8 @@ const futures_Tab = async function (arg, brwsr) {
   // ? futures homepage
   const homepage = await clicking_Button(arg, "//span [@id ='futures-btn']", '    Futures Homepage');
   if (!homepage) {
-    await hold(1000);
-    await take_screenShot(arg, 'Homepage');
+    // await hold(1000);
+    // await take_screenShot(arg, 'Homepage');
   }
 };
 

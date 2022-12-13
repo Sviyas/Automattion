@@ -60,7 +60,6 @@ const OITab = async function (ag, id, label) {
             //  ? conditionaly check button is working or not
             if (profitLoss === decrementValue) {
               // ! decrement button not working
-              await hold(1000);
               await take_screenShot(ag, 'OI Decrement Button');
             } else {
               // ? Clicking Nifty Increment button
@@ -81,7 +80,6 @@ const OITab = async function (ag, id, label) {
 
                 if (decrementValue === incrementValue) {
                   // ! Increment button not working
-                  await hold(1000);
                   await take_screenShot(ag, 'OI Nifty Increment Button');
                 } else {
                   console.log('        OI Nifty Increment Values : ', incrementValue);
@@ -107,7 +105,6 @@ const OITab = async function (ag, id, label) {
                   await hold(1000);
                 } else {
                   // ! reset button  not working
-                  await hold(1000);
                   await take_screenShot(ag, 'OI Nifty Reset button');
                 }
               }
@@ -197,7 +194,6 @@ const OITab = async function (ag, id, label) {
 
                 if (profitDateIncVal === profitDateDecVal) {
                   // ! backward button
-                  await hold(1000);
                   await take_screenShot(ag, 'OI Expiry Backward');
                 } else {
                   // ? click Reset button
@@ -219,7 +215,6 @@ const OITab = async function (ag, id, label) {
 
                     if (profitDateResetVal !== expProftitValue) {
                       // ! expiry Reset
-                      await hold(1000);
                       await take_screenShot(ag, 'OI Expiry Reset');
                     } else {
                       console.log('        OI Expiry Reset Profit Loss Value : ', profitDateResetVal);
@@ -229,13 +224,11 @@ const OITab = async function (ag, id, label) {
               }
             } else if (expProftitValue === profitDateIncVal) {
               // ! expiry forward button
-              await hold(1000);
               await take_screenShot(ag, 'OI Expiry Forward');
             }
           } //
         } else {
           // @ts-expect-error
-          await hold(1000);
           await take_screenShot(ag, 'OI Done');
         }
 
@@ -316,40 +309,33 @@ const OITab = async function (ag, id, label) {
                       await hold(1000);
                     } else {
                       // @ edit add
-                      await hold(1000);
                       await take_screenShot(ag, 'OI Edit');
                     }
                   } else {
                     // @ strike wise Reset
-                    await hold(1000);
                     await take_screenShot(ag, 'OI Strike Reset');
                   }
                 }
               } else {
                 // @ strike wise decrement
-                await hold(1000);
                 await take_screenShot(ag, 'OI Strike Decrement');
               }
             }
           } else {
             // ! Strikewise increment
-            await hold(1000);
             await take_screenShot(ag, 'OI Strikewise Increment');
           }
         }
       } else {
         // @ts-expect-error
-        await hold(1000);
         await take_screenShot(ag, 'LTP Call Buy');
       }
     } else {
       // @ts-expect-error
-      await hold(1000);
       await take_screenShot(ag, 'OI Put buy');
     }
   } else {
     // @ts-expect-error
-    await hold(1000);
     await take_screenShot(ag, label);
   }
 };

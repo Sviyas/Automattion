@@ -60,7 +60,6 @@ const greeksTab = async function (ag, id, label) {
           //  ? conditionaly check button is working or not
           if (profitLoss === decrementValue) {
             // ! decrement button not working
-            await hold(1000);
             await take_screenShot(ag, 'Greeks Decrement Button');
           } else {
             // ? Clicking Nifty Increment button
@@ -81,7 +80,6 @@ const greeksTab = async function (ag, id, label) {
 
               if (decrementValue === incrementValue) {
                 // ! Increment button not working
-                await hold(1000);
                 await take_screenShot(ag, 'Greeks Nifty Increment Button');
               } else {
                 console.log('        Greeks Nifty Increment Values : ', incrementValue);
@@ -107,7 +105,6 @@ const greeksTab = async function (ag, id, label) {
                 await hold(1000);
               } else {
                 // ! reset button  not working
-                await hold(1000);
                 await take_screenShot(ag, 'Greeks Nifty Reset button');
               }
             }
@@ -197,7 +194,6 @@ const greeksTab = async function (ag, id, label) {
 
               if (profitDateIncVal === profitDateDecVal) {
                 // ! backward button
-                await hold(1000);
                 await take_screenShot(ag, 'Greeks Expiry Backward');
               } else {
                 // ? click Reset button
@@ -219,7 +215,6 @@ const greeksTab = async function (ag, id, label) {
 
                   if (profitDateResetVal !== expProftitValue) {
                     // ! expiry Reset
-                    await hold(1000);
                     await take_screenShot(ag, 'Greeks Expiry Reset');
                   } else {
                     console.log('        Greeks Expiry Reset Profit Loss Value : ', profitDateResetVal);
@@ -229,13 +224,11 @@ const greeksTab = async function (ag, id, label) {
             }
           } else if (expProftitValue === profitDateIncVal) {
             // ! expiry forward button
-            await hold(1000);
             await take_screenShot(ag, 'Greeks Expiry Forward');
           }
         } //
       } else {
         // @ts-expect-error
-        await hold(1000);
         await take_screenShot(ag, 'Greeks Done');
       }
 
@@ -311,30 +304,25 @@ const greeksTab = async function (ag, id, label) {
                   await hold(2000);
                 } else {
                   // @ strike wise Reset
-                  await hold(1000);
                   await take_screenShot(ag, 'Greeks Strike Reset');
                 }
               }
             } else {
               // @ strike wise decrement
-              await hold(1000);
               await take_screenShot(ag, 'Greeks Strike Decrement');
             }
           }
         } else {
           // ! Strikewise increment
-          await hold(1000);
           await take_screenShot(ag, 'Greeks Strikewise Increment');
         }
       }
     } else {
       // @ts-expect-error
-      await hold(1000);
       await take_screenShot(ag, 'Greeks Put buy');
     }
   } else {
     // @ts-expect-error
-    await hold(1000);
     await take_screenShot(ag, label);
   }
 };

@@ -3,7 +3,7 @@ const { hold, take_screenShot } = require('./utils.js');
 
 const charts_Tab = async function (arg, brwsr) {
   //  ? Chart Tab Open
-  await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-21']");
+  await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
   // ? Charts IV Smile
   console.log('    9.1   Navigate to IV Smile Page');
@@ -33,7 +33,7 @@ const charts_Tab = async function (arg, brwsr) {
         if (iv_Datepicker) {
           await hold(1000);
           // ? Next Option Interest
-          await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
+          await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
           console.log('    9.2   Navigate to Open Interest Page');
           // ? Open Interest
@@ -42,7 +42,7 @@ const charts_Tab = async function (arg, brwsr) {
           if (OI) {
             await hold(1000);
             //?  close button
-            await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
+            await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
             // ? OI dashboard
             const oi_Dash = await clicking_Button(arg, "//span[contains(text(), 'oi')]", '   OI Dashboard');
@@ -116,15 +116,16 @@ const charts_Tab = async function (arg, brwsr) {
 
   // ? Greeks Tab
 
-  await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
-
+  // await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
+  await OpenAndClose(arg, "//div [@id ='nav-Charts']");
   console.log('    9.3   Navigate to Greeks Page');
 
   const greeks = await clicking_Button(arg, "//a [@id ='navlink-2']", '   Greeks');
 
   if (greeks) {
     // ? close tab
-    await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
+    // await OpenAndClose(arg, "//button [@id ='headlessui-popover-button-71']");
+    await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
     // ? Greeks Dashboard
     const greeks_Dash = await clicking_Button(arg, "//span [@id ='greeks-btn']", '   Greek Dashhboard');
@@ -155,7 +156,8 @@ const charts_Tab = async function (arg, brwsr) {
           if (call) {
             await hold(1500);
             // ?  open again click Max Pain
-            await OpenAndClose(arg, "//span [contains(text(), 'Charts')]");
+            // await OpenAndClose(arg, "//span [contains(text(), 'Charts')]");
+            await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
             // ? Max Pain Page
             console.log('    9.4   Navigate to MaxPain Page');
@@ -163,7 +165,8 @@ const charts_Tab = async function (arg, brwsr) {
             const maxPain = await clicking_Button(arg, "//a [@id ='navlink-3']", '   MaxPain');
 
             if (maxPain) {
-              await OpenAndClose(arg, "//span [contains(text(), 'Charts')]");
+              // await OpenAndClose(arg, "//span [contains(text(), 'Charts')]");
+              await OpenAndClose(arg, "//div [@id ='nav-Charts']");
               // ?
               const maxpain_Dash = await clicking_Button(arg, "//span [@id ='maxpain-btn']", '   MaxPain Dashboard');
 
@@ -229,149 +232,6 @@ const charts_Tab = async function (arg, brwsr) {
     await hold(1000);
     await take_screenShot(arg, 'Greeks');
   }
-  // arg.$x();
-
-  // if (iv_Search.length > 1) {
-  //   await iv_Search[1].click();
-  //   await hold(2000);
-  //   console.log(' IV Smile Search Field');
-  // }
-
-  // check IV date Picker
-  // const iv_Datepicker = await arg.$x();
-
-  // if (iv_Datepicker.length > 0) {
-  //   await iv_Datepicker[0].click();
-  //   await hold(2000);
-  //   console.log(' IV Smile Date Picker');
-  // }
-
-  // await ch_Op(arg);
-
-  // Charts Open Interest
-  // arg.$x("//p[contains(text(), 'Open Interest')]");
-
-  // if (OI.length > 0) {
-  //   await OI[0].click();
-  //   await hold(1000);
-  // }
-
-  // await ch_Clo(arg);
-
-  // check OI dashboard
-  // await arg.$x();
-
-  // if (oi_Dashboard.length > 0) {
-  //   await oi_Dashboard[0].click();
-  //   await hold(1000);
-  //   console.log(' Open Interest Dashboard ');
-  // }
-
-  // check OI search field
-  // await arg.$x();
-
-  // if (oi_Search.length > 1) {
-  //   await oi_Search[1].click();
-  //   await hold(2000);
-  //   console.log(' Open Interest Search Field');
-  // }
-
-  // check OI filter field
-  //  await arg.$x();
-
-  //   if (oi_Filter.length > 0) {
-  //     await oi_Filter[0].click();
-  //     await hold(2000);
-  //     console.log(' Open Interest Filter Field');
-  //   }
-
-  // check OI Date Picker
-  // arg.$x();
-
-  // // if (oi_DatePicker.length > 0) {
-  //   await oi_DatePicker[0].click();
-  //   await hold(2000);
-  //   console.log(' Open Interest Date Picker ');
-  // }
-
-  // await ch_Op(arg);
-
-  // //  Charts Greeks
-  // const Greeks = await arg.$x("//p[contains(text(), 'Greeks')]");
-
-  // if (Greeks.length > 0) {
-  //   await Greeks[0].click();
-  //   await hold(2000);
-  //   console.log('9.3   Navigate to Greeks Page ');
-  // }
-
-  // await ch_Clo(arg);
-
-  // Charts Greeks dashboard
-  // arg.$x("//span[contains(text(), 'greeks')]");
-
-  // if (greeks_Dash.length > 0) {
-  //   await greeks_Dash[0].click();
-  //   await hold(1000);
-  //   console.log('  Greeks Dashboard  ');
-  // }
-
-  // // Greeks Search Field
-  // const greeks_Search = await arg.$x();
-
-  // if (greeks_Search.length > 1) {
-  //   await greeks_Search[1].click();
-  //   await hold(2000);
-  //   console.log('  Greeks Search Field  ');
-  // }
-
-  // // Greeks Date Picker
-  // const greeks_DatePicker = await arg.$x("//div [@id = 'charts-greeks-select-with-title-date']");
-
-  // if (greeks_DatePicker.length > 0) {
-  //   await greeks_DatePicker[0].click();
-  //   await hold(2000);
-  //   console.log('  Greeks Date Picker  ');
-  // }
-  // await ch_Op(arg);
-
-  // // Charts MaxPain
-  // const maxPain = await arg.$x("//p[contains(text(), 'Maxpain')]");
-
-  // if (maxPain.length > 0) {
-  //   await maxPain[0].click();
-  //   await hold(2000);
-  //   console.log('9.4   Navigate to Maxpain Page ');
-  // }
-
-  // await ch_Clo(arg);
-
-  //  maxpain dashboard
-  // const maxpain_Dash = await arg.$x("//span[contains(text(), 'maxpain')]");
-
-  // if (maxpain_Dash.length > 0) {
-  //   await maxpain_Dash[0].click();
-  //   await hold(1000);
-  //   console.log('  Maxpain Dashboard  ');
-  // }
-
-  // // maxpain  Search Field
-  // const maxpain_Search = await arg.$x("//div [@id = 'charts-maxpain-search']");
-
-  // if (maxpain_Search.length > 1) {
-  //   await maxpain_Search[1].click();
-  //   await hold(2000);
-  //   console.log('  Maxpain Search Field  ');
-  // }
-
-  // // maxpain Date picker  Field
-  // const maxpain_Datepicker = await arg.$x("//div [@id = 'charts-maxpain-select-with-title-date']");
-
-  // if (maxpain_Datepicker.length > 0) {
-  //   await maxpain_Datepicker[0].click();
-  //   await hold(2000);
-  //   console.log('  Maxpain Datepicker Field  ');
-  // }
 };
 
 module.exports.charts_Tab = charts_Tab;

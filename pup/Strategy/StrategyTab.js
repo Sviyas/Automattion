@@ -43,7 +43,7 @@ const strategy_Tab = async function (arg, brwsr) {
             // ? long call
             await Strategies(arg, "//p [contains(text(), 'Long Call')]", '    Long Call');
             // ? Short Call
-            await Strategies(arg, "//p [contains(text(),'Short Call')]", '    Short Call');
+            // await Strategies(arg, "//p [contains(text(),'Short Call')]", '    Short Call');
           } else {
             // @ts-expect-error
             await take_screenShot(arg, 'Strategy Filter');

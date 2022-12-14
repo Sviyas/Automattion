@@ -9,7 +9,7 @@ const { strategy_Tab } = require('./Strategy/StrategyTab');
 // const { fii_dii_Tab } = require('./FiiDii');
 // const { user_icon } = require('./User');
 
-// const idenftify = [];
+const idenftify = [];
 
 const testLogin = async (page, email, password) => {
   // ? Browser Page

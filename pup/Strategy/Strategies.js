@@ -46,87 +46,87 @@ const Strategies = async function (arg, id, label) {
               await hold(2000);
               // ? hold
               // ? fetch Profit loss Values
-              // const prolos = await (
-              //   await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-              // ).jsonValue();
+              const prolos = await (
+                await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
+              ).jsonValue();
 
               // ? parse Value
-              // const profitLoss = parseInt(prolos);
+              const profitLoss = parseInt(prolos);
 
-              // console.log('        ✅ NIFTY TARGET');
-              // console.log('        profti loss Value : ', profitLoss);
+              console.log('        ✅ NIFTY TARGET');
+              console.log('        profti loss Value : ', profitLoss);
 
               // ? click first nifty Target Values  |  ,
               // ? nifty targer increment button
-              // const nifty_Incre = await clicking_Button(
-              //   arg,
-              //   "//button [@id = 'target-addition-btn']",
-              //   '    Nifty Increment'
-              // );
+              const nifty_Incre = await clicking_Button(
+                arg,
+                "//button [@id = 'target-addition-btn']",
+                '    Nifty Increment'
+              );
 
-              // if (nifty_Incre) {
-              //   // ? hold
-              //   await hold(1000);
-              //   // ? nifty decrement button clicking
-              //   const increment = await (
-              //     await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-              //   ).jsonValue();
-              //   const incrementValue = parseInt(increment);
-              //   console.log('        Nifty Increment Values : ', incrementValue);
+              if (nifty_Incre) {
+                // ? hold
+                await hold(1000);
+                // ? nifty decrement button clicking
+                const increment = await (
+                  await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
+                ).jsonValue();
+                const incrementValue = parseInt(increment);
+                console.log('        Nifty Increment Values : ', incrementValue);
 
-              //   //  ? conditionaly check button is working or not
-              //   if (profitLoss === incrementValue) {
-              //     // ! decrement button not working
-              //     await take_screenShot(arg, 'Increment Button');
-              //   } else {
-              //     // ? Clicking Nifty Increment button
-              //     const nift_Decre = await clicking_Button(
-              //       arg,
-              //       "//button[@id = 'target-subraction-btn']",
-              //       '    Nifty Increment'
-              //     );
+                //  ? conditionaly check button is working or not
+                if (profitLoss === incrementValue) {
+                  // ! decrement button not working
+                  await take_screenShot(arg, 'Increment Button');
+                } else {
+                  // ? Clicking Nifty Increment button
+                  const nift_Decre = await clicking_Button(
+                    arg,
+                    "//button[@id = 'target-subraction-btn']",
+                    '    Nifty Increment'
+                  );
 
-              //     if (nift_Decre) {
-              //       // ? hold
-              //       await hold(1000);
-              //       const decrement = await (
-              //         await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-              //       ).jsonValue();
+                  if (nift_Decre) {
+                    // ? hold
+                    await hold(1000);
+                    const decrement = await (
+                      await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
+                    ).jsonValue();
 
-              //       const decrementValue = parseInt(decrement);
+                    const decrementValue = parseInt(decrement);
 
-              //       if (incrementValue === decrementValue) {
-              //         // ! Increment button not working
-              //         await take_screenShot(arg, 'Nifty Decrement Button');
-              //       } else {
-              //         console.log('        Nifty Decrement Values : ', decrementValue);
-              //       }
-              //     }
+                    if (incrementValue === decrementValue) {
+                      // ! Increment button not working
+                      await take_screenShot(arg, 'Nifty Decrement Button');
+                    } else {
+                      console.log('        Nifty Decrement Values : ', decrementValue);
+                    }
+                  }
 
-              //     // ? click Reset button
-              //     const nifty_Reset = await clicking_Button(arg, "//p[@id = 'target-reset-btn']", '    Nifty Reset');
+                  // ? click Reset button
+                  const nifty_Reset = await clicking_Button(arg, "//p[@id = 'target-reset-btn']", '    Nifty Reset');
 
-              //     if (nifty_Reset) {
-              //       // ? hold
-              //       await hold(1000);
-              //       // ?
-              //       const reset = await (
-              //         await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-              //       ).jsonValue();
+                  if (nifty_Reset) {
+                    // ? hold
+                    await hold(1000);
+                    // ?
+                    const reset = await (
+                      await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
+                    ).jsonValue();
 
-              //       const resetValue = parseInt(reset);
+                    const resetValue = parseInt(reset);
 
-              //       // ? check reset button working or not
-              //       if (profitLoss === resetValue) {
-              //         console.log('        Nifty Reset Values : ', resetValue);
-              //         await hold(1000);
-              //       } else {
-              //         // ! reset button  not working
-              //         await take_screenShot(arg, 'Nifty Reset button');
-              //       }
-              //     }
-              //   }
-              // }
+                    // ? check reset button working or not
+                    if (profitLoss === resetValue) {
+                      console.log('        Nifty Reset Values : ', resetValue);
+                      await hold(1000);
+                    } else {
+                      // ! reset button  not working
+                      await take_screenShot(arg, 'Nifty Reset button');
+                    }
+                  }
+                }
+              }
 
               // ?   check expiry
               // ? Expiry Date Button click
@@ -134,22 +134,22 @@ const Strategies = async function (arg, id, label) {
 
               await hold(1000);
               // ?  fetch expiry date profit loss values
-              const expProfit = await (
+              const expiryProfit = await (
                 await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
               ).jsonValue();
 
-              const expProftitValue = parseInt(expProfit);
+              const expProftitValue = parseInt(expiryProfit);
 
               console.log('        Expiry Profit Values : ', expProftitValue);
 
               // ? fetch expiry Date
-              const expDate = await (
+              const expiryDate = await (
                 await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
               ).jsonValue();
 
-              console.log('        Expiry Date : ', expDate);
+              console.log('        Expiry Date : ', expiryDate);
 
-              // ? expiry forward date
+              // ? expiry forward date button
               const expInc = await clicking_Button(
                 arg,
                 "//button [@id ='expiry-move-backword-btn']",
@@ -164,24 +164,17 @@ const Strategies = async function (arg, id, label) {
               console.log('        Expiry Forward Date : ', forwardDate);
 
               // ? fetch forward date profit loss values
-              // const profitDateInc = await (
-              //   await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-              // ).jsonValue();
 
-              // const profitDateIncVal = parseInt(profitDateInc);
-
-              // console.log('        Expiry Forward Date Profit Loss Value : ', profitDateIncVal);
-              // await hold(10000);
-              const profitIncrement = await (
+              const forwardDateInc = await (
                 await (await arg.$x("//h3 [@id ='Profit-Loss-value']"))[0].getProperty('textContent')
               ).jsonValue();
 
-              const profitIncProfitValue = parseInt(profitIncrement);
+              const forwardDateIncreVal = parseInt(forwardDateInc);
 
-              console.log('        Expiry Forward Date Profit Loss Value : ', profitIncProfitValue);
+              console.log('        Expiry Forward Date Profit Loss Value : ', forwardDateIncreVal);
 
               if (expInc) {
-                if (expProftitValue !== profitIncProfitValue) {
+                if (expProftitValue !== forwardDateIncreVal) {
                   // ? click Decrement button
                   const expDec = await clicking_Button(
                     arg,
@@ -198,15 +191,15 @@ const Strategies = async function (arg, id, label) {
 
                     console.log('        Expiry backward Date : ', backwardDate);
 
-                    const profitDateDec = await (
+                    const backwardDateDec = await (
                       await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
                     ).jsonValue();
 
-                    const profitDateDecVal = parseInt(profitDateDec);
+                    const backwardDateDecVal = parseInt(backwardDateDec);
 
-                    console.log('        Expiry backward Date Profit Loss Value : ', profitDateDecVal);
+                    console.log('        Expiry backward Date Profit Loss Value : ', backwardDateDecVal);
 
-                    if (profitIncProfitValue === profitDateDecVal) {
+                    if (forwardDateIncreVal === backwardDateDecVal) {
                       // ! backward button
                       await take_screenShot(arg, 'Expiry Backward');
                     } else {
@@ -221,13 +214,13 @@ const Strategies = async function (arg, id, label) {
                       if (expReset) {
                         // ? hold & fetch values
                         await hold(1000);
-                        const profitDateReset = await (
+                        const expiryReset = await (
                           await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
                         ).jsonValue();
 
-                        const profitDateResetVal = parseInt(profitDateReset);
+                        const expiryResetVal = parseInt(expiryReset);
 
-                        if (profitDateResetVal !== expProftitValue) {
+                        if (expiryResetVal !== expProftitValue) {
                           // ! expiry Reset
                           await take_screenShot(arg, 'Expiry Reset');
                         } else {
@@ -236,7 +229,7 @@ const Strategies = async function (arg, id, label) {
                       }
                     }
                   }
-                } else if (expProftitValue === profitIncProfitValue) {
+                } else if (expProftitValue === forwardDateIncreVal) {
                   // ? check today is expiry or not
                   // ? if values are equal check date ? equal or not
                   const options = { weekday: 'long' };
@@ -250,7 +243,8 @@ const Strategies = async function (arg, id, label) {
                   } else {
                     // ? if expiry stop the process..... or not continue to check the process
                     // ! expiry forward button
-                    await take_screenShot(arg, 'Expiry Forward');
+                    // await take_screenShot(arg, 'Expiry Forward');
+                    console.log('        Data Loading problem');
                   }
                 }
               } //

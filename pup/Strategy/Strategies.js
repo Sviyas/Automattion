@@ -14,7 +14,6 @@ const Strategies = async function (arg, id, label) {
     await hold(2000);
 
     // ? edit to select legs
-
     const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
 
     if (editadd) {
@@ -33,10 +32,45 @@ const Strategies = async function (arg, id, label) {
         // ? click LTP Sell button
         if (strategyDate) {
           await hold(1000);
-          // ? LTP Sell button
+          // ? LTP Sell button   ? pending chages
+          // ?  fetch strategy leg colors   await arg.$x("//div [@id ='atm-strike-index-ltp-CE-BUY']");
+
+          const fetchStyle = await arg.$x("//div [@id ='atm-strike-index-ltp-CE-SELL']");
+          console.log('fetch style ', fetchStyle);
+
+          // console.log('aaabbbbbbbbbbbbbbbbbbbbbbdddddddddddddddddd', obj);
+
+          // await page.evaluate(() => {
+          //   return {
+          //     document.querySelector('#atm-strike-index-ltp-CE-BUY')
+          //            }
+          // });
+          const srcStyles = await arg.$eval('#atm-strike-index-ltp-CE-BUY', n =>
+            JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
+          );
+
+          const cnvNam = srcStyles.toString(16);
+          console.log('aaaaaaaaaaaaaaaaaaaaaaaaa', srcStyles);
+
+          // const data = await arg.$eval('#atm-strike-index-ltp-CE-BUY', () => {
+          //   const elements = document.body.getElementsByTagName("//div [@id ='atm-strike-index-ltp-CE-SELL']");
+
+          //   return [...elements].map(element => {
+          //     element.focus();
+          //     return window.getComputedStyle(element).getPropertyValue('background-color ');
+          //   });
+          // });
+          console.log('ssssssssssssssssssssssssssssssssssssssssssssssssssssssss', cnvNam);
+          // ele = document.querySelector('#atm-strike-index-ltp-CE-BUY');
+          // console.log('colorrrrrrrrrrrrrrrrrr ', window.getComputedStyle(ele).backgroundColor);
+          // const element = await arg.$eval('#atm-strike-index-ltp-CE-BUY', el => {
+          // getComputedStyle(el).getPropertyValue('background-color');
+          // });
+          // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', element);
           const ltpSell = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP SELL');
 
           if (ltpSell) {
+            await hold(1000);
             // ?
             // ? Click Done
 

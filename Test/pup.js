@@ -14,7 +14,7 @@ const run = async url => {
   console.log('cursor : ');
   await cursor.moveTo({ x: 1279, y: 89 });
   console.log('click : ');
-  await cursor.click(ele);
+  // await cursor.click(ele);
 
   // shorthand for
   // await cursor.move(selector)

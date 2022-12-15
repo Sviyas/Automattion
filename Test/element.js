@@ -552,7 +552,7 @@ if (Strategy) {
 //   console.log('  Maxpain Search Field  ');
 // }
 
-// // maxpain Date picker  Field
+// maxpain Date picker  Field
 // const maxpain_Datepicker = await arg.$x("//div [@id = 'charts-maxpain-select-with-title-date']");
 
 // if (maxpain_Datepicker.length > 0) {

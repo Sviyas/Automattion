@@ -5,7 +5,7 @@ const currentDate = new Date();
 
 const checkDateValue = currentDate.toLocaleDateString('en-US', options);
 
-// ? check its Thursday or not
+// // ? check its Thursday or not
 if (checkDateValue === 'Thursday') {
   console.log('        Today is Expiry');
 

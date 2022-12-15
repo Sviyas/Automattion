@@ -23,7 +23,7 @@
 //   await page.goto(webSite);
 //   await page.emulateMediaType('screen');
 //   await page.pdf({ path: path.resolve(__dirname, '../Database', 'photo.pdf') });
-//   // / value);
+// / value);
 
 //   await browser.close();
 // })();

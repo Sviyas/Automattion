@@ -2,6 +2,7 @@ const { hold, take_screenShot } = require('../utils');
 const { clicking_Button } = require('./Button');
 const { OITab } = require('./OiTab');
 const { greeksTab } = require('./GreeksTab');
+const { strikewise_fun } = require('./StrikewiseIV');
 
 const Strategies = async function (arg, id, label) {
   const strategy = await clicking_Button(arg, id, label);
@@ -276,106 +277,12 @@ const Strategies = async function (arg, id, label) {
               console.log('        ✅ STRIKEWISE IVs');
               // ?
               // ? check striekwise ivs
-              await hold(1000);
+              // await hold(1000);
 
-              // ? fetch strike wise values
-              const strikewise = await (
-                await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
-              ).jsonValue();
-
-              // ? parse value
-              const strikewiseVal = parseFloat(strikewise);
-
-              console.log('        StrikeWise Values : ', strikewiseVal);
-
-              const strikeInc = await clicking_Button(arg, "//p [@id ='0-plusclick-btn']", '    Strikewise Increment');
-
-              if (strikeInc) {
-                await hold(1000);
-                // ?
-                const strikewiseInc = await (
-                  await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
-                ).jsonValue();
-
-                // ? parse value
-                const strikewiseIncVal = parseFloat(strikewiseInc);
-
-                console.log('        StrikeWise Increment Values : ', strikewiseIncVal);
-
-                if (strikewiseIncVal !== strikewiseVal) {
-                  //  ? condition passed
-
-                  // ? click decrement button on strikewise
-                  const strikeDec = await clicking_Button(
-                    arg,
-                    "//p [@id ='0-minusclick-btn']",
-                    '    Strikewise Decrement'
-                  );
-
-                  if (strikeDec) {
-                    await hold(1000);
-                    // ?
-                    const strikewiseDec = await (
-                      await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
-                    ).jsonValue();
-
-                    // ? parse value
-                    const strikewiseDecVal = parseFloat(strikewiseDec);
-
-                    console.log('        StrikeWise Decrement Values : ', strikewiseDecVal);
-
-                    if (strikewiseDecVal !== strikewiseIncVal) {
-                      // ? strike Reset
-                      const strikereset = await clicking_Button(
-                        arg,
-                        "//p [@id ='iv-reset-btn']",
-                        '    Strikewise Reset'
-                      );
-
-                      if (strikereset) {
-                        await hold(2000);
-                        // ? fetch values
-                        const strikewiseReset = await (
-                          await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
-                        ).jsonValue();
-
-                        // ? parse value
-                        const strikewiseResetVal = parseFloat(strikewiseReset);
-
-                        if (strikewiseResetVal !== strikewiseVal) {
-                          await hold(1000);
-                          console.log('        StrikeWise Reset Values : ', strikewiseResetVal);
-
-                          // ? again open edit add
-                          const EDIT = await clicking_Button(
-                            arg,
-                            "//button [contains(text(), 'EDIT/ADD')]",
-                            '    EDIT ADD'
-                          );
-
-                          if (EDIT) {
-                            console.log('        Navigate to OI Tab');
-                            // ? hold to continue next function
-                            await hold(1000);
-                          } else {
-                            // @ edit add
-                            await take_screenShot(arg, 'Edit');
-                          }
-                        } else {
-                          // @ strike wise Reset
-                          await take_screenShot(arg, 'Strike Reset');
-                        }
-                      }
-                    } else {
-                      // @ strike wise decrement
-                      await take_screenShot(arg, 'Strike Decrement');
-                    }
-                  }
-                } else {
-                  // ! Strikewise increment
-                  await take_screenShot(arg, 'Strikewise Increment');
-                }
-              }
+              // ! passs the function
+              // ? "//p [@id ='0-plusclick-btn']"
+              // ? "//p [@id ='0-minusclick-btn']"
+              await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']");
             } else {
               // ! Done
               await take_screenShot(arg, 'Done');

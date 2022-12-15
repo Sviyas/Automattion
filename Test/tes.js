@@ -13,12 +13,12 @@ const { installMouseHelper } = require('./mouse');
   await page.mouse.click(1295, 67);
 })();
 // run('https://danube-web.shop/');
-// const { options_Tab } = require('./OptionsTab');
-// const { options_Tab } = require('./OptionsTab');
-// const { options_Tab } = require('./OptionsTab');
-// const { options_Tab } = require('./OptionsTab');
-// const { options_Tab } = require('./OptionsTab');
-// const { options_Tab } = require('./OptionsTab');
+const { options_Tab } = require('./OptionsTab');
+const { options_Tab } = require('./OptionsTab');
+const { options_Tab } = require('./OptionsTab');
+const { options_Tab } = require('./OptionsTab');
+const { options_Tab } = require('./OptionsTab');
+const { options_Tab } = require('./OptionsTab');
 
 const strategBuilderSearch = await clicking_Button(
   arg,

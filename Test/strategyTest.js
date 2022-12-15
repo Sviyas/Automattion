@@ -24,20 +24,20 @@ await page.evaluate(() => {
   };
 });
 // ? fetch window object
-// const data = await arg.$eval('#atm-strike-index-ltp-CE-BUY', () => {
-//   const elements = document.body.getElementsByTagName("//div [@id ='atm-strike-index-ltp-CE-SELL']");
+// // const data = await arg.$eval('#atm-strike-index-ltp-CE-BUY', () => {
+// //   const elements = document.body.getElementsByTagName("//div [@id ='atm-strike-index-ltp-CE-SELL']");
 
-//   return [...elements].map(element => {
-//     element.focus();
-//     return window.getComputedStyle(element).getPropertyValue('background-color ');
-//   });
+// //   return [...elements].map(element => {
+// //     element.focus();
+// //     return window.getComputedStyle(element).getPropertyValue('background-color ');
+// //   });
 // });
-// console.log('ssssssssssssssssssssssssssssssssssssssssssssssssssssssss', cnvNam);
-// ele = document.querySelector('#atm-strike-index-ltp-CE-BUY');
-// console.log('colorrrrrrrrrrrrrrrrrr ', window.getComputedStyle(ele).backgroundColor);
-// const element = await arg.$eval('#atm-strike-index-ltp-CE-BUY', el => {
-// getComputedStyle(el).getPropertyValue('background-color');
-//   });
-// console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', element);
+console.log('ssssssssssssssssssssssssssssssssssssssssssssssssssssssss', cnvNam);
+ele = document.querySelector('#atm-strike-index-ltp-CE-BUY');
+console.log('colorrrrrrrrrrrrrrrrrr ', window.getComputedStyle(ele).backgroundColor);
+const element = await arg.$eval('#atm-strike-index-ltp-CE-BUY', el => {
+  getComputedStyle(el).getPropertyValue('background-color');
+});
+console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', element);
 
-// console.log('aaabbbbbbbbbbbbbbbbbbbbbbdddddddddddddddddd', obj);
+console.log('aaabbbbbbbbbbbbbbbbbbbbbbdddddddddddddddddd', obj);

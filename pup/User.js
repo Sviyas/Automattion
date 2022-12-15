@@ -7,6 +7,7 @@ const user_icon = async function (arg, brwsr) {
   if (icon) {
     console.log('     Navigate to Icon Button');
   }
+  // ? click User Icon
   const user = await clicking_Button(arg, "//button [@id ='headlessui-menu-item-32']", '    Icon');
 
   if (user) {

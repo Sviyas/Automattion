@@ -1,29 +1,43 @@
-// const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
+// ?  fetch strategy leg colors   await arg.$x("//div [@id ='atm-strike-index-ltp-CE-BUY']");
 
-// console.log('        ✅ EDIT / ADD  BUTTON');
-// if (editadd) {
-//   // ? click OPT button
+console.log('aaabbbbbbbbbbbbbbbbbbbbbbdddddddddddddddddd', obj);
 
-//   const opt = await clicking_Button(arg, "//li [@id = 'OPT-slider-header-btn']", '    OPT');
+await page.evaluate(() => {
+  return {
+    // documentquerySelector('#atm-strike-index-ltp-CE-BUY')
+  };
+});
+// ele = document.querySelector('#atm-strike-index-ltp-CE-BUY');
+// console.log('colorrrrrrrrrrrrrrrrrr ', window.getComputedStyle(ele).backgroundColor);
+// const element = await arg.$eval('#atm-strike-index-ltp-CE-BUY', el => {
+//   getComputedStyle(el).getPropertyValue('background-color');
+// });
 
-//   if (opt) {
-//     // ? check related buttons
-//     const strategyDate = await clicking_Button(
-//       arg,
-//       "//div [@id = 'strategy-view-select-with-title-st-slider-date']",
-//       '    Strategy Date Picker'
-//     );
+// ? fetch rgb values
+const srcStyles = await arg.$eval('#atm-strike-index-ltp-CE-BUY', n =>
+  JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
+);
+// ? document
+await page.evaluate(() => {
+  return {
+    // document.querySelector('#atm-strike-index-ltp-CE-BUY')
+  };
+});
+// ? fetch window object
+// const data = await arg.$eval('#atm-strike-index-ltp-CE-BUY', () => {
+//   const elements = document.body.getElementsByTagName("//div [@id ='atm-strike-index-ltp-CE-SELL']");
 
-//     // ? click LTP Sell button
-//     if (strategyDate) {
-//       await hold(1000);
-//       // ? LTP Sell button
-//       const ltpSell = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP SELL');
+//   return [...elements].map(element => {
+//     element.focus();
+//     return window.getComputedStyle(element).getPropertyValue('background-color ');
+//   });
+// });
+// console.log('ssssssssssssssssssssssssssssssssssssssssssssssssssssssss', cnvNam);
+// ele = document.querySelector('#atm-strike-index-ltp-CE-BUY');
+// console.log('colorrrrrrrrrrrrrrrrrr ', window.getComputedStyle(ele).backgroundColor);
+// const element = await arg.$eval('#atm-strike-index-ltp-CE-BUY', el => {
+// getComputedStyle(el).getPropertyValue('background-color');
+//   });
+// console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', element);
 
-//       if (ltpSell) {
-//         // ?
-//         // ? Click Done
-
-//         const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    Done');
-
-//         if (done) {
+// console.log('aaabbbbbbbbbbbbbbbbbbbbbbdddddddddddddddddd', obj);

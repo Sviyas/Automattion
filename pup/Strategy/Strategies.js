@@ -107,7 +107,7 @@ const Strategies = async function (arg, id, label) {
                   const nift_Decre = await clicking_Button(
                     arg,
                     "//button[@id = 'target-subraction-btn']",
-                    '    Nifty Increment'
+                    '    Nifty Decrement'
                   );
 
                   if (nift_Decre) {
@@ -280,9 +280,11 @@ const Strategies = async function (arg, id, label) {
               // await hold(1000);
 
               // ! passs the function
-              // ? "//p [@id ='0-plusclick-btn']"
-              // ? "//p [@id ='0-minusclick-btn']"
-              await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']");
+              // ? pass strike wise increment decrement button
+
+              await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
+
+              // ? goto edit add
             } else {
               // ! Done
               await take_screenShot(arg, 'Done');

@@ -6,10 +6,12 @@ const fetchColorCode = rgb =>
     .map(n => parseInt(n, 10).toString(16).padStart(2, '0'))
     .join('')}`;
 // ? blue
-const blueColor = fetchColorCode('rgb(15,194,192)').toString();
+// const blueColor = fetchColorCode('rgb(15,194,192)').toString();
 // ? red
-const redColor = fetchColorCode('rgb(253, 60, 82)').toString();
+// const redColor = fetchColorCode('rgb(253, 60, 82)').toString();
 // ? white
-const whiteClor = fetchColorCode('rgb(255, 255, 255)').toString();
+// const whiteClor = fetchColorCode('rgb(255, 255, 255)').toString();
 
-console.log(value);
+// console.log([blueColor, redColor, whiteClor]);
+
+const RED_COLOR = '';

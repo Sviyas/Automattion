@@ -39,7 +39,7 @@ const Strategies = async function (arg, id, label) {
 
         // ? click LTP Sell button
         if (strategyDate) {
-          await hold(1000);
+          await hold(2000);
           // ?  fetch strategy leg color
           // ? click opposite side of button
 
@@ -48,18 +48,13 @@ const Strategies = async function (arg, id, label) {
             JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
           );
 
-          console.log('        👍 blue Color  : ', blueColor);
+          console.log('        👍 blue Color  : ', JSON.stringify(blueColor));
 
-          // ? LTP Sell button   ? pending chages
-          const ltpSell = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP SELL');
-
-          await hold(2000);
-          // ? red color
           const redColor = await arg.$eval('#atm-strike-index-ltp-CE-SELL', n =>
             JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
           );
 
-          console.log('        👍 red Color  : ', redColor);
+          console.log('        👍 red Color  : ', JSON.stringify(redColor));
 
           await hold(1000);
           // ? white color
@@ -67,7 +62,14 @@ const Strategies = async function (arg, id, label) {
             JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
           );
 
-          console.log('        👍 white Color :', whiteColor);
+          console.log('        👍 white Color :', JSON.stringify(whiteColor));
+
+          // ? LTP Sell button   ? pending chages
+          const ltpSell = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP SELL');
+
+          await hold(2000);
+          // ? red color
+
           if (ltpSell) {
             // ? Click Done
 

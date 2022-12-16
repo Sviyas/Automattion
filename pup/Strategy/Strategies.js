@@ -43,26 +43,44 @@ const Strategies = async function (arg, id, label) {
           // ?  fetch strategy leg color
           // ? click opposite side of button
 
-          // ? blue color
-          const blueColor = await arg.$eval('#atm-strike-index-ltp-CE-BUY', n =>
+          // ? Fetch all data color
+          // const srcStyles = await arg.$eval('#slider_div_container', n =>
+          //   JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
+          // );
+
+          // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', srcStyles);
+
+          // ? fethc current strike price row id and then fetch color
+          // ? 1 atm-strike-index-ltp-CE-BUY | call
+          // ? 2 atm-strike-index-ltp-CE-SELL|
+          // ? 3 atm-strike-index-ltp-PE-BUY |
+          // ? 4 atm-strike-index-ltp-PE-SELL| put
+          // ? call buy
+          const callBuy = await arg.$eval('#atm-strike-index-ltp-CE-BUY', n =>
             JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
           );
-
-          console.log('        👍 blue Color  : ', JSON.stringify(blueColor));
-
-          const redColor = await arg.$eval('#atm-strike-index-ltp-CE-SELL', n =>
+          const callbuyVal = JSON.stringify(callBuy);
+          console.log('🚀 ~ file: Strategies.js:62 ~ Strategies ~ callBuy', callbuyVal);
+          // ? call sell
+          const callSell = await arg.$eval('#atm-strike-index-ltp-CE-SELL', n =>
             JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
           );
+          const callsellVal = JSON.stringify(callSell);
+          console.log('🚀 ~ file: Strategies.js:67 ~ Strategies ~ callSell', callsellVal);
 
-          console.log('        👍 red Color  : ', JSON.stringify(redColor));
-
-          await hold(1000);
-          // ? white color
-          const whiteColor = await arg.$eval('#atm-strike-index-ltp-PE-BUY', n =>
+          // ? put Buy
+          const putBuy = await arg.$eval('#atm-strike-index-ltp-PE-BUY', n =>
             JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
           );
+          const putbuyVal = JSON.stringify(putBuy);
+          console.log('🚀 ~ file: Strategies.js:74 ~ Strategies ~ putBuy', putbuyVal);
 
-          console.log('        👍 white Color :', JSON.stringify(whiteColor));
+          // ? put Sell
+          const putSell = await arg.$eval('#atm-strike-index-ltp-PE-SELL', n =>
+            JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
+          );
+          const putsellVal = JSON.stringify(putSell);
+          console.log('🚀 ~ file: Strategies.js:80 ~ Strategies ~ putSell', putsellVal);
 
           // ? LTP Sell button   ? pending chages
           const ltpSell = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP SELL');

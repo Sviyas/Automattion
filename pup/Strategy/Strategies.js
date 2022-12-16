@@ -86,30 +86,39 @@ const Strategies = async function (arg, id, label) {
               await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
 
               // ? goto edit add
+              const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
+              if (oiEdit) {
+                // ? if condition passed
+                //  ?  OI Page
+                await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
+                // ? Greeks Page
+                await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
+              } else {
+                // @ts-check
+                await take_screenShot(arg, 'OI Edit');
+              }
             } else {
-              // ! Done
+              // @ts-check
               await take_screenShot(arg, 'Done');
             }
           } else {
-            // ! LTP Sell
+            // @ts-check
             await take_screenShot(arg, 'LTP SELL');
           }
+        } else {
+          // @ts-check
+          await take_screenShot(arg, 'Strategy Date Picker');
         }
       } else {
-        // ! OPT
-        await take_screenShot(arg, 'Strategy Date Picker');
+        // @ts-check
+        await take_screenShot(arg, 'OPT');
       }
     } else {
-      // ! strikewise
+      // @ts-check
       await take_screenShot(arg, 'Edit Add');
     }
-
-    //  ?  OI Page
-    await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
-    // ? Greeks Page
-    await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
   } else {
-    // ! strategy
+    // @ts-check
     await take_screenShot(arg, label);
   }
 };

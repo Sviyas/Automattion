@@ -11,6 +11,12 @@ const { strategy_Tab } = require('./Strategy/StrategyTab');
 
 const idenftify = [];
 
+/**
+ *
+ * @param {*} page - page
+ * @param {*} email - email id
+ * @param {*} password - password
+ */
 const testLogin = async (page, email, password) => {
   // ? Browser Page
   await page.goto('http://localhost:3000/broker/login');

@@ -1,6 +1,11 @@
 const { clicking_Button } = require('./Strategy/Button');
 const { take_screenShot } = require('./utils');
 
+/**
+ *
+ * @param {*} arg  - page
+ * @param {*} brwsr - browser
+ */
 const user_icon = async function (arg, brwsr) {
   // ? click user icon
   const icon = await clicking_Button(arg, "//img[@alt = 'User icon']", ' Icon');

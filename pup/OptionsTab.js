@@ -1,6 +1,11 @@
 const { hold, take_screenShot } = require('./utils.js');
 const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
 
+/**
+ *
+ * @param {*} arg - page
+ * @param {*} brwsr - browser
+ */
 const options_Tab = async function (arg, brwsr) {
   // ? clicking option open and close tab
   const open = await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");

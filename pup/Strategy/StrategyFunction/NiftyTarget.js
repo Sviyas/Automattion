@@ -18,32 +18,34 @@ const niftyTarget_fun = async function (arg, label) {
   // ? parse Value
   const profitLoss = parseInt(prolos);
 
-  console.log(`        ${label} profti loss Value : `, profitLoss);
+  console.log(`        ${label} Nifty profti loss Value : `, profitLoss);
+
+  const niftyPrice = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
+
+  const niftyPriceVal = parseFloat(niftyPrice);
+
+  console.log(`        ${label} Nifty Price Value : `, niftyPriceVal);
 
   //  ? nifty target increment button
   await clicking_Button(arg, "//button [@id = 'target-addition-btn']", `    ${label} Nifty Increment`);
   await hold(1000);
   //   ? fetch incrment value
-  const niftyInc = await (
-    await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-  ).jsonValue();
+  const niftyInc = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
   //   ? parse the value
   const incrementValue = parseInt(niftyInc);
-  console.log(`        ${label} Increment Value : `, incrementValue);
+  console.log(`        ${label} Nifty Increment Price Value : `, incrementValue);
 
   // ? if condition passed
-  if (incrementValue !== profitLoss) {
+  if (incrementValue !== niftyPriceVal) {
     // ? click Decrement button
     await clicking_Button(arg, "//button[@id = 'target-subraction-btn']", `    ${label} Nifty Decrement`);
     await hold(1000);
     //  ? fetch decrement values
-    const niftyDec = await (
-      await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-    ).jsonValue();
+    const niftyDec = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
 
     const decrementValue = parseInt(niftyDec);
 
-    console.log(`        ${label} Decrement Value : `, decrementValue);
+    console.log(`        ${label} Nifty Decrement Price Value : `, decrementValue);
 
     // ? check Decrement button
     if (decrementValue !== incrementValue) {
@@ -52,13 +54,19 @@ const niftyTarget_fun = async function (arg, label) {
       await hold(1000);
       //   ? fetch reset value
       const niftyres = await (
-        await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
+        await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')
       ).jsonValue();
       //   ? parse value
-      const niftyResetVal = parseFloat(niftyres);
+      const niftyResetInttVal = parseInt(niftyres);
+      const niftyResetVal = parseFloat(niftyres); /// pending changes
 
-      if (niftyResetVal === profitLoss) {
-        console.log(`        ${label} Reset Value : `, niftyResetVal);
+      if (niftyResetVal !== niftyPriceVal && niftyResetInttVal !== decrementValue) {
+        // @ts-check
+        console.log(`        ${label} Nifty Reset Profit Loss Value : `, profitLoss);
+        console.log(`        ${label} Nifty Reset Price Value : `, niftyResetVal);
+      } else if (niftyResetVal === niftyPriceVal) {
+        // @ts-check
+        console.log(`        ${label} Nifty Data Loading Problem 💀`);
       } else {
         // @ts-check
         await take_screenShot(arg, `${label} Nifty Reset`);

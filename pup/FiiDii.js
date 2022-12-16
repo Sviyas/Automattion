@@ -1,6 +1,11 @@
 const { clicking_Button } = require('./Strategy/Button');
 const { hold } = require('./utils');
 
+/**
+ *
+ * @param {*} arg  - page
+ * @param {*} brwsr - browser
+ */
 const fii_dii_Tab = async function (arg, brwsr) {
   await clicking_Button(arg, "//a [@id ='header-link-FII-DII']", '    FII/DII');
 

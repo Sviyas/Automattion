@@ -1,6 +1,11 @@
 const { OpenAndClose, clicking_Button } = require('./Strategy/Button.js');
 const { hold, take_screenShot } = require('./utils.js');
 
+/**
+ *
+ * @param {*} arg  - page
+ * @param {*} brwsr - browser
+ */
 const charts_Tab = async function (arg, brwsr) {
   //  ? Chart Tab Open
   await OpenAndClose(arg, "//div [@id ='nav-Charts']");

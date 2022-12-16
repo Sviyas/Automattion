@@ -1,6 +1,11 @@
 const { hold } = require('./utils');
 const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
 
+/**
+ *
+ * @param {*} arg  - page
+ * @param {*} brwsr - browser
+ */
 const analysis_Tab = async function (arg, brwsr) {
   // ? clcik analysis page
   await OpenAndClose(arg, "//div [@id ='nav-Analysis']");
@@ -43,7 +48,7 @@ const analysis_Tab = async function (arg, brwsr) {
         await clicking_Button(arg, "//p [contains(text(),'Pivotspoint Table')]", '    Technical Pivotspoint Table');
 
         // ? homepage button
-        await clicking_Button(arg, "//span [@id ='technical-btn']");
+        await clicking_Button(arg, "//span [@id ='technical-btn']", '    Home Page');
       }
     }
   }

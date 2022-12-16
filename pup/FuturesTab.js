@@ -2,6 +2,11 @@ const { hold, take_screenShot } = require('./utils.js');
 const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
 const { idenfity } = require('./index');
 
+/**
+ *
+ * @param {*} arg  - page
+ * @param {*} brwsr - browser
+ */
 // ? Futures Tab Clicking
 const futures_Tab = async function (arg, brwsr) {
   //  ? Futures Tab open

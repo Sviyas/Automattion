@@ -2,13 +2,20 @@ const { hold, take_screenShot } = require('../utils');
 const { clicking_Button } = require('./Button');
 const { OITab } = require('./OiTab');
 const { greeksTab } = require('./GreeksTab');
-const { strikewise_fun } = require('./StrikewiseIV');
+const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
+const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
+const { expiry_fun } = require('./StrategyFunction/Expiry');
 
+/**
+ *
+ * @param {*} arg  -> page
+ * @param {*} id  -> element id
+ * @param {*} label -> element tag name
+ */
 const Strategies = async function (arg, id, label) {
   const strategy = await clicking_Button(arg, id, label);
 
   // ? Trades
-
   if (strategy) {
     console.log(`        👍  ${label} Button `);
     // ? hold
@@ -68,220 +75,14 @@ const Strategies = async function (arg, id, label) {
 
             if (done) {
               await hold(2000);
-              // ? hold
-              // ? fetch Profit loss Values
-              const prolos = await (
-                await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-              ).jsonValue();
 
-              // ? parse Value
-              const profitLoss = parseInt(prolos);
+              // ? Nifty Target Function
+              await niftyTarget_fun(arg, 'LTP');
 
-              console.log('        ✅ NIFTY TARGET');
-              console.log('        profti loss Value : ', profitLoss);
+              // ? Expiry Function
+              await expiry_fun(arg, 'LTP');
 
-              // ? click first nifty Target Values  |  ,
-              // ? nifty targer increment button
-              const nifty_Incre = await clicking_Button(
-                arg,
-                "//button [@id = 'target-addition-btn']",
-                '    Nifty Increment'
-              );
-
-              if (nifty_Incre) {
-                // ? hold
-                await hold(1000);
-                // ? nifty decrement button clicking
-                const increment = await (
-                  await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-                ).jsonValue();
-                const incrementValue = parseInt(increment);
-                console.log('        Nifty Increment Values : ', incrementValue);
-
-                //  ? conditionaly check button is working or not
-                if (profitLoss === incrementValue) {
-                  // ! decrement button not working
-                  await take_screenShot(arg, 'Increment Button');
-                } else {
-                  // ? Clicking Nifty Increment button
-                  const nift_Decre = await clicking_Button(
-                    arg,
-                    "//button[@id = 'target-subraction-btn']",
-                    '    Nifty Decrement'
-                  );
-
-                  if (nift_Decre) {
-                    // ? hold
-                    await hold(1000);
-                    const decrement = await (
-                      await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-                    ).jsonValue();
-
-                    const decrementValue = parseInt(decrement);
-
-                    if (incrementValue === decrementValue) {
-                      // ! Increment button not working
-                      await take_screenShot(arg, 'Nifty Decrement Button');
-                    } else {
-                      console.log('        Nifty Decrement Values : ', decrementValue);
-                    }
-                  }
-
-                  // ? click Reset button
-                  const nifty_Reset = await clicking_Button(arg, "//p[@id = 'target-reset-btn']", '    Nifty Reset');
-
-                  if (nifty_Reset) {
-                    // ? hold
-                    await hold(1000);
-                    // ?
-                    const reset = await (
-                      await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-                    ).jsonValue();
-
-                    const resetValue = parseInt(reset);
-
-                    // ? check reset button working or not
-                    if (profitLoss === resetValue) {
-                      console.log('        Nifty Reset Values : ', resetValue);
-                      await hold(1000);
-                    } else {
-                      // ! reset button  not working
-                      await take_screenShot(arg, 'Nifty Reset button');
-                    }
-                  }
-                }
-              }
-
-              // ?   check expiry
-              // ? Expiry Date Button click
-              console.log('        ✅ EXPIRY TARGET');
-
-              await hold(1000);
-              // ?  fetch expiry date profit loss values
-              const expiryProfit = await (
-                await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-              ).jsonValue();
-
-              const expProftitValue = parseInt(expiryProfit);
-
-              console.log('        Expiry Profit Values : ', expProftitValue);
-
-              // ? fetch expiry Date
-              const expiryDate = await (
-                await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
-              ).jsonValue();
-
-              console.log('        Expiry Date : ', expiryDate);
-
-              // ? expiry forward date button
-              const expInc = await clicking_Button(
-                arg,
-                "//button [@id ='expiry-move-backword-btn']",
-                '    Expiry Forward'
-              );
-
-              // ? fetch forward date value
-              const forwardDate = await (
-                await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
-              ).jsonValue();
-
-              console.log('        Expiry Forward Date : ', forwardDate);
-
-              // ? fetch forward date profit loss values
-
-              const forwardDateInc = await (
-                await (await arg.$x("//h3 [@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-              ).jsonValue();
-
-              const forwardDateIncreVal = parseInt(forwardDateInc);
-
-              console.log('        Expiry Forward Date Profit Loss Value : ', forwardDateIncreVal);
-
-              if (expInc) {
-                if (expProftitValue !== forwardDateIncreVal) {
-                  // ? click Decrement button
-                  const expDec = await clicking_Button(
-                    arg,
-                    "//button [@id ='expiry-move-forword-btn']",
-                    '    Expiry Backward'
-                  );
-
-                  if (expDec) {
-                    // ? hold and fetch values
-                    await hold(1000);
-                    const backwardDate = await (
-                      await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
-                    ).jsonValue();
-
-                    console.log('        Expiry backward Date : ', backwardDate);
-
-                    const backwardDateDec = await (
-                      await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-                    ).jsonValue();
-
-                    const backwardDateDecVal = parseInt(backwardDateDec);
-
-                    console.log('        Expiry backward Date Profit Loss Value : ', backwardDateDecVal);
-
-                    if (forwardDateIncreVal === backwardDateDecVal) {
-                      // ! backward button
-                      await take_screenShot(arg, 'Expiry Backward');
-                    } else {
-                      // ? click Reset button
-
-                      const expReset = await clicking_Button(
-                        arg,
-                        "//p [@id ='expiry-target-reset-btn']",
-                        '    Expiry Reset'
-                      );
-
-                      if (expReset) {
-                        // ? hold & fetch values
-                        await hold(1000);
-                        const expiryReset = await (
-                          await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-                        ).jsonValue();
-
-                        const expiryResetVal = parseInt(expiryReset);
-
-                        if (expiryResetVal !== expProftitValue) {
-                          // ! expiry Reset
-                          await take_screenShot(arg, 'Expiry Reset');
-                        } else {
-                          console.log('        Expiry Reset Profit Loss Value : ', profitDateResetVal);
-                        }
-                      }
-                    }
-                  }
-                } else if (expProftitValue === forwardDateIncreVal) {
-                  // ? check today is expiry or not
-                  // ? if values are equal check date ? equal or not
-                  const options = { weekday: 'long' };
-
-                  const currentDate = new Date();
-
-                  const checkDateValue = currentDate.toLocaleDateString('en-US', options);
-
-                  if ('Thursday' === checkDateValue) {
-                    console.log('        Today is Expiry Date');
-                  } else {
-                    // ? if expiry stop the process..... or not continue to check the process
-                    // ! expiry forward button
-                    // await take_screenShot(arg, 'Expiry Forward');
-                    console.log('        Data Loading problem');
-                  }
-                }
-              } //
-
-              // ? clck strike wise IV butotn
-              console.log('        ✅ STRIKEWISE IVs');
-              // ?
               // ? check striekwise ivs
-              // await hold(1000);
-
-              // ! passs the function
-              // ? pass strike wise increment decrement button
-
               await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
 
               // ? goto edit add

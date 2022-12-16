@@ -1,17 +1,18 @@
-const { take_screenShot, hold } = require('../utils');
-const { clicking_Button } = require('./Button');
+const { take_screenShot, hold } = require('../../utils');
+const { clicking_Button } = require('../Button');
 
 // ? strike wise function
 /**
  *
- * @param {arg} page
+ * @param {arg} page - page
  * @param {*} id1 increment button
  * @param {*} id2  decrement button
- * @param {*} label
+ * @param {*} label like LTP, OI , Greeks
  */
 const strikewise_fun = async function (arg, id1, id2, label) {
   // ? fetch strikewise profit loss value
   await hold(1000);
+  console.log(`        ${label} ✅ Strikewise IV`);
   const strikewise = await (
     await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
   ).jsonValue();

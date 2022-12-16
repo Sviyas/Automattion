@@ -2,6 +2,12 @@ const { button, clicking_Button } = require('./Button');
 const { Strategies } = require('./Strategies');
 const { hold, take_screenShot } = require('../utils');
 
+/**
+ *
+ * @param {*} arg  -> page
+ * @param {*} brwsr -> browser
+ */
+
 const strategy_Tab = async function (arg, brwsr) {
   // ? Strategy Builder Page
   const strategyBuilder = await button(arg, "//a [@id ='header-link-StrategyBuilder']", '    Strategy Builder');

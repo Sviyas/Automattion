@@ -1,9 +1,15 @@
-const { hold, take_screenShot } = require('../utils');
-const { clicking_Button } = require('./Button');
+const { hold, take_screenShot } = require('../../utils');
+const { clicking_Button } = require('../Button');
 
 // ? Nifty Target Function
+/**
+ *
+ * @param {*} arg -> page
+ * @param {*} label -> like LTP, OI , Greeks
+ */
 const niftyTarget_fun = async function (arg, label) {
   await hold(1000);
+  console.log(`        ${label} ✅ NIFTY TARGET`);
   // ?  fetch profit loss values in Nifty Target Price
   const prolos = await (
     await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
@@ -11,7 +17,7 @@ const niftyTarget_fun = async function (arg, label) {
 
   // ? parse Value
   const profitLoss = parseInt(prolos);
-  console.log(`        ${label} ✅ NIFTY TARGET`);
+
   console.log(`        ${label} profti loss Value : `, profitLoss);
 
   //  ? nifty target increment button
@@ -28,7 +34,7 @@ const niftyTarget_fun = async function (arg, label) {
   // ? if condition passed
   if (incrementValue !== profitLoss) {
     // ? click Decrement button
-    await clicking_Button(arg, arg, "//button[@id = 'target-subraction-btn']", `    ${label} Nifty Decrement`);
+    await clicking_Button(arg, "//button[@id = 'target-subraction-btn']", `    ${label} Nifty Decrement`);
     await hold(1000);
     //  ? fetch decrement values
     const niftyDec = await (
@@ -50,12 +56,19 @@ const niftyTarget_fun = async function (arg, label) {
       ).jsonValue();
       //   ? parse value
       const niftyResetVal = parseFloat(niftyres);
+
+      if (niftyResetVal === profitLoss) {
+        console.log(`        ${label} Reset Value : `, niftyResetVal);
+      } else {
+        // @ts-check
+        await take_screenShot(arg, `${label} Nifty Reset`);
+      }
     } else {
-      // @ts-expect-error ! if Decrement button
+      // @ts-check
       await take_screenShot(arg, `${label} Nifty Decrement`);
     }
   } else {
-    // @ts-expect-error ! if incrment button not clicking
+    // @ts-check
     await take_screenShot(arg, `${label} Nifty Increment`);
   }
 };

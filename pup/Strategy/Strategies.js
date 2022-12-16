@@ -67,7 +67,7 @@ const Strategies = async function (arg, id, label) {
             JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
           );
 
-          console.log('        👍  white Color :', whiteColor);
+          console.log('        👍 white Color :', whiteColor);
           if (ltpSell) {
             // ? Click Done
 
@@ -86,7 +86,7 @@ const Strategies = async function (arg, id, label) {
               await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
 
               // ? goto edit add
-              const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
+              const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    LTP Edit/Add');
               if (oiEdit) {
                 // ? if condition passed
                 //  ?  OI Page

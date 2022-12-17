@@ -3,6 +3,7 @@ const { clicking_Button } = require('./Button');
 const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
+const { color_Greeks } = require('./ColorSrc');
 
 const greeksTab = async function (ag, id, label) {
   // ? Greeks page
@@ -15,75 +16,76 @@ const greeksTab = async function (ag, id, label) {
 
     // ? fetch the button colors
     // ? add one Greeks leg put buy
+    await color_Greeks(ag);
     // const GreeksPutSell = await clicking_Button(
     //   ag,
     //   "//div [@id ='atm-strike-index-greeks-PE-SELL']",
     //   '    Greeks Put Sell'
     // );
 
-    if (GreeksPutSell) {
+    // if (GreeksPutSell) {
+    // ? condition passed
+    // ? check functions
+    await hold(1000);
+
+    const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    Greeks Done');
+
+    if (done) {
       // ? condition passed
-      // ? check functions
-      await hold(1000);
+      await hold(2000);
 
-      const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    Greeks Done');
+      // ? Nifty Target Function
+      await niftyTarget_fun(ag, 'Greeks');
+      // ? Expiry Function
+      await expiry_fun(ag, 'Greeks');
+      // ? Strikewise IV function
+      await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
+      // ? go to edit add
+      // ?
+      const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    Greeks Edit/Add');
 
-      if (done) {
-        // ? condition passed
-        await hold(2000);
+      if (greeksEdit) {
+        // ? click to restore
+        const LTPClick = await clicking_Button(ag, "//li [@id ='LTP-slider-header-btn']", '    Restore');
 
-        // ? Nifty Target Function
-        await niftyTarget_fun(ag, 'Greeks');
-        // ? Expiry Function
-        await expiry_fun(ag, 'Greeks');
-        // ? Strikewise IV function
-        await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
-        // ? go to edit add
-        // ?
-        const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    Greeks Edit/Add');
+        if (LTPClick) {
+          // ? if condition passed
+          // ? clear the page
+          // ? after go homepage
+          const clearPage = await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    Clear');
 
-        if (greeksEdit) {
-          // ? click to restore
-          const LTPClick = await clicking_Button(ag, "//li [@id ='LTP-slider-header-btn']", '    Restore');
+          if (clearPage) {
+            await hold(1000);
+            // ? click homepage
+            const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    Done');
+            const homepage = await clicking_Button(ag, "//span [@id = 'strategy-btn']", '    Home Page');
 
-          if (LTPClick) {
-            // ? if condition passed
-            // ? clear the page
-            // ? after go homepage
-            const clearPage = await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    Clear');
-
-            if (clearPage) {
-              await hold(1000);
-              // ? click homepage
-              const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    Done');
-              const homepage = await clicking_Button(ag, "//span [@id = 'strategy-btn']", '    Home Page');
-
-              if (done && homepage) {
-                console.log(`        Successfully Returned HomePage 🫡`);
-              } else if (done) {
-                // @ts-check
-                await take_screenShot(ag, 'Done');
-              } else {
-                // @ts-check
-                await take_screenShot(ag, 'Hompage');
-              }
+            if (done && homepage) {
+              console.log(`        Successfully Returned HomePage 🫡`);
+            } else if (done) {
+              // @ts-check
+              await take_screenShot(ag, 'Done');
+            } else {
+              // @ts-check
+              await take_screenShot(ag, 'Hompage');
             }
-          } else {
-            // @ts-check
-            await take_screenShot(ag, 'LTP Click');
           }
         } else {
           // @ts-check
-          await take_screenShot(ag, 'Greeks Edit');
+          await take_screenShot(ag, 'LTP Click');
         }
       } else {
-        // @ts-expect-error
-        await take_screenShot(ag, 'Greeks Done');
+        // @ts-check
+        await take_screenShot(ag, 'Greeks Edit');
       }
     } else {
       // @ts-expect-error
-      await take_screenShot(ag, 'Greeks Put buy');
+      await take_screenShot(ag, 'Greeks Done');
     }
+    // } else {
+    //   // @ts-expect-error
+    //   await take_screenShot(ag, 'Greeks Put buy');
+    // }
   } else {
     // @ts-expect-error
     await take_screenShot(ag, label);

@@ -47,9 +47,15 @@ const strategy_Tab = async function (arg, brwsr) {
           if (strategyFilter) {
             // ??  Strategy Builder
             // ? long call
-            await Strategies(arg, "//p [contains(text(), 'Long Call')]", '    Long Call');
+            // await Strategies(arg, "//div [@id ='Long Call']", '    Long Call');
             // ? Short Call
-            // await Strategies(arg, "//p [contains(text(),'Short Call')]", '    Short Call');
+            // await Strategies(arg, "//div [@id ='Short Call']", '    Short Call');
+            // ? Long Put
+            // await Strategies(arg, "//div [@id ='Long Put']", '    Long Put');
+            // ? Short put
+            // await Strategies(arg, "//div [@id = 'Short Put']", '    Short Put');
+            // ? Bull Call Spread
+            await Strategies(arg, "//div [@id ='Bull Call Spread']", '    Bull Call Spread');
           } else {
             // @ts-expect-error
             await take_screenShot(arg, 'Strategy Filter');

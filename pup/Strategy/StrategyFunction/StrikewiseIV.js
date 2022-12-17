@@ -11,7 +11,7 @@ const { clicking_Button } = require('../Button');
  */
 const strikewise_fun = async function (arg, id1, id2, label) {
   // ? fetch strikewise profit loss value
-  await hold(1000);
+  await hold(2000);
   console.log(`        ${label} ✅ Strikewise IV`);
   const strikewise = await (
     await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')

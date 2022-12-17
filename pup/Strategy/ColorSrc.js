@@ -32,10 +32,19 @@ const colorLTP = async function (arg) {
   // ? find color
   if (LTP.includes(blueColor)) {
     // ? if color is blue
-    const LTPSELL = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP SELL');
+    const LTPSELL = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP SELL');
 
     if (!LTPSELL) {
       await take_screenShot(arg, 'LTP SELL');
+    }
+  }
+
+  if (LTP.includes(redColor)) {
+    const LTPbuy = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-BUY']", '    LTP Buy');
+    console.log('function');
+
+    if (!LTPbuy) {
+      await take_screenShot(arg, 'LTP Buy');
     }
   }
 };
@@ -60,7 +69,7 @@ const color_OI = async function (arg) {
   );
 
   // ? OI
-  const OI = [callBuy1, callBuy1, callSell1, putBuy1, putSell1];
+  const OI = [callBuy1, callSell1, putBuy1, putSell1];
 
   console.log('        ', OI);
 
@@ -74,10 +83,19 @@ const color_OI = async function (arg) {
   // ? check colors
   if (OI.includes(redColor)) {
     // ? if color is red
-    const oiPutbuy = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-PE-BUY']", '    OI Put Buy');
+    const oiPutbuy = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-CE-BUY']", '    OI Call Buy');
 
     if (!oiPutbuy) {
       await take_screenShot(arg, 'OI Put Buy');
+    }
+  }
+
+  // ? check if Blue
+  if (OI.includes(blueColor)) {
+    const oiLTPSell = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-PE-SELL']", '    OI LTP Sell');
+
+    if (!oiLTPSell) {
+      await take_screenShot(arg, 'OI LTP Sell');
     }
   }
 };
@@ -102,7 +120,7 @@ const color_Greeks = async function (arg) {
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
 
-  const GREEKS = [callBuy1, callBuy1, callSell1, putBuy1, putSell1];
+  const GREEKS = [callBuy1, callSell1, putBuy1, putSell1];
 
   console.log('        ', GREEKS);
 
@@ -117,16 +135,31 @@ const color_Greeks = async function (arg) {
   // ? find color
   if (GREEKS.includes(blueColor)) {
     // ? if color is blue
-    const GreeksPutSell = await clicking_Button(
-      ag,
-      "//div [@id ='atm-strike-index-greeks-PE-SELL']",
+    const greeksCallSell = await clicking_Button(
+      arg,
+      "//div [@id ='atm-strike-index-greeks-CE-SELL']",
       '    Greeks Put Sell'
     );
 
-    if (!GreeksPutSell) {
+    if (!greeksCallSell) {
       await take_screenShot(arg, 'Greeks Put Sell');
+    }
+  }
+
+  // ? if
+  if (GREEKS.includes(redColor)) {
+    // ? if Red Color
+    const greeksLTPBuy = await clicking_Button(
+      arg,
+      "//div [@id ='atm-strike-index-greeks-CE-BUY']",
+      '    Greeks LTP Buy'
+    );
+
+    if (!greeksLTPBuy) {
+      // ?
+      await take_screenShot(arg, 'Greeks LTP Buy');
     }
   }
 };
 
-module.exports = { colorLTP, color_OI };
+module.exports = { colorLTP, color_OI, color_Greeks };

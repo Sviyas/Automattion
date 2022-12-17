@@ -20,3 +20,6 @@ if (checkDateValue === 'Thursday') {
 }
 
 // http://localhost:3000/broker/login
+
+// ? if internal server error throws
+("//div [contains(text(),'Something went wrong ! Please try again later')]");

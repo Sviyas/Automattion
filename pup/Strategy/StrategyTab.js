@@ -9,6 +9,20 @@ const { hold, take_screenShot } = require('../utils');
  */
 
 const strategy_Tab = async function (arg, brwsr) {
+  // ? when intenal server error finds
+  const internalServerError = await clicking_Button(
+    arg,
+    "//div [contains(text(),'Something went wrong ! Please try again later')]",
+    'Internal Server Error '
+  );
+
+  if (internalServerError) {
+    // ? capture screenshot
+    console.log('🚀 internalServerError  👀');
+
+    await hold(1000);
+    await take_screenShot(arg, 'Internal Server Error');
+  }
   // ? Strategy Builder Page
   const strategyBuilder = await button(arg, "//a [@id ='header-link-StrategyBuilder']", '    Strategy Builder');
 

@@ -62,7 +62,7 @@ const testLogin = async (page, email, password) => {
       await take_screenShot(page, 'login Failed');
       console.log('    5   Failed login & Capture ScreenShot ');
     } else {
-      await page.$x("//a[contains(text(), 'User')]");
+      // await page.$x("//a[contains(text(), 'User')]");
 
       console.log('    6   login Successfull');
 

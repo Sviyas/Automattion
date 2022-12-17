@@ -178,6 +178,19 @@ const futures_Tab = async function (arg, brwsr) {
   if (!homepage) {
     await take_screenShot(arg, 'Homepage');
   }
+
+  // ? when intenal server error finds
+  const internalServerError = await clicking_Button(
+    arg,
+    "//div [contains(text(),'Something went wrong ! Please try again later')]",
+    'Internal Server Error'
+  );
+
+  if (internalServerError) {
+    // ? capture screenshot
+    await hold(1000);
+    await take_screenShot(arg, 'Internal Server Error');
+  }
 };
 
 module.exports.futures_Tab = futures_Tab;

@@ -12,12 +12,14 @@ const greeksTab = async function (ag, id, label) {
   if (Greeks) {
     // ? hold
     await hold(1000);
+
+    // ? fetch the button colors
     // ? add one Greeks leg put buy
-    const GreeksPutSell = await clicking_Button(
-      ag,
-      "//div [@id ='atm-strike-index-greeks-PE-SELL']",
-      '    Greeks Put Sell'
-    );
+    // const GreeksPutSell = await clicking_Button(
+    //   ag,
+    //   "//div [@id ='atm-strike-index-greeks-PE-SELL']",
+    //   '    Greeks Put Sell'
+    // );
 
     if (GreeksPutSell) {
       // ? condition passed

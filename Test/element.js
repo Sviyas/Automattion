@@ -14,6 +14,7 @@
 // $x("//p [contains(text(),'Short Put Butterfly')]");
 // $x("//p [contains(text(),'Long Call Butterfly')]");
 // $x("//p [contains(text(),'Short Call Butterfly')]");
+// "//h2 [@id ='CONTRACT-GAINERS(Puts)-no-data-options']";s
 
 const Strategy = await clicking_Button(arg, "//p[contains(text(), 'Long Call')]", ' Long');
 

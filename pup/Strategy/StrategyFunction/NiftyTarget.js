@@ -20,6 +20,8 @@ const niftyTarget_fun = async function (arg, label) {
 
   console.log(`        ${label} Nifty profti loss Value : `, profitLoss);
 
+  // ? nifty target price value
+
   const niftyPrice = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
 
   const niftyPriceVal = parseFloat(niftyPrice);
@@ -32,7 +34,7 @@ const niftyTarget_fun = async function (arg, label) {
   //   ? fetch incrment value
   const niftyInc = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
   //   ? parse the value
-  const incrementValue = parseInt(niftyInc);
+  const incrementValue = parseFloat(niftyInc);
   console.log(`        ${label} Nifty Increment Price Value : `, incrementValue);
 
   // ? if condition passed
@@ -43,7 +45,7 @@ const niftyTarget_fun = async function (arg, label) {
     //  ? fetch decrement values
     const niftyDec = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
 
-    const decrementValue = parseInt(niftyDec);
+    const decrementValue = parseFloat(niftyDec);
 
     console.log(`        ${label} Nifty Decrement Price Value : `, decrementValue);
 

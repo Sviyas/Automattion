@@ -8,7 +8,7 @@ const { clicking_Button } = require('../Button');
  * @param {*} label -> like LTP, OI , Greeks
  */
 const niftyTarget_fun = async function (arg, label) {
-  await hold(1000);
+  await hold(3000);
   console.log(`        ${label} ✅ NIFTY TARGET`);
   // ?  fetch profit loss values in Nifty Target Price
   const prolos = await (
@@ -30,7 +30,7 @@ const niftyTarget_fun = async function (arg, label) {
 
   //  ? nifty target increment button
   await clicking_Button(arg, "//button [@id = 'target-addition-btn']", `    ${label} Nifty Increment`);
-  await hold(1000);
+  await hold(3000);
   //   ? fetch incrment value
   const niftyInc = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
   //   ? parse the value
@@ -41,7 +41,7 @@ const niftyTarget_fun = async function (arg, label) {
   if (incrementValue !== niftyPriceVal) {
     // ? click Decrement button
     await clicking_Button(arg, "//button[@id = 'target-subraction-btn']", `    ${label} Nifty Decrement`);
-    await hold(1000);
+    await hold(3000);
     //  ? fetch decrement values
     const niftyDec = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
 
@@ -53,7 +53,7 @@ const niftyTarget_fun = async function (arg, label) {
     if (decrementValue !== incrementValue) {
       // ? click Nifty Reset Button
       await clicking_Button(arg, "//p[@id = 'target-reset-btn']", `    ${label} Nifty Reset`);
-      await hold(1000);
+      await hold(3000);
       //   ? fetch reset value
       const niftyres = await (
         await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')

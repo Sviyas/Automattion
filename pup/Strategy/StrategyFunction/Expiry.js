@@ -10,7 +10,7 @@ const expiry_fun = async function (arg, label) {
   // ?
   console.log(`        ✅ ${label} EXPIRY TARGET`);
 
-  await hold(1000);
+  await hold(3000);
   // ? fetch Expiry date and Values
 
   const expiryProfit = await (
@@ -35,7 +35,7 @@ const expiry_fun = async function (arg, label) {
     "//button [@id ='expiry-move-backword-btn']",
     `    ${label} Expiry Forward`
   );
-  await hold(1000);
+  await hold(3000);
 
   //  ? fetch increment profit loss value and increment date value
   const forwardDate = await (
@@ -62,7 +62,7 @@ const expiry_fun = async function (arg, label) {
       "//button [@id ='expiry-move-forword-btn']",
       `    ${label} Expiry Backward`
     );
-    await hold(1000);
+    await hold(3000);
     // ? fetch backward date and backward values
     const backwardDate = await (
       await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
@@ -83,7 +83,7 @@ const expiry_fun = async function (arg, label) {
       // ? if passed
       // ? click expiry Reset button
       const expReset = await clicking_Button(arg, "//p [@id ='expiry-target-reset-btn']", `    ${label} Expiry Reset`);
-      await hold(1000);
+      await hold(3000);
       //   ? fetch Reset Values
       const expiryReset = await (
         await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')

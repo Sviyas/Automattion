@@ -1,8 +1,9 @@
-const { take_screenShot } = require('../utils');
+const { take_screenShot, hold } = require('../utils');
 const { clicking_Button } = require('./Button');
 
 // ? fetcch color LTP
 const colorLTP = async function (arg) {
+  await hold(2000);
   // ? Color For LTP
   const callBuy = await arg.$eval('#atm-strike-index-ltp-CE-BUY', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
@@ -17,35 +18,76 @@ const colorLTP = async function (arg) {
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
 
-  // ? assign to Array
-  const LTP = [callBuy, callSell, putBuy, putSell];
+  // ? assign to array
+  // ? split array  call value
+  const CALL = [callBuy, callSell];
+  console.log('        ', CALL);
+  // ? put value
+  const PUT = [putBuy, putSell];
+  console.log('        ', PUT);
 
-  console.log('        ', LTP);
-
-  // ? assing constant color name
+  // ?  declare color name as constant
+  // ? blue
   const blueColor = 'rgb(15, 194, 192)';
   // ? red
   const redColor = 'rgb(253, 60, 82)';
   // ? white
-  const whiteClor = 'rgb(255, 255, 255)';
+  const whiteColor = 'rgb(255, 255, 255)';
 
-  // ? find color
-  if (LTP.includes(blueColor)) {
-    // ? if color is blue
-    const LTPSELL = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP SELL');
+  // ? fetch Color and click opposite side buttons
+  if (CALL.includes(blueColor)) {
+    // ? click Call Sell
+    const callSell = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP Call SELL');
 
-    if (!LTPSELL) {
-      await take_screenShot(arg, 'LTP SELL');
+    if (!callSell) {
+      await take_screenShot(arg, 'LTP CALL SELL');
     }
   }
 
-  if (LTP.includes(redColor)) {
-    const LTPbuy = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-BUY']", '    LTP Buy');
-    console.log('function');
+  // ? if color is red
+  if (CALL.includes(redColor)) {
+    // ? click Call Buy
+    const buy = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
 
-    if (!LTPbuy) {
-      await take_screenShot(arg, 'LTP Buy');
+    if (!buy) {
+      await take_screenShot(arg, 'LTP CALL BUY');
     }
+  }
+
+  // ? if Color is white  click call buy button
+  if (CALL.includes(whiteColor)) {
+    // ? call buy
+    const callbutton = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
+
+    if (!callbutton) {
+      // ?
+      await take_screenShot(arg, 'LTP CALL BUY');
+    }
+  }
+
+  // ? same as PUT values
+
+  if (PUT.includes(blueColor)) {
+    // ?
+    const putsellVal = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL');
+
+    if (!putsellVal) {
+      await take_screenShot(arg, 'LTP PUT SELL');
+    }
+  }
+
+  if (PUT.includes(redColor)) {
+    // ?
+    const putval = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-BUY']", '    LTP PUT BUY');
+
+    if (!putval) {
+      await take_screenShot(arg, 'LTP PUT BUY');
+    }
+  }
+
+  if (PUT.includes(whiteColor)) {
+    // ?
+    const putempty = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL');
   }
 };
 

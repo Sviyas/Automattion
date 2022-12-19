@@ -1,6 +1,5 @@
 const { hold, take_screenShot } = require('./utils.js');
 const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
-const { idenfity } = require('./index');
 
 /**
  *
@@ -12,6 +11,7 @@ const futures_Tab = async function (arg, brwsr) {
   //  ? Futures Tab open
 
   await OpenAndClose(arg, "//button [@id = 'headlessui-popover-button-17']");
+  await hold(1000);
 
   // ? Dashboard Tab
   const futureDash = await clicking_Button(arg, "//p[contains(text(), 'Dashboard') ]", '    Futures Page');
@@ -24,7 +24,9 @@ const futures_Tab = async function (arg, brwsr) {
   await hold(1000);
 
   // ? Close Futures tab
-  await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
+  // await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
+
+  await hold(1000);
 
   // ? check Dashboard
   const checkDash = await clicking_Button(arg, "//span[contains(text(), 'dashboard')]", '    Futures Dashboard');
@@ -61,7 +63,9 @@ const futures_Tab = async function (arg, brwsr) {
   console.log('    7.2   Navigate to Future Screener page');
 
   // ? close the future tab
-  await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
+  // await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
+
+  await hold(2000);
 
   //  ?  check screener dashboard
   const screenerDash = await clicking_Button(arg, "//span[contains(text(), 'screener')]", '    Screener');
@@ -120,7 +124,7 @@ const futures_Tab = async function (arg, brwsr) {
   await hold(1000);
   console.log('    7.3   Navigate to Heatmap page');
 
-  await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
+  // await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
 
   // ? check heatmap
   const futureHeat = await clicking_Button(arg, "//span[contains(text(), 'heatmap')]", '    Heatmap Dashboard');
@@ -180,17 +184,17 @@ const futures_Tab = async function (arg, brwsr) {
   }
 
   // ? when intenal server error finds
-  const internalServerError = await clicking_Button(
-    arg,
-    "//div [contains(text(),'Something went wrong ! Please try again later')]",
-    'Internal Server Error'
-  );
+  // const internalServerError = await clicking_Button(
+  //   arg,
+  //   "//div [contains(text(),'Something went wrong ! Please try again later')]",
+  //   'Internal Server Error'
+  // );
 
-  if (internalServerError) {
-    // ? capture screenshot
-    await hold(1000);
-    await take_screenShot(arg, 'Internal Server Error');
-  }
+  // if (internalServerError) {
+  //   // ? capture screenshot
+  //   await hold(1000);
+  //   await take_screenShot(arg, 'Internal Server Error');
+  // }
 };
 
 module.exports.futures_Tab = futures_Tab;

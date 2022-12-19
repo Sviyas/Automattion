@@ -9,8 +9,6 @@ const { strategy_Tab } = require('./Strategy/StrategyTab');
 // const { fii_dii_Tab } = require('./FiiDii');
 // const { user_icon } = require('./User');
 
-const idenftify = [];
-
 /**
  *
  * @param {*} page - page
@@ -23,6 +21,8 @@ const testLogin = async (page, email, password) => {
 
   // ?Login Page
   const login = await clicking_Button(page, "//span[contains(text(),'Login with Email')]", '1   start');
+
+  await hold(1000);
 
   if (login) {
     // ? user mail login
@@ -100,6 +100,8 @@ const testLogin = async (page, email, password) => {
 
       // console.log('     Logout Successfull');
     }
+  } else {
+    await take_screenShot(page, 'Log in');
   }
 };
 
@@ -113,4 +115,3 @@ puppeteer
   });
 
 //  ?
-module.exports.idenftify = idenftify;

@@ -53,15 +53,15 @@ const click_Button = async function (arg, id, label) {
  * @returns
  */
 const button = async function (arg, id, label) {
-  const clicking = await arg.$x(`${id}`);
-  if (clicking.length > 0) {
-    await clicking[0].evaluate(el => {
+  const click = await arg.$x(`${id}`);
+  console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', click.length);
+  if (click.length === 0) {
+    await click[0].evaluate(el => {
       el.click();
     });
 
     console.log(`    ${label} button`);
   }
-  return clicking;
 };
 
 // ? open and close function

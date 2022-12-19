@@ -1,4 +1,4 @@
-const { button, clicking_Button } = require('./Button');
+const { button, clicking_Button, click_Button } = require('./Button');
 const { Strategies } = require('./Strategies');
 const { hold, take_screenShot } = require('../utils');
 
@@ -10,8 +10,18 @@ const { hold, take_screenShot } = require('../utils');
 
 const strategy_Tab = async function (arg, brwsr) {
   // ? Strategy Builder Page
-  const strategyBuilder = await button(arg, "//a [@id ='header-link-StrategyBuilder']", '    Strategy Builder');
+  // const strategyBuilder = await button(arg, "//a [@id ='header-link-StrategyBuilder']", '    Strategy Builder');
 
+  await hold(2000);
+
+  const strategyBuilder = await arg.$x("//a [@id ='header-link-StrategyBuilder']");
+  console.log('🚀 ~ file: StrategyTab.js:20 ~ strategyBuilder', strategyBuilder.length);
+
+  if (strategyBuilder.length === 1) {
+    await strategyBuilder[0].evaluate(el => {
+      el.click();
+    });
+  }
   if (strategyBuilder) {
     await hold(1000);
     console.log('    10.1   Successfully Navigate to Strategy Page');
@@ -55,6 +65,7 @@ const strategy_Tab = async function (arg, brwsr) {
             // ? Short put
             // await Strategies(arg, "//div [@id = 'Short Put']", '    Short Put');
             // ? Bull Call Spread
+            await hold(1000);
             await Strategies(arg, "//div [@id ='Bull Call Spread']", '    Bull Call Spread');
           } else {
             // @ts-expect-error

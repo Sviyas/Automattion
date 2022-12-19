@@ -16,6 +16,7 @@ const { colorLTP } = require('./ColorSrc');
 const Strategies = async function (arg, id, label) {
   const strategy = await clicking_Button(arg, id, label);
 
+  await hold(1000);
   // ? Trades
   if (strategy) {
     console.log(`        👍  ${label} Button `);

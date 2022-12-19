@@ -241,7 +241,7 @@ const color_Greeks = async function (arg) {
       '    GREEKS PUT BUY'
     );
 
-    if (greeksputbuy) {
+    if (!greeksputbuy) {
       await take_screenShot(arg, 'GREEKS PUT BUY');
     }
   }
@@ -253,7 +253,7 @@ const color_Greeks = async function (arg) {
       '    GREEKS PUT SELL'
     );
 
-    if (greeksputsell) {
+    if (!greeksputsell) {
       await take_screenShot(arg, 'GREEKS PUT SELL');
     }
   }

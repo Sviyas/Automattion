@@ -88,6 +88,10 @@ const colorLTP = async function (arg) {
   if (PUT.includes(whiteColor)) {
     // ?
     const putempty = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL');
+
+    if (!putempty) {
+      await take_screenShot(arg, 'LTP PUT SELL');
+    }
   }
 };
 

@@ -1,7 +1,11 @@
 const { take_screenShot, hold } = require('../utils');
 const { clicking_Button } = require('./Button');
 
-// ? fetcch color LTP
+/**
+ *
+ * @param {*} arg - page
+ * fetching color in LTP
+ */
 const colorLTP = async function (arg) {
   await hold(2000);
   // ? Color For LTP
@@ -18,15 +22,16 @@ const colorLTP = async function (arg) {
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
 
-  // ? assign to array
-  // ? split array  call value
+  // * assign to array
+
   const CALL = [callBuy, callSell];
   console.log('        ', CALL);
   // ? put value
   const PUT = [putBuy, putSell];
   console.log('        ', PUT);
 
-  // ?  declare color name as constant
+  // *  declare color name as constant
+
   // ? blue
   const blueColor = 'rgb(15, 194, 192)';
   // ? red
@@ -34,120 +39,145 @@ const colorLTP = async function (arg) {
   // ? white
   const whiteColor = 'rgb(255, 255, 255)';
 
-  // ? fetch Color and click opposite side buttons
+  // * fetch Color and click opposite side buttons
   if (CALL.includes(blueColor)) {
     // ? click Call Sell
-    const callSell = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP Call SELL');
+    const ltpred = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP Call SELL');
 
-    if (!callSell) {
+    if (!ltpred) {
       await take_screenShot(arg, 'LTP CALL SELL');
     }
   }
 
-  // ? if color is red
+  // * if color is red
   if (CALL.includes(redColor)) {
     // ? click Call Buy
-    const buy = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
+    const ltpcallblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
 
-    if (!buy) {
+    if (!ltpcallblue) {
       await take_screenShot(arg, 'LTP CALL BUY');
     }
   }
 
-  // ? if Color is white  click call buy button
+  // * if Color is white  click call buy button
   if (CALL.includes(whiteColor)) {
     // ? call buy
-    const callbutton = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
+    const ltpwhite = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
 
-    if (!callbutton) {
-      // ?
+    if (!ltpwhite) {
       await take_screenShot(arg, 'LTP CALL BUY');
     }
   }
 
-  // ? same as PUT values
+  //  * same as PUT values
 
   if (PUT.includes(blueColor)) {
-    // ?
-    const putsellVal = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL');
+    const ltpputred = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL');
 
-    if (!putsellVal) {
+    if (!ltpputred) {
       await take_screenShot(arg, 'LTP PUT SELL');
     }
   }
 
   if (PUT.includes(redColor)) {
     // ?
-    const putval = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-BUY']", '    LTP PUT BUY');
+    const ltpputblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-BUY']", '    LTP PUT BUY');
 
-    if (!putval) {
+    if (!ltpputblue) {
       await take_screenShot(arg, 'LTP PUT BUY');
     }
   }
 
   if (PUT.includes(whiteColor)) {
-    // ?
-    const putempty = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL');
+    const ltpputwhite = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL');
 
-    if (!putempty) {
+    if (!ltpputwhite) {
       await take_screenShot(arg, 'LTP PUT SELL');
     }
   }
 };
 
-// ? oi Color Fetch
+/**
+ *
+ * @param {*} arg - page
+ * fetching color value in oi tab
+ */
 const color_OI = async function (arg) {
-  // ? OI
   const callBuy1 = await arg.$eval('#atm-strike-index-oi-CE-BUY', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
-  // ? Call Sell
+
   const callSell1 = await arg.$eval('#atm-strike-index-oi-CE-SELL', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
-  // ? Put Buy
+
   const putBuy1 = await arg.$eval('#atm-strike-index-oi-PE-BUY', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
-  // ? Put Sell
+
   const putSell1 = await arg.$eval('#atm-strike-index-oi-PE-SELL', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
 
-  // ? OI
+  // * OI Call
   const CALL = [callBuy1, callSell1];
   console.log('        ', CALL);
+
+  // * Put
   const PUT = [putBuy1, putSell1];
   console.log('        ', PUT);
 
-  // ? assing constant color name
+  /**
+   * * SET Color as constant
+   */
+
   const blueColor = 'rgb(15, 194, 192)';
-  // ? red
+
   const redColor = 'rgb(253, 60, 82)';
-  // ? white
+
   const whiteClor = 'rgb(255, 255, 255)';
 
-  // ? check colors
-  if (OI.includes(redColor)) {
-    // ? if color is red
-    const oiPutbuy = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-CE-BUY']", '    OI Call Buy');
+  //  ? OI Call values is Blue
+  if (CALL.includes(blueColor)) {
+    const oicallred = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-CE-SELL']", '    OI CALL SELL');
 
-    if (!oiPutbuy) {
-      await take_screenShot(arg, 'OI Put Buy');
+    if (!oicallred) {
+      await take_screenShot(arg, 'OI CALL SELL');
     }
   }
 
-  // ? check if Blue
-  if (OI.includes(blueColor)) {
-    const oiLTPSell = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-PE-SELL']", '    OI LTP Sell');
+  // ? OI Call value is Red
+  if (CALL.includes(redColor)) {
+    const oicallblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-CE-BUY']", '    OI CALL BUY');
 
-    if (!oiLTPSell) {
-      await take_screenShot(arg, 'OI LTP Sell');
+    if (!oicallblue) {
+      await take_screenShot(arg, 'OI CALL BUY');
+    }
+  }
+
+  // ? Same as PUT button
+
+  if (PUT.includes(redColor)) {
+    const oiputblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-PE-BUY']", '    OI PUT BUY');
+
+    if (!oiputblue) {
+      await take_screenShot(arg, 'OI PUT BUY');
+    }
+  }
+
+  if (PUT.includes(blueColor)) {
+    const oiputred = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-PE-SELL']", '    OI PUT SELL');
+
+    if (!oiputred) {
+      await take_screenShot(arg, 'OI PUT SELL');
     }
   }
 };
 
-// ? Color Fetch for Greeks
+/**
+ *
+ * @param {*} arg - page
+ */
 
 const color_Greeks = async function (arg) {
   // ? Greeks
@@ -167,9 +197,11 @@ const color_Greeks = async function (arg) {
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
 
-  const GREEKS = [callBuy1, callSell1, putBuy1, putSell1];
+  const CALL = [callBuy1, callSell1];
+  console.log('        ', CALL);
 
-  console.log('        ', GREEKS);
+  const PUT = [putBuy1, putSell1];
+  console.log('        ', PUT);
 
   // ? assing constant color name
   const blueColor = 'rgb(15, 194, 192)';
@@ -178,33 +210,51 @@ const color_Greeks = async function (arg) {
   // ? white
   const whiteClor = 'rgb(255, 255, 255)';
 
-  // ? if
-  // ? find color
-  if (GREEKS.includes(blueColor)) {
-    // ? if color is blue
-    const greeksCallSell = await clicking_Button(
+  if (CALL.includes(blueColor)) {
+    const greekcallbuy = await clicking_Button(
       arg,
-      "//div [@id ='atm-strike-index-greeks-CE-SELL']",
-      '    Greeks Put Sell'
+      "//div [@id = 'atm-strike-index-greeks-CE-BUY']",
+      '    GREEKS CALL BUY'
     );
 
-    if (!greeksCallSell) {
-      await take_screenShot(arg, 'Greeks Put Sell');
+    if (!greekcallbuy) {
+      await take_screenShot(arg, 'GREEKS CALL BUY');
     }
   }
 
-  // ? if
-  if (GREEKS.includes(redColor)) {
-    // ? if Red Color
-    const greeksLTPBuy = await clicking_Button(
+  if (CALL.includes(redColor)) {
+    const greekscallsell = await clicking_Button(
       arg,
-      "//div [@id ='atm-strike-index-greeks-CE-BUY']",
-      '    Greeks LTP Buy'
+      "//div [@id ='atm-strike-index-greeks-CE-SELL']",
+      '    GREEKS CALL SELL'
     );
 
-    if (!greeksLTPBuy) {
-      // ?
-      await take_screenShot(arg, 'Greeks LTP Buy');
+    if (!greekscallsell) {
+      await take_screenShot(arg, 'GREEKS CALL SELL');
+    }
+  }
+
+  if (PUT.includes(redColor)) {
+    const greeksputbuy = await clicking_Button(
+      arg,
+      "//div [@id ='atm-strike-index-greeks-PE-BUY']",
+      '    GREEKS PUT BUY'
+    );
+
+    if (greeksputbuy) {
+      await take_screenShot(arg, 'GREEKS PUT BUY');
+    }
+  }
+
+  if (PUT.includes(blueColor)) {
+    const greeksputsell = await clicking_Button(
+      arg,
+      "//div [@id ='atm-strike-index-greeks-PE-SELL']",
+      '    GREEKS PUT SELL'
+    );
+
+    if (greeksputsell) {
+      await take_screenShot(arg, 'GREEKS PUT SELL');
     }
   }
 };

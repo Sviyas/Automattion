@@ -20,19 +20,19 @@ const Strategies = async function (arg, id, label) {
   if (strategy) {
     console.log(`        👍  ${label} Button `);
     // ? hold
-    await hold(2000);
+    await hold(7000);
 
     // ? edit to select legs
     const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
 
     if (editadd) {
       // ? click OPT button
-      await hold(2000);
+      await hold(3000);
 
       const opt = await clicking_Button(arg, "//li [@id = 'OPT-slider-header-btn']", '    OPT');
 
       if (opt) {
-        await hold(1000);
+        await hold(3000);
         // ? check related buttons
         const strategyDate = await clicking_Button(
           arg,
@@ -42,7 +42,7 @@ const Strategies = async function (arg, id, label) {
 
         // ? click LTP Sell button
         if (strategyDate) {
-          await hold(2000);
+          await hold(3000);
 
           // ?  fetch strategy leg color
           // ?  click oppsite color button
@@ -67,6 +67,7 @@ const Strategies = async function (arg, id, label) {
             // ? goto edit add
             const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    LTP Edit/Add');
             if (oiEdit) {
+              await hold(1000);
               // ? if condition passed
               //  ?  OI Page
               await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
@@ -80,10 +81,6 @@ const Strategies = async function (arg, id, label) {
             // @ts-check
             await take_screenShot(arg, 'Done');
           }
-          // } else {
-          //   // @ts-check
-          //   await take_screenShot(arg, 'LTP SELL');
-          // }
         } else {
           // @ts-check
           await take_screenShot(arg, 'Strategy Date Picker');

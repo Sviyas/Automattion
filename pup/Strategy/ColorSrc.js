@@ -115,9 +115,10 @@ const color_OI = async function (arg) {
   );
 
   // ? OI
-  const OI = [callBuy1, callSell1, putBuy1, putSell1];
-
-  console.log('        ', OI);
+  const CALL = [callBuy1, callSell1];
+  console.log('        ', CALL);
+  const PUT = [putBuy1, putSell1];
+  console.log('        ', PUT);
 
   // ? assing constant color name
   const blueColor = 'rgb(15, 194, 192)';

@@ -1,5 +1,5 @@
 const { clicking_Button } = require('./Strategy/Button');
-const { hold } = require('./utils');
+const { hold, take_screenShot } = require('./utils');
 
 /**
  *
@@ -7,13 +7,36 @@ const { hold } = require('./utils');
  * @param {*} brwsr - browser
  */
 const fii_dii_Tab = async function (arg, brwsr) {
-  await clicking_Button(arg, "//a [@id ='header-link-FII-DII']", '    FII/DII');
+  const fii_dii = await clicking_Button(arg, "//a [@id ='header-link-FII-DII']", '    FII/DII');
 
-  await clicking_Button(arg, "//span [@id ='dii-cash-btn']", '    FII/DII Dashboard');
+  if (fii_dii) {
+    await hold(1000);
 
-  await clicking_Button(arg, "//div [@id ='fii-dii-cash-select-with-title-fii-dropdown']", '    FII Filter');
+    const dash = await clicking_Button(arg, "//span [@id ='dii-cash-btn']", '    FII/DII Dashboard');
 
-  await clicking_Button(arg, "//div [@id ='fii-dii-cash-table-id-1000']", '    FII/DII Table');
+    if (dash) {
+      const filter = await clicking_Button(
+        arg,
+        "//div [@id ='fii-dii-cash-select-with-title-fii-dropdown']",
+        '    FII Filter'
+      );
+      if (filter) {
+        const table = await clicking_Button(arg, "//div [@id ='fii-dii-cash-table-id-1000']", '    FII/DII Table');
+
+        if (table) {
+          console.log('    GO TO User Icon');
+        } else {
+          await take_screenShot(arg, 'FII DII Table');
+        }
+      } else {
+        await take_screenShot(arg, 'FII DII Filter');
+      }
+    } else {
+      await take_screenShot(arg, 'FII DII Dashboard');
+    }
+  } else {
+    await take_screenShot(arg, 'FII DII');
+  }
 };
 
 module.exports.fii_dii_Tab = fii_dii_Tab;

@@ -7,6 +7,7 @@ const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
  * @param {*} brwsr - browser
  */
 const options_Tab = async function (arg, brwsr) {
+  await hold(1000);
   // ? clicking option open and close tab
   const open = await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
 
@@ -35,16 +36,12 @@ const options_Tab = async function (arg, brwsr) {
           await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
           // ? click another button
           console.log('    8.2   Navigate to Option Screener Page');
-          const opt_Screener = await clicking_Button(
-            arg,
-            "//p[contains(text(), 'Option Screener')]",
-            '    Option Screener'
-          );
+          const opt_Screener = await clicking_Button(arg, "//a [@id ='navlink-1']", '    Option Screener');
 
           if (opt_Screener) {
             // ?
             // ? close button
-            await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
+            // await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
 
             await hold(1000);
             const scree_Dash = await clicking_Button(
@@ -88,15 +85,12 @@ const options_Tab = async function (arg, brwsr) {
 
                     // ? Click Option Chain
                     console.log('    8.3   Navigate to Option  Chain Page');
-                    const opt_Chain = await clicking_Button(
-                      arg,
-                      "//p[contains(text(), 'Option Chain')]",
-                      '    Option Chain'
-                    );
+                    const opt_Chain = await clicking_Button(arg, "//a [@id ='navlink-2']", '    Option Chain');
                     // ? open tab
                     if (opt_Chain) {
+                      await hold(1000);
                       // ?  close tab
-                      await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
+                      // await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
 
                       const opt_ChaiDash = await clicking_Button(
                         arg,

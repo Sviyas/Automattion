@@ -9,7 +9,7 @@ const path = require('path');
 const take_screenShot = async function (sh, pic) {
   await hold(1000);
   await sh.screenshot({ path: path.resolve(__dirname, '../Errors', `${pic}.png`) });
-  console.log(`${pic} button Not Working`);
+  console.log(`${pic} button `);
 };
 
 /**

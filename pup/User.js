@@ -1,5 +1,5 @@
 const { clicking_Button } = require('./Strategy/Button');
-const { take_screenShot } = require('./utils');
+const { take_screenShot, hold } = require('./utils');
 
 /**
  *
@@ -8,14 +8,16 @@ const { take_screenShot } = require('./utils');
  */
 const user_icon = async function (arg, brwsr) {
   // ? click user icon
-  const icon = await clicking_Button(arg, "//img[@alt = 'User icon']", ' Icon');
+  const icon = await clicking_Button(arg, "//img[@alt = 'User icon']", '    User Icon');
   if (icon) {
+    await hold(1000);
     console.log('     Navigate to Icon Button');
   }
   // ? click User Icon
-  const user = await clicking_Button(arg, "//button [@id ='headlessui-menu-item-32']", '    Icon');
+  const user = await clicking_Button(arg, "//span [@id ='username-btn']", '    User');
 
   if (user) {
+    await hold(1000);
     //   ? click user tab
     // const userHompage = await clicking_Button(arg, "//button [@id ='headlessui-menu-item-138']", '    User Homepage');
 
@@ -23,32 +25,23 @@ const user_icon = async function (arg, brwsr) {
     const account = await clicking_Button(arg, "//button [@id ='Account-btn']", '    User Account');
 
     if (account) {
-      // ? click  order page
-      // const orderBook = await clicking_Button(arg, "//button [@id ='OrderBook-btn']", '    User Order Book');
-      // if(orderBook) {
-      // ?
-      // }
-      // ? click positions
-      const positions = await clicking_Button(arg, "//button [@id = 'Positions-btn']", '    User Positions');
+      await hold(1000);
 
-      if (positions) {
-        // ?  click support
+      // ?  click support
 
-        const support = await clicking_Button(arg, "//buton [@id ='Support-btn']", '    User Support');
+      const support = await clicking_Button(arg, "//buton [@id ='Support-btn']", '    User Support');
 
-        if (support) {
-          const logout = await clicking_Button(arg, "//button [@id ='Logout-btn']", '    User Logout');
+      if (support) {
+        await hold(1000);
+        const logout = await clicking_Button(arg, "//button [@id ='Logout-btn']", '    User Logout');
 
-          if (logout) {
-            console.log('     Logout Successfull');
-          } else {
-            await take_screenShot(arg, 'User Logout ');
-          }
+        if (logout) {
+          console.log('     Logout Successfull');
         } else {
-          await take_screenShot(arg, 'User Support');
+          await take_screenShot(arg, 'User Logout ');
         }
       } else {
-        await take_screenShot(arg, 'User Positions');
+        await take_screenShot(arg, 'User Support');
       }
     } else {
       await take_screenShot(arg, 'User Account');

@@ -47,20 +47,16 @@ const colorLTP = async function (arg) {
     if (!ltpred) {
       await take_screenShot(arg, 'LTP CALL SELL');
     }
-  }
-
-  // * if color is red
-  if (CALL.includes(redColor)) {
+  } else if (CALL.includes(redColor)) {
+    // * if color is red
     // ? click Call Buy
     const ltpcallblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
 
     if (!ltpcallblue) {
       await take_screenShot(arg, 'LTP CALL BUY');
     }
-  }
-
-  // * if Color is white  click call buy button
-  if (CALL.includes(whiteColor)) {
+  } else if (CALL.includes(whiteColor)) {
+    // * if Color is white  click call buy button
     // ? call buy
     const ltpwhite = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
 
@@ -77,18 +73,14 @@ const colorLTP = async function (arg) {
     if (!ltpputred) {
       await take_screenShot(arg, 'LTP PUT SELL');
     }
-  }
-
-  if (PUT.includes(redColor)) {
+  } else if (PUT.includes(redColor)) {
     // ?
     const ltpputblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-BUY']", '    LTP PUT BUY');
 
     if (!ltpputblue) {
       await take_screenShot(arg, 'LTP PUT BUY');
     }
-  }
-
-  if (PUT.includes(whiteColor)) {
+  } else if (PUT.includes(whiteColor)) {
     const ltpputwhite = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL');
 
     if (!ltpputwhite) {
@@ -211,18 +203,6 @@ const color_Greeks = async function (arg) {
   const whiteClor = 'rgb(255, 255, 255)';
 
   if (CALL.includes(blueColor)) {
-    const greekcallbuy = await clicking_Button(
-      arg,
-      "//div [@id = 'atm-strike-index-greeks-CE-BUY']",
-      '    GREEKS CALL BUY'
-    );
-
-    if (!greekcallbuy) {
-      await take_screenShot(arg, 'GREEKS CALL BUY');
-    }
-  }
-
-  if (CALL.includes(redColor)) {
     const greekscallsell = await clicking_Button(
       arg,
       "//div [@id ='atm-strike-index-greeks-CE-SELL']",
@@ -234,15 +214,15 @@ const color_Greeks = async function (arg) {
     }
   }
 
-  if (PUT.includes(redColor)) {
-    const greeksputbuy = await clicking_Button(
+  if (CALL.includes(redColor)) {
+    const greekcallbuy = await clicking_Button(
       arg,
-      "//div [@id ='atm-strike-index-greeks-PE-BUY']",
-      '    GREEKS PUT BUY'
+      "//div [@id = 'atm-strike-index-greeks-CE-BUY']",
+      '    GREEKS CALL BUY'
     );
 
-    if (!greeksputbuy) {
-      await take_screenShot(arg, 'GREEKS PUT BUY');
+    if (!greekcallbuy) {
+      await take_screenShot(arg, 'GREEKS CALL BUY');
     }
   }
 
@@ -255,6 +235,18 @@ const color_Greeks = async function (arg) {
 
     if (!greeksputsell) {
       await take_screenShot(arg, 'GREEKS PUT SELL');
+    }
+  }
+
+  if (PUT.includes(redColor)) {
+    const greeksputbuy = await clicking_Button(
+      arg,
+      "//div [@id ='atm-strike-index-greeks-PE-BUY']",
+      '    GREEKS PUT BUY'
+    );
+
+    if (!greeksputbuy) {
+      await take_screenShot(arg, 'GREEKS PUT BUY');
     }
   }
 };

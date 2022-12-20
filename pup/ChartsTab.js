@@ -47,7 +47,7 @@ const charts_Tab = async function (arg, brwsr) {
           if (OI) {
             await hold(1000);
             //?  close button
-            await OpenAndClose(arg, "//div [@id ='nav-Charts']");
+            // await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
             // ? OI dashboard
             const oi_Dash = await clicking_Button(arg, "//span[contains(text(), 'oi')]", '   OI Dashboard');
@@ -123,13 +123,15 @@ const charts_Tab = async function (arg, brwsr) {
 
   await OpenAndClose(arg, "//div [@id ='nav-Charts']");
   console.log('    9.3   Navigate to Greeks Page');
+  await hold(1000);
 
   const greeks = await clicking_Button(arg, "//a [@id ='navlink-2']", '   Greeks');
 
   if (greeks) {
+    await hold(2000);
     // ? close tab
 
-    await OpenAndClose(arg, "//div [@id ='nav-Charts']");
+    // await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
     // ? Greeks Dashboard
     const greeks_Dash = await clicking_Button(arg, "//span [@id ='greeks-btn']", '   Greek Dashhboard');
@@ -169,7 +171,8 @@ const charts_Tab = async function (arg, brwsr) {
             const maxPain = await clicking_Button(arg, "//a [@id ='navlink-3']", '   MaxPain');
 
             if (maxPain) {
-              await OpenAndClose(arg, "//div [@id ='nav-Charts']");
+              await hold(1000);
+              // await OpenAndClose(arg, "//div [@id ='nav-Charts']");
               // ?
               const maxpain_Dash = await clicking_Button(arg, "//span [@id ='maxpain-btn']", '   MaxPain Dashboard');
 

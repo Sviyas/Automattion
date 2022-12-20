@@ -13,6 +13,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   // ? fetch strikewise profit loss value
   await hold(2000);
   console.log(`        ${label} ✅ Strikewise IV`);
+
   const strikewise = await (
     await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
   ).jsonValue();
@@ -48,13 +49,12 @@ const strikewise_fun = async function (arg, id1, id2, label) {
     const strikeDecreVal = parseFloat(strdecre);
 
     console.log(`        ${label} Strikewise Decrement Values : `, strikeDecreVal);
-    // console.log('        Strikewise Decrement Values : ', strikeDecreVal);
 
     // ? check strikewise decrement button
     if (strikeDecreVal !== strikeIncreVal) {
       // ? if condition passed
       const strikeReset = await clicking_Button(arg, "//p [@id ='iv-reset-btn']", `    ${label} Strike Reset`);
-      await hold(1000);
+      await hold(3000);
       // ? fetch strikewise reset value
       const strreset = await (
         await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
@@ -66,9 +66,10 @@ const strikewise_fun = async function (arg, id1, id2, label) {
       // ? check strike wise value after reset values are same!
       if (strikeResetVal !== strikewiseVal) {
         console.log(`        ${label} Strikewise Reset Values : `, strikeResetVal);
-      } else {
+      } else if (strikeResetVal === strikewiseVal) {
+        console.log(`        ${label} Data Loading Problem  `, strikeResetVal);
         // @ts-expect-error ! if not working
-        await take_screenShot(arg, 'Strike Reset');
+        // await take_screenShot(arg, 'Strike Reset');
       }
     } else {
       // @ts-expect-error ! if not  working

@@ -43,7 +43,7 @@ const Strategies = async function (arg, id, label) {
 
         // ? click LTP Sell button
         if (strategyDate) {
-          await hold(3000);
+          await hold(2000);
 
           // ?  fetch strategy leg color
           // ?  click oppsite color button

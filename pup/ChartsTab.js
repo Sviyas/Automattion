@@ -7,6 +7,7 @@ const { hold, take_screenShot } = require('./utils.js');
  * @param {*} brwsr - browser
  */
 const charts_Tab = async function (arg, brwsr) {
+  await hold(1000);
   //  ? Chart Tab Open
   await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 

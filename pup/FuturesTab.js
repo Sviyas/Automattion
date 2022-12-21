@@ -8,6 +8,7 @@ const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
  */
 // ? Futures Tab Clicking
 const futures_Tab = async function (arg, brwsr) {
+  await hold(1000);
   //  ? Futures Tab open
 
   await OpenAndClose(arg, "//button [@id = 'headlessui-popover-button-17']");

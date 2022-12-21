@@ -7,6 +7,7 @@ const { hold, take_screenShot } = require('./utils');
  * @param {*} brwsr - browser
  */
 const fii_dii_Tab = async function (arg, brwsr) {
+  await hold(1000);
   const fii_dii = await clicking_Button(arg, "//a [@id ='header-link-FII-DII']", '    FII/DII');
 
   if (fii_dii) {

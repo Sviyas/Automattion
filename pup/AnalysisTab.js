@@ -7,6 +7,7 @@ const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
  * @param {*} brwsr - browser
  */
 const analysis_Tab = async function (arg, brwsr) {
+  await hold(1000);
   // ? clcik analysis page
   await OpenAndClose(arg, "//div [@id ='nav-Analysis']");
 

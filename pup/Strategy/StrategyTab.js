@@ -64,9 +64,9 @@ const strategy_Tab = async function (arg, brwsr) {
             if (removeStrategyFilter) {
               // ??  Strategy Builders
               // ? long call
-              // await hold(1000);
-              // await Strategies(arg, "//div [@id ='Long Call']", '    Long Call');
-              // // ? Short Call
+              await hold(1000);
+              await Strategies(arg, "//div [@id ='Long Call']", '    Long Call');
+              // ? Short Call
               // await hold(1000);
               // await Strategies(arg, "//div [@id ='Short Call']", '    Short Call');
               // // ? Long Put
@@ -105,18 +105,18 @@ const strategy_Tab = async function (arg, brwsr) {
               // // ? Short Iron Condor
               // await hold(1000);
               // await Strategies(arg, "//div [@id ='Short Iron Condor']", '    Short Iron Condor');
-              // ? Long Put Butterfly
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Put Butterfly']", '    Long Put Butterfly');
-              // ? Short Put Butterfly
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Short Put Butterfly']", '    Short Put Butterfly');
-              // ? Long Call Butterfly
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Call Butterfly']", '    Long Call Butterfly');
-              // ? Short Call Butterfly
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Short Call Butterfly']", '    Short Call Butterfly');
+              // // ? Long Put Butterfly
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Put Butterfly']", '    Long Put Butterfly');
+              // // ? Short Put Butterfly
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Short Put Butterfly']", '    Short Put Butterfly');
+              // // ? Long Call Butterfly
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Call Butterfly']", '    Long Call Butterfly');
+              // // ? Short Call Butterfly
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Short Call Butterfly']", '    Short Call Butterfly');
             } else {
               // @ts-expect-error
               await take_screenShot(arg, 'Strateg Filter');

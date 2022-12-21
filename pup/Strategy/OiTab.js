@@ -61,11 +61,11 @@ const OITab = async function (ag, id, label) {
       await take_screenShot(ag, 'OI Done');
     }
     // } else {
-    //   // @ts-expect-error
+    // @ts-expect-error
     //   await take_screenShot(ag, 'LTP Call Buy');
     // }
     // } else {
-    //   // @ts-expect-error
+    // @ts-expect-error
     //   await take_screenShot(ag, 'OI Put buy');
     // }
   } else {

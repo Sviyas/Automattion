@@ -4,10 +4,10 @@ const { clicking_Button, click_Button } = require('./Strategy/Button');
 // const { futures_Tab } = require('./FuturesTab');
 // const { options_Tab } = require('./OptionsTab');
 // const { charts_Tab } = require('./ChartsTab');
-// const { strategy_Tab } = require('./Strategy/StrategyTab');
-const { analysis_Tab } = require('./AnalysisTab');
-const { fii_dii_Tab } = require('./FiiDii');
-const { user_icon } = require('./User');
+const { strategy_Tab } = require('./Strategy/StrategyTab');
+// const { analysis_Tab } = require('./AnalysisTab');
+// const { fii_dii_Tab } = require('./FiiDii');
+// const { user_icon } = require('./User');
 
 /**
  *
@@ -86,19 +86,19 @@ const testLogin = async (page, email, password) => {
       // await charts_Tab(page);
 
       //  ? strategy  Tab
-      // console.log('    10     Navigating to Strategy Tab');
-      // await strategy_Tab(page);
+      console.log('    10     Navigating to Strategy Tab');
+      await strategy_Tab(page);
 
       // ? analysis Tab
-      console.log('    11   Navigating to Analysis Tab');
-      await analysis_Tab(page);
+      // console.log('    11   Navigating to Analysis Tab');
+      // await analysis_Tab(page);
 
       // ? FII_DII Tab
-      console.log('    12   Navigating to FII/DII Tab');
-      await fii_dii_Tab(page);
+      // console.log('    12   Navigating to FII/DII Tab');
+      // await fii_dii_Tab(page);
 
       // ? user icon
-      await user_icon(page);
+      // await user_icon(page);
       // ? Icon Tab
       // await clicking_Button(page, "//img[@alt = 'User icon']", ' Icon');
 

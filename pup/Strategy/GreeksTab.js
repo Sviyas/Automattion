@@ -15,17 +15,9 @@ const greeksTab = async function (ag, id, label) {
     await hold(1000);
 
     // ? fetch the button colors
-    // ? add one Greeks leg put buy
-    await color_Greeks(ag);
-    // const GreeksPutSell = await clicking_Button(
-    //   ag,
-    //   "//div [@id ='atm-strike-index-greeks-PE-SELL']",
-    //   '    Greeks Put Sell'
-    // );
-
-    // if (GreeksPutSell) {
-    // ? condition passed
     // ? check functions
+    await color_Greeks(ag);
+
     await hold(1000);
 
     const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    Greeks Done');
@@ -52,7 +44,7 @@ const greeksTab = async function (ag, id, label) {
           // ? if condition passed
           // ? clear the page
           // ? after go homepage
-          const clearPage = await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    Clear');
+          const clearPage = await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '   🔄 Clear');
 
           if (clearPage) {
             await hold(1000);
@@ -61,7 +53,7 @@ const greeksTab = async function (ag, id, label) {
             const homepage = await clicking_Button(ag, "//span [@id = 'strategy-btn']", '    Home Page');
 
             if (done && homepage) {
-              console.log(`        Successfully Returned HomePage 🫡`);
+              console.log(`       🤝 Successfully Returned HomePage 🤝`);
             } else if (done) {
               // @ts-check
               await take_screenShot(ag, 'Done');
@@ -82,10 +74,6 @@ const greeksTab = async function (ag, id, label) {
       // @ts-expect-error
       await take_screenShot(ag, 'Greeks Done');
     }
-    // } else {
-    //   // @ts-expect-error
-    //   await take_screenShot(ag, 'Greeks Put buy');
-    // }
   } else {
     // @ts-expect-error
     await take_screenShot(ag, label);

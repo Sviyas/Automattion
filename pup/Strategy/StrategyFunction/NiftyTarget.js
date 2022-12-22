@@ -18,7 +18,7 @@ const niftyTarget_fun = async function (arg, label) {
   // ? parse Value
   const profitLoss = parseInt(prolos);
 
-  console.log(`        ${label} Nifty profti loss Value : `, profitLoss);
+  console.log(`        ${label} Nifty profit loss Value : `, profitLoss);
 
   // ? nifty target price value
 

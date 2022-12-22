@@ -85,7 +85,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   // ? click nth strike wise iv increment button
   const incre = "//p [@id = '" + divlength + "-plusclick-btn']";
 
-  const nthstrikeinc = await clicking_Button(arg, incre, `    ${divlength} th Strike Increment`);
+  const nthstrikeinc = await clicking_Button(arg, incre, `    ${divlength} Strike Increment`);
 
   await hold(1000);
 
@@ -95,7 +95,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   const nthincreVal = parseFloat(nthincre);
 
-  console.log(`        ${label} ${divlength} th Strikewise Increment Values : `, nthincreVal);
+  console.log(`        ${label} ${divlength}  Strikewise Increment Values : `, nthincreVal);
   await hold(1000);
 
   // ? check nth strikewise value and increment value
@@ -115,7 +115,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
     // ? check nth strikewise increment and decrement values not same
 
     if (nthdecreVal !== nthincreVal) {
-      console.log(`        ${label} ${divlength} th Strikewise Decrement Values : `, nthdecreVal);
+      console.log(`        ${label} ${divlength}  Strikewise Decrement Values : `, nthdecreVal);
     } else {
       // @ts-expect-error : if decrement and increment value same
       await take_screenShot(arg, `${divlength} strike decrement`);
@@ -135,7 +135,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   ).jsonValue();
 
   const strikeResetVal = parseFloat(strreset);
-  console.log(`        ${label} Strikewise Reset Values : `, strikeResetVal);
+  // console.log(`        ${label} Strikewise Reset Values : `, strikeResetVal);
 
   const strnthrest = await (
     await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
@@ -146,17 +146,21 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   // ? message log
   switch (true) {
     case divlength === 1:
-      console.log(`        ${label} ${divlength} st Strikewise Reset Values : `, strnthResetVal);
+      console.log(
+        `        ${label} ${divlength} st Strikewise Reseted Values : ${strikeResetVal} and ${strnthResetVal}`
+      );
       break;
     case divlength === 2:
-      console.log(`        ${label} ${divlength} nd Strikewise Reset Values : `, strnthResetVal);
+      console.log(
+        `        ${label} ${divlength} nd Strikewise Reseted Values : ${strikeResetVal} and ${strnthResetVal}`
+      );
       break;
     case divlength === 3:
-      console.log(`        ${label} ${divlength} rd Strikewise Reset Values : `, strnthResetVal);
+      console.log(`        ${label} ${divlength} rd Strikewise Reset Values : ${strikeResetVal} and ${strnthResetVal}`);
       break;
     default:
       divlength >= 4;
-      console.log(`        ${label} ${divlength}th Strikewise Reset Values : `, strnthResetVal);
+      console.log(`        ${label} ${divlength}th Strikewise Reset Values : ${strikeResetVal} and ${strnthResetVal}`);
   }
 
   // ? check Reset values not same
@@ -166,8 +170,8 @@ const strikewise_fun = async function (arg, id1, id2, label) {
     console.log('        Reset Successfully 🤝 ');
   } else {
     // @ts-expect-error if values are same not working or data loading problem
-    // await take_screenShot(arg, `${label} Strike Reset`);
-    console.log('  ☠️☠️   Strike wise IV Values Not Change ☠️☠️');
+    await take_screenShot(arg, `${label} Strike Reset`);
+    console.log('  ☠️ ☠️   Strike wise IV Values Not Change ☠️ ☠️');
   }
 };
 

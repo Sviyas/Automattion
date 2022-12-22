@@ -21,19 +21,19 @@ const Strategies = async function (arg, id, label) {
   if (strategy) {
     console.log(`        🚀  ${label} Strategy  🚀 `);
     // ? hold
-    await hold(7000);
+    await hold(3000);
 
     // ? edit to select legs
     const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
 
     if (editadd) {
       // ? click OPT button
-      await hold(3000);
+      await hold(2000);
 
       const opt = await clicking_Button(arg, "//li [@id = 'OPT-slider-header-btn']", '    OPT');
 
       if (opt) {
-        await hold(3000);
+        await hold(2000);
         // ? check related buttons
         const strategyDate = await clicking_Button(
           arg,
@@ -54,7 +54,7 @@ const Strategies = async function (arg, id, label) {
           const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    Done');
 
           if (done) {
-            await hold(3000);
+            await hold(2000);
 
             // ? Nifty Target Function
             await niftyTarget_fun(arg, 'LTP');

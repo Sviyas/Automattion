@@ -142,7 +142,22 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   ).jsonValue();
 
   const strnthResetVal = parseFloat(strnthrest);
-  console.log(`        ${label} ${divlength}th Strikewise Reset Values : `, strnthResetVal);
+
+  // ? message log
+  switch (true) {
+    case divlength === 1:
+      console.log(`        ${label} ${divlength} st Strikewise Reset Values : `, strnthResetVal);
+      break;
+    case divlength === 2:
+      console.log(`        ${label} ${divlength} nd Strikewise Reset Values : `, strnthResetVal);
+      break;
+    case divlength === 3:
+      console.log(`        ${label} ${divlength} rd Strikewise Reset Values : `, strnthResetVal);
+      break;
+    default:
+      divlength >= 4;
+      console.log(`        ${label} ${divlength}th Strikewise Reset Values : `, strnthResetVal);
+  }
 
   // ? check Reset values not same
 

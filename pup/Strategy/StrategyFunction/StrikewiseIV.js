@@ -1,7 +1,6 @@
 const { take_screenShot, hold } = require('../../utils');
 const { clicking_Button } = require('../Button');
 
-// ? strike wise function
 /**
  *
  * @param {arg} page - page
@@ -22,7 +21,8 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   console.log(`        ${label} Div Container Length : `, divlength);
 
-  // ? fetch strikewise value
+  // ! fetch strikewise zero-index function
+
   const strikewise = await (
     await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
   ).jsonValue();
@@ -32,10 +32,12 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   console.log(`        ${label} Strikewise Values 1️⃣  : `, strikewiseVal);
 
   // ? click strikwise increment
+
   const strikeIncrement = await clicking_Button(arg, id1, `    ${label} Strike Increment`);
   await hold(1000);
 
   // ? fetch increment values
+
   const strincre = await (
     await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
   ).jsonValue();
@@ -45,9 +47,8 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   // ? check  incremnt button
   if (strikeIncreVal !== strikewiseVal) {
-    // ? if condition passed !
-
     // ? click Decrement button
+
     const strikeDecrement = await clicking_Button(arg, id2, `    ${label} Strike Decrement`);
     await hold(1000);
 
@@ -58,69 +59,101 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
     const strikeDecreVal = parseFloat(strdecre);
 
-    console.log(`        ${label} Strikewise Decrement Values : `, strikeDecreVal);
-
-    // ? check last strikewise iv button
-
-    // ? fetch values on last button
-    const nthstrikewise = await (
-      await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
-    ).jsonValue();
-
-    const nthstrikeval = parseFloat(nthstrikewise);
-
-    console.log(`        ${label} Strikewise value 2️⃣  : `, nthstrikeval);
-
-    // ? click last strike wise iv increment button
-
-    const nthstrikeinc = await clicking_Button(
-      arg,
-      `\"//p [@id = '${divlength}-plusclick-btn']\"`,
-      `    ${divlength} Strike Increment`
-    );
-    console.log('🚀 ~ file: StrikewiseIV.js:81 ~ nthstrikeinc', nthstrikeinc);
-
-    await hold(1000);
-
-    const nthincre = await (
-      await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
-    ).jsonValue();
-
-    const nthincreVal = parseFloat(nthincre);
-
-    console.log(`        ${label} ${divlength} Strikewise Increment Values : `, nthincreVal);
-
-    //
-
     // ? check  decrement button
     if (strikeDecreVal !== strikeIncreVal) {
-      // ? if condition passed
-      const strikeReset = await clicking_Button(arg, "//p [@id ='iv-reset-btn']", `    ${label} Strike Reset`);
-      await hold(3000);
-
-      // ? fetch reset value
-      const strreset = await (
-        await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
-      ).jsonValue();
-
-      const strikeResetVal = parseFloat(strreset);
-
-      // ? check strike wise value after reset values are same!
-      if (strikeResetVal !== strikewiseVal) {
-        console.log(`        ${label} Strikewise Reset Values : `, strikeResetVal);
-      } else if (strikeResetVal === strikewiseVal) {
-        console.log(`        ${label} Data Loading Problem  `, strikeResetVal);
-        // @ts-expect-error ! if not working
-      }
+      console.log(`        ${label} Strikewise Decrement Values : `, strikeDecreVal);
     } else {
-      // @ts-expect-error ! if not  working
+      // @ts-expect-error ! if decrement and increment value same
       await take_screenShot(arg, 'Strike Decrement');
     }
   } else {
-    // @ts-expect-error ! if not working
+    // @ts-expect-error ! if increment and strikewise value same
     await take_screenShot(arg, 'Strike Increment');
   }
-  // ?
+
+  // ! Stirke wise nth-index function
+
+  // ? fetch nth strikewise values
+  const nthstrikewise = await (
+    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
+  ).jsonValue();
+
+  const nthstrikeval = parseFloat(nthstrikewise);
+
+  console.log(`        ${label} Strikewise value 2️⃣  : `, nthstrikeval);
+
+  // ? click nth strike wise iv increment button
+  const incre = "//p [@id = '" + divlength + "-plusclick-btn']";
+
+  const nthstrikeinc = await clicking_Button(arg, incre, `    ${divlength} th Strike Increment`);
+
+  await hold(1000);
+
+  const nthincre = await (
+    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
+  ).jsonValue();
+
+  const nthincreVal = parseFloat(nthincre);
+
+  console.log(`        ${label} ${divlength} th Strikewise Increment Values : `, nthincreVal);
+  await hold(1000);
+
+  // ? check nth strikewise value and increment value
+  if (nthincreVal !== nthstrikeval) {
+    // ? click Strike Wise nth Decrement
+    const decre = "//p [@id = '" + divlength + "-minusclick-btn']";
+
+    const nthstrikedecre = await clicking_Button(arg, decre, `    ${divlength} Strike Decrement`);
+    await hold(1000);
+
+    const nthdecre = await (
+      await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
+    ).jsonValue();
+
+    const nthdecreVal = parseFloat(nthdecre);
+
+    // ? check nth strikewise increment and decrement values not same
+
+    if (nthdecreVal !== nthincreVal) {
+      console.log(`        ${label} ${divlength} th Strikewise Decrement Values : `, nthdecreVal);
+    } else {
+      // @ts-expect-error : if decrement and increment value same
+      await take_screenShot(arg, `${divlength} strike decrement`);
+    }
+  } else {
+    // @ts-expect-error : if incrment and strikewise value same
+    await take_screenShot(arg, `${divlength} strike increment`);
+  }
+
+  // ! Strike wise Reset function
+
+  const strikeReset = await clicking_Button(arg, "//p [@id ='iv-reset-btn']", `    ${label} Strike Reset`);
+  await hold(2000);
+
+  const strreset = await (
+    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
+  ).jsonValue();
+
+  const strikeResetVal = parseFloat(strreset);
+  console.log(`        ${label} Strikewise Reset Values : `, strikeResetVal);
+
+  const strnthrest = await (
+    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
+  ).jsonValue();
+
+  const strnthResetVal = parseFloat(strnthrest);
+  console.log(`        ${label} ${divlength}th Strikewise Reset Values : `, strnthResetVal);
+
+  // ? check Reset values not same
+
+  if ((strikeResetVal && strnthResetVal) !== (strikewiseVal && nthstrikeval)) {
+    // ? if value not same buttton & data is working perfect
+    console.log('        Reset Successfully 🤝 ');
+  } else {
+    // @ts-expect-error if values are same not working or data loading problem
+    // await take_screenShot(arg, `${label} Strike Reset`);
+    console.log(' ☠️☠️ Strike wise IV Values Not Change ☠️☠️');
+  }
 };
 
 module.exports.strikewise_fun = strikewise_fun;

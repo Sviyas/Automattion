@@ -19,7 +19,7 @@ const Strategies = async function (arg, id, label) {
   await hold(1000);
   // ? Trades
   if (strategy) {
-    console.log(`        👍  ${label} Button `);
+    console.log(`        🤗  ${label} Button  🤗 `);
     // ? hold
     await hold(7000);
 

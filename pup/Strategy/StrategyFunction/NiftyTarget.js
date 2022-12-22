@@ -60,7 +60,7 @@ const niftyTarget_fun = async function (arg, label) {
       ).jsonValue();
       //   ? parse value
       const niftyResetInttVal = parseInt(niftyres);
-      const niftyResetVal = parseFloat(niftyres); /// pending changes
+      const niftyResetVal = parseFloat(niftyres);
 
       if (niftyResetVal !== niftyPriceVal && niftyResetInttVal !== decrementValue) {
         // @ts-check
@@ -71,7 +71,7 @@ const niftyTarget_fun = async function (arg, label) {
         console.log(`        ${label} Nifty Data Loading Problem ☠️`);
       } else {
         // @ts-check
-        await take_screenShot(arg, `${label} Nifty Reset`);
+        await take_screenShot(arg, `${label} Nifty Reset : `, niftyResetVal);
       }
     } else {
       // @ts-check

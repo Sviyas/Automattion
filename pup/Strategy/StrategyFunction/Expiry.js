@@ -8,7 +8,7 @@ const { clicking_Button } = require('../Button');
  */
 const expiry_fun = async function (arg, label) {
   // ?
-  console.log(`        ✅ ${label} EXPIRY TARGET`);
+  console.log(`         ${label} ✅ EXPIRY TARGET`);
 
   await hold(3000);
   // ? fetch Expiry date and Values

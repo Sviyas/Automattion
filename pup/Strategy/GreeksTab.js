@@ -44,7 +44,7 @@ const greeksTab = async function (ag, id, label) {
           // ? if condition passed
           // ? clear the page
           // ? after go homepage
-          const clearPage = await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '   🔄 Clear');
+          const clearPage = await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    🔄 Clear');
 
           if (clearPage) {
             await hold(1000);

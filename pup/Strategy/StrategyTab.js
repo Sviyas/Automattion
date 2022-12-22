@@ -15,7 +15,7 @@ const strategy_Tab = async function (arg, brwsr) {
   await hold(2000);
 
   const strategyBuilder = await arg.$x("//a [@id ='header-link-StrategyBuilder']");
-  console.log('🚀 ~ file: StrategyTab.js:20 ~ strategyBuilder', strategyBuilder.length);
+  console.log('        🚀  StrategyTab.js:20  strategyBuilder ', strategyBuilder.length);
 
   if (strategyBuilder.length === 1) {
     await strategyBuilder[0].evaluate(el => {

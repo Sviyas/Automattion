@@ -26,14 +26,9 @@ const OITab = async function (ag, id, label) {
 
     await color_OI(ag);
 
-    // const oiPutSell = await clicking_Button(ag, "//div [@id ='atm-strike-index-oi-PE-BUY']", '    OI Put Buy');
-
-    // if (oiPutSell) {
     // ? condition passed
     // ? remove one call sell
-    // const ltpRemove = await clicking_Button(ag, "//div [@id ='atm-strike-index-oi-CE-SELL']", '    Ltp buy remove');
 
-    // if (ltpRemove) {
     // ? condition passed
     await hold(1000);
 

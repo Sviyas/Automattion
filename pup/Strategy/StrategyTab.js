@@ -64,8 +64,8 @@ const strategy_Tab = async function (arg, brwsr) {
             if (removeStrategyFilter) {
               // ??  Strategy Builders
               // ? long call
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Call']", '    Long Call');
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Call']", '    Long Call');
               // ? Short Call
               // await hold(1000);
               // await Strategies(arg, "//div [@id ='Short Call']", '    Short Call');
@@ -76,8 +76,8 @@ const strategy_Tab = async function (arg, brwsr) {
               // await hold(1000);
               // await Strategies(arg, "//div [@id = 'Short Put']", '    Short Put');
               // // ? Bull Call Spread
-              // await hold(1000);
-              // await Strategies(arg, "//div [@id ='Bull Call Spread']", '    Bull Call Spread');
+              await hold(1000);
+              await Strategies(arg, "//div [@id ='Bull Call Spread']", '    Bull Call Spread');
               // // ? Bear Call Spread
               // await hold(1000);
               // await Strategies(arg, "//div [@id ='Bear Call Spread']", '    Bear Call Spread');

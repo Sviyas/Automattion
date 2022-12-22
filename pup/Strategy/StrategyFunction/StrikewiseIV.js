@@ -15,11 +15,13 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   console.log(`        ${label} ✅ Strikewise IV`);
 
   // ? Find Strike wise iv length
-  const [strikeLen] = await arg.$x("//div [@id ='strikewise-iv-id']");
-  const children = await strikeLen.getProperty('children');
-  const leng = await (await children.getProperty('length')).jsonValue();
-
-  console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', leng);
+  // const [strikeLen] = await arg.$x("//div [@id ='strikewise-iv-id']");
+  // const children = await strikeLen.getProperty('children');
+  // const leng = await (await children.getProperty('length')).jsonValue();
+  const strikewiseLen = await (
+    await (await (await arg.$x("//div [@id ='strikewise-iv-id']"))[0].getProperty('children')).getProperty('length')
+  ).jsonValue();
+  console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', strikewiseLen);
 
   const strikewise = await (
     await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')

@@ -57,10 +57,10 @@ const Strategies = async function (arg, id, label) {
             await hold(3000);
 
             // ? Nifty Target Function
-            // await niftyTarget_fun(arg, 'LTP');
+            await niftyTarget_fun(arg, 'LTP');
 
             // ? Expiry Function
-            // await expiry_fun(arg, 'LTP');
+            await expiry_fun(arg, 'LTP');
 
             // ? check striekwise ivs
             await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');

@@ -34,7 +34,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   // ? click strikwise increment
 
   const strikeIncrement = await clicking_Button(arg, id1, `    ${label} Strike Increment`);
-  await hold(1000);
+  await hold(2000);
 
   // ? fetch increment values
 
@@ -50,7 +50,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
     // ? click Decrement button
 
     const strikeDecrement = await clicking_Button(arg, id2, `    ${label} Strike Decrement`);
-    await hold(1000);
+    await hold(2000);
 
     // ? fetch Decremnt Value
     const strdecre = await (
@@ -135,7 +135,6 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   ).jsonValue();
 
   const strikeResetVal = parseFloat(strreset);
-  // console.log(`        ${label} Strikewise Reset Values : `, strikeResetVal);
 
   const strnthrest = await (
     await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')

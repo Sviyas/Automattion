@@ -8,7 +8,7 @@ const { take_screenShot, hold } = require('./utils');
  */
 const user_icon = async function (arg, brwsr) {
   // ? click user icon
-  const icon = await clicking_Button(arg, "//img[@alt = 'User icon']", '    User Icon');
+  const icon = await clicking_Button(arg, "//img[@alt = 'User icon']", '        User Icon');
   if (icon) {
     await hold(1000);
     console.log('     Navigate to Icon Button');

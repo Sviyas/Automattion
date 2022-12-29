@@ -16,7 +16,7 @@ const { colorLTP } = require('./ColorSrc');
 const Strategies = async function (arg, id, label) {
   const strategy = await clicking_Button(arg, id, label);
 
-  await hold(1000);
+  await hold(2000);
   // ? Trades
   if (strategy) {
     console.log(`        🚀  ${label} Strategy  🚀 `);
@@ -54,7 +54,7 @@ const Strategies = async function (arg, id, label) {
           const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    Done');
 
           if (done) {
-            await hold(2000);
+            await hold(3000);
 
             // ? Nifty Target Function
             await niftyTarget_fun(arg, 'LTP');

@@ -78,7 +78,7 @@ const niftyTarget_fun = async function (arg, label) {
         console.log(`        🔴 ${label} Nifty Data Loading Problem ☠️`);
       } else {
         // @ts-check
-        await take_screenShot(arg, `${label} Nifty Reset : `, niftyResetVal);
+        await take_screenShot(arg, `${label} Nifty Reset `);
       }
     } else {
       // @ts-check

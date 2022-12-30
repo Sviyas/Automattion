@@ -55,46 +55,46 @@ const Strategies = async function (arg, id, label) {
 
           // ? Trades
           // await trades(arg);
-
+          await hold(1000);
           // ?  Colors Chooser
           await colorLTP(arg);
 
           await hold(1000);
 
-          const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    Done');
+          // const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    Done');
 
-          if (done) {
-            await hold(3000);
+          // if (done) {
+          //   await hold(3000);
 
-            // ? Nifty Target Function
-            // await niftyTarget_fun(arg, 'LTP');
+          // ? Nifty Target Function
+          // await niftyTarget_fun(arg, 'LTP');
 
-            // ? Expiry Function
-            // await expiry_fun(arg, 'LTP');
+          // ? Expiry Function
+          // await expiry_fun(arg, 'LTP');
 
-            // ? check striekwise ivs
-            // await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
+          // ? check striekwise ivs
+          // await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
 
-            // ? OI
-            // const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    LTP Edit/Add');
+          // ? OI
+          // const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    LTP Edit/Add');
 
-            // if (oiEdit) {
-            //   await hold(1000);
-            //   // ? if condition passed
+          // if (oiEdit) {
+          //   await hold(1000);
+          // ? if condition passed
 
-            //   //  ?  OI Page
-            //   await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
+          //  ?  OI Page
+          //   await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
 
-            //   // ? Greeks Page
-            //   await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
-            // } else {
-            //   // @ts-check
-            //   await take_screenShot(arg, 'OI Edit');
-            // }
-          } else {
-            // @ts-check
-            await take_screenShot(arg, 'Done');
-          }
+          // ? Greeks Page
+          //   await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
+          // } else {
+          // @ts-check
+          //   await take_screenShot(arg, 'OI Edit');
+          // }
+          // } else {
+          // @ts-check
+          //   await take_screenShot(arg, 'Done');
+          // }
         } else {
           // @ts-check
           await take_screenShot(arg, 'Strategy Date Picker');

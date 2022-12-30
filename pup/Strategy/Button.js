@@ -18,7 +18,7 @@ const clicking_Button = async function (arg, id, label) {
   return clicking;
 };
 
-// //  ? if function does not exists capture the error
+//  ? if function does not exists capture the error
 // const errorIdentfier = async function (funct) {
 //   try {
 //     funct === undefined;

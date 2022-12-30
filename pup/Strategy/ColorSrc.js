@@ -4,11 +4,12 @@ const { clicking_Button } = require('./Button');
 /**
  *
  * @param {*} arg - page
- * fetching color in LTP
+ * @description -  Fetch Div Container button Colors
+ *
  */
 const colorLTP = async function (arg) {
   await hold(2000);
-  // ? Color For LTP
+  // ? LTP Colors
   const callBuy = await arg.$eval('#atm-strike-index-ltp-CE-BUY', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
@@ -22,42 +23,43 @@ const colorLTP = async function (arg) {
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
 
-  // * assign to array
+  // * Split An Array
 
+  // * LTP -> CALL & PUT
   const CALL = [callBuy, callSell];
   console.log('        ', CALL);
-  // ? put value
+
   const PUT = [putBuy, putSell];
   console.log('        ', PUT);
 
-  // *  declare color name as constant
+  /**
+   * * SET Color as constant
+   */
 
-  // ? blue
   const blueColor = 'rgb(15, 194, 192)';
-  // ? red
+
   const redColor = 'rgb(253, 60, 82)';
-  // ? white
+
   const whiteColor = 'rgb(255, 255, 255)';
 
-  // * fetch Color and click opposite side buttons
+  // ? LTP CALL
+
   if (CALL.includes(blueColor)) {
-    // ? click Call Sell
     const ltpred = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP Call SELL');
 
     if (!ltpred) {
       await take_screenShot(arg, 'LTP CALL SELL');
     }
   } else if (CALL.includes(redColor)) {
-    // * if color is red
-    // ? click Call Buy
+    // ? if above blue Color is not Match
     const ltpcallblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
 
     if (!ltpcallblue) {
       await take_screenShot(arg, 'LTP CALL BUY');
     }
   } else if (CALL.includes(whiteColor)) {
-    // * if Color is white  click call buy button
-    // ? call buy
+    // ? if above red colors is not match
+
     const ltpwhite = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP CALL BUY');
 
     if (!ltpwhite) {
@@ -65,8 +67,7 @@ const colorLTP = async function (arg) {
     }
   }
 
-  //  * same as PUT values
-
+  //  ? LTP PUT
   if (PUT.includes(blueColor)) {
     const ltpputred = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL');
 
@@ -74,7 +75,6 @@ const colorLTP = async function (arg) {
       await take_screenShot(arg, 'LTP PUT SELL');
     }
   } else if (PUT.includes(redColor)) {
-    // ?
     const ltpputblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-BUY']", '    LTP PUT BUY');
 
     if (!ltpputblue) {
@@ -92,9 +92,10 @@ const colorLTP = async function (arg) {
 /**
  *
  * @param {*} arg - page
- * fetching color value in oi tab
+ * @description - check opposite side of buutton
  */
 const color_OI = async function (arg) {
+  // ? OI Colors
   const callBuy1 = await arg.$eval('#atm-strike-index-oi-CE-BUY', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
@@ -111,16 +112,15 @@ const color_OI = async function (arg) {
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
 
-  // * OI Call
+  // * OI  -> CALL & PUT
   const CALL = [callBuy1, callSell1];
   console.log('        ', CALL);
 
-  // * Put
   const PUT = [putBuy1, putSell1];
   console.log('        ', PUT);
 
   /**
-   * * SET Color as constant
+   * ! SET Color as constant
    */
 
   const blueColor = 'rgb(15, 194, 192)';
@@ -129,7 +129,8 @@ const color_OI = async function (arg) {
 
   const whiteClor = 'rgb(255, 255, 255)';
 
-  //  ? OI Call values is Blue
+  // ? OI CALL
+
   if (CALL.includes(blueColor)) {
     const oicallred = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-CE-SELL']", '    OI CALL SELL');
 
@@ -138,7 +139,6 @@ const color_OI = async function (arg) {
     }
   }
 
-  // ? OI Call value is Red
   if (CALL.includes(redColor)) {
     const oicallblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-CE-BUY']", '    OI CALL BUY');
 
@@ -147,7 +147,7 @@ const color_OI = async function (arg) {
     }
   }
 
-  // ? Same as PUT button
+  // ? OI PUT
 
   if (PUT.includes(redColor)) {
     const oiputblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-PE-BUY']", '    OI PUT BUY');
@@ -167,40 +167,46 @@ const color_OI = async function (arg) {
 };
 
 /**
- *
  * @param {*} arg - page
+ * @description - Fetch Color For Greeks
  */
 
 const color_Greeks = async function (arg) {
-  // ? Greeks
+  // ? Greeks Colors
   const callBuy1 = await arg.$eval('#atm-strike-index-greeks-CE-BUY', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
-  // ? Call Sell
+
   const callSell1 = await arg.$eval('#atm-strike-index-greeks-CE-SELL', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
-  // ? Put Buy
+
   const putBuy1 = await arg.$eval('#atm-strike-index-greeks-PE-BUY', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
-  // ? Put Sell
+
   const putSell1 = await arg.$eval('#atm-strike-index-greeks-PE-SELL', n =>
     JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
   );
 
+  // * Greeks CALL & PUT
   const CALL = [callBuy1, callSell1];
   console.log('        ', CALL);
 
   const PUT = [putBuy1, putSell1];
   console.log('        ', PUT);
 
-  // ? assing constant color name
+  /**
+   * ! SET Color as constant
+   */
+
   const blueColor = 'rgb(15, 194, 192)';
-  // ? red
+
   const redColor = 'rgb(253, 60, 82)';
-  // ? white
+
   const whiteClor = 'rgb(255, 255, 255)';
+
+  // ? Greeks CALL
 
   if (CALL.includes(blueColor)) {
     const greekscallsell = await clicking_Button(
@@ -225,6 +231,8 @@ const color_Greeks = async function (arg) {
       await take_screenShot(arg, 'GREEKS CALL BUY');
     }
   }
+
+  // ? Greeks PUT
 
   if (PUT.includes(blueColor)) {
     const greeksputsell = await clicking_Button(

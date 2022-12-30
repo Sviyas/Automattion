@@ -13,11 +13,13 @@ const { colorLTP } = require('./ColorSrc');
  * @param {*} id  -> element id
  * @param {*} label -> element tag name
  */
+
+// ? Strategy Function
 const Strategies = async function (arg, id, label) {
   const strategy = await clicking_Button(arg, id, label);
 
   await hold(2000);
-  // ? Trades
+  // ? Strategy Name
   if (strategy) {
     console.log(`        🚀  ${label} Strategy  🚀 `);
     // ? hold
@@ -27,14 +29,15 @@ const Strategies = async function (arg, id, label) {
     const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
 
     if (editadd) {
-      // ? click OPT button
       await hold(2000);
 
+      // ? click OPT button
       const opt = await clicking_Button(arg, "//li [@id = 'OPT-slider-header-btn']", '    OPT');
 
       if (opt) {
         await hold(2000);
-        // ? check related buttons
+
+        // ? click related buttons
         const strategyDate = await clicking_Button(
           arg,
           "//div [@id = 'strategy-view-select-with-title-st-slider-date']",
@@ -45,8 +48,7 @@ const Strategies = async function (arg, id, label) {
         if (strategyDate) {
           await hold(2000);
 
-          // ?  fetch strategy leg color
-          // ?  click oppsite color button
+          // ?  Colors Chooser
           await colorLTP(arg);
 
           await hold(1000);
@@ -67,11 +69,14 @@ const Strategies = async function (arg, id, label) {
 
             // ? goto edit add
             const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    LTP Edit/Add');
+
             if (oiEdit) {
               await hold(1000);
               // ? if condition passed
+
               //  ?  OI Page
               await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
+
               // ? Greeks Page
               await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
             } else {

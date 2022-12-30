@@ -1,16 +1,16 @@
 const puppeteer = require('puppeteer');
 const { take_screenShot, hold } = require('./utils');
 const { clicking_Button, click_Button } = require('./Strategy/Button');
-const { futures_Tab } = require('./FuturesTab');
-const { options_Tab } = require('./OptionsTab');
-const { charts_Tab } = require('./ChartsTab');
+// const { futures_Tab } = require('./FuturesTab');
+// const { options_Tab } = require('./OptionsTab');
+// const { charts_Tab } = require('./ChartsTab');
 const { strategy_Tab } = require('./Strategy/StrategyTab');
-const { analysis_Tab } = require('./AnalysisTab');
-const { fii_dii_Tab } = require('./FiiDii');
-const { user_icon } = require('./User');
+// const { analysis_Tab } = require('./AnalysisTab');
+// const { fii_dii_Tab } = require('./FiiDii');
+// const { user_icon } = require('./User');
 
 /**
- *s://stilt.co.in'
+ *
  * @param {*} page - page
  * @param {*} email - email id
  * @param {*} password - password
@@ -19,7 +19,7 @@ const testLogin = async (page, email, password) => {
   // ? Browser Page
   await page.goto('http://localhost:3000/login');
 
-  // ?Login Page
+  // ? Login Page
   const login = await clicking_Button(page, "//span[contains(text(),'Login with Email')]", '1   start');
 
   await hold(1000);
@@ -47,10 +47,10 @@ const testLogin = async (page, email, password) => {
       await take_screenShot(page, 'Password');
     }
 
-    // ? Loggin Processing Page
+    // ? Loggin Processing
     const login = await clicking_Button(page, "//button[contains(text(),'Continue')]", '4   Continue');
     if (login) {
-      // ? if Logging failed capture the screenshot
+      // ? if Logging failed
       const sc = await page.$x("//div[contains(text(),'Email or Password is Wrong')]");
 
       if (sc.length != 0) {
@@ -106,7 +106,7 @@ const testLogin = async (page, email, password) => {
       }
     } else {
       // ? if login
-      await take_screenShot(page, 'login');
+      await take_screenShot(page, 'Continue');
     }
 
     await hold(2000);
@@ -124,5 +124,3 @@ puppeteer
     // await testLogin(page, 'ithirajma.2001@gmail.com', '123490'); // ? test 2
     await testLogin(page, 'ithiraj.tealvue@gmail.com', '1234567890'); // ? test 2
   });
-
-//  ?

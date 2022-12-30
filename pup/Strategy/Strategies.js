@@ -6,6 +6,8 @@ const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
 const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { colorLTP } = require('./ColorSrc');
+// const { trades } = require('./StrategyFunction/Trades');
+const { tradesSlider } = require('./StrategyFunction/TradesSlider');
 
 /**
  *
@@ -29,13 +31,13 @@ const Strategies = async function (arg, id, label) {
     const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
 
     if (editadd) {
-      await hold(2000);
+      await hold(1000);
 
       // ? click OPT button
       const opt = await clicking_Button(arg, "//li [@id = 'OPT-slider-header-btn']", '    OPT');
 
       if (opt) {
-        await hold(2000);
+        await hold(1000);
 
         // ? click related buttons
         const strategyDate = await clicking_Button(
@@ -46,7 +48,13 @@ const Strategies = async function (arg, id, label) {
 
         // ? click LTP Sell button
         if (strategyDate) {
-          await hold(2000);
+          await hold(1000);
+
+          // ? Trades Slider
+          await tradesSlider(arg);
+
+          // ? Trades
+          // await trades(arg);
 
           // ?  Colors Chooser
           await colorLTP(arg);
@@ -59,30 +67,30 @@ const Strategies = async function (arg, id, label) {
             await hold(3000);
 
             // ? Nifty Target Function
-            await niftyTarget_fun(arg, 'LTP');
+            // await niftyTarget_fun(arg, 'LTP');
 
             // ? Expiry Function
-            await expiry_fun(arg, 'LTP');
+            // await expiry_fun(arg, 'LTP');
 
             // ? check striekwise ivs
-            await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
+            // await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
 
-            // ? goto edit add
-            const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    LTP Edit/Add');
+            // ? OI
+            // const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    LTP Edit/Add');
 
-            if (oiEdit) {
-              await hold(1000);
-              // ? if condition passed
+            // if (oiEdit) {
+            //   await hold(1000);
+            //   // ? if condition passed
 
-              //  ?  OI Page
-              await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
+            //   //  ?  OI Page
+            //   await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
 
-              // ? Greeks Page
-              await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
-            } else {
-              // @ts-check
-              await take_screenShot(arg, 'OI Edit');
-            }
+            //   // ? Greeks Page
+            //   await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
+            // } else {
+            //   // @ts-check
+            //   await take_screenShot(arg, 'OI Edit');
+            // }
           } else {
             // @ts-check
             await take_screenShot(arg, 'Done');

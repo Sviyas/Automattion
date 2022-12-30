@@ -137,9 +137,7 @@ const color_OI = async function (arg) {
     if (!oicallred) {
       await take_screenShot(arg, 'OI CALL SELL');
     }
-  }
-
-  if (CALL.includes(redColor)) {
+  } else if (CALL.includes(redColor)) {
     const oicallblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-CE-BUY']", '    OI CALL BUY');
 
     if (!oicallblue) {
@@ -155,9 +153,7 @@ const color_OI = async function (arg) {
     if (!oiputblue) {
       await take_screenShot(arg, 'OI PUT BUY');
     }
-  }
-
-  if (PUT.includes(blueColor)) {
+  } else if (PUT.includes(blueColor)) {
     const oiputred = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-PE-SELL']", '    OI PUT SELL');
 
     if (!oiputred) {
@@ -218,9 +214,7 @@ const color_Greeks = async function (arg) {
     if (!greekscallsell) {
       await take_screenShot(arg, 'GREEKS CALL SELL');
     }
-  }
-
-  if (CALL.includes(redColor)) {
+  } else if (CALL.includes(redColor)) {
     const greekcallbuy = await clicking_Button(
       arg,
       "//div [@id = 'atm-strike-index-greeks-CE-BUY']",
@@ -244,9 +238,7 @@ const color_Greeks = async function (arg) {
     if (!greeksputsell) {
       await take_screenShot(arg, 'GREEKS PUT SELL');
     }
-  }
-
-  if (PUT.includes(redColor)) {
+  } else if (PUT.includes(redColor)) {
     const greeksputbuy = await clicking_Button(
       arg,
       "//div [@id ='atm-strike-index-greeks-PE-BUY']",

@@ -17,7 +17,7 @@ const { strategy_Tab } = require('./Strategy/StrategyTab');
  */
 const testLogin = async (page, email, password) => {
   // ? Browser Page
-  await page.goto('http://localhost:3000/login');
+  await page.goto('http://stilt.co.in/');
 
   // ? Login Page
   const login = await clicking_Button(page, "//span[contains(text(),'Login with Email')]", '1   start');
@@ -71,31 +71,31 @@ const testLogin = async (page, email, password) => {
 
         await hold(1000);
         // ? futures Tab
-        console.log('    7     Navigating to Futures Tab');
-        await futures_Tab(page);
+        // console.log('    7     Navigating to Futures Tab');
+        // await futures_Tab(page);
 
         // ? option Tab
-        console.log('    8     Navigating to Options Tab');
-        await options_Tab(page);
+        // console.log('    8     Navigating to Options Tab');
+        // await options_Tab(page);
 
         // ? chart Tab
-        console.log('    9     Navigating to Charts Tab');
-        await charts_Tab(page);
+        // console.log('    9     Navigating to Charts Tab');
+        // await charts_Tab(page);
 
         //  ? strategy  Tab
         console.log('    10     Navigating to Strategy Tab');
         await strategy_Tab(page);
 
         // ? analysis Tab
-        console.log('    11   Navigating to Analysis Tab');
-        await analysis_Tab(page);
+        // console.log('    11   Navigating to Analysis Tab');
+        // await analysis_Tab(page);
 
         // ? FII_DII Tab
-        console.log('    12   Navigating to FII/DII Tab');
-        await fii_dii_Tab(page);
+        // console.log('    12   Navigating to FII/DII Tab');
+        // await fii_dii_Tab(page);
 
         // ? user icon
-        await user_icon(page);
+        // await user_icon(page);
         // ? Icon Tab
         // await clicking_Button(page, "//img[@alt = 'User icon']", ' Icon');
 

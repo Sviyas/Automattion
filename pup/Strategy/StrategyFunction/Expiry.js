@@ -5,22 +5,21 @@ const { clicking_Button } = require('../Button');
  *
  * @param {*} arg - page
  * @param {*} label - element tag name like LTP, OI , Greeks
+ * @description - Expiry Target
  */
 const expiry_fun = async function (arg, label) {
   console.log(`        ${label} ✅ EXPIRY TARGET`);
 
   await hold(2000);
-  // ? fetch Expiry date and Values
+  // ? Fetch Expiry Profit/loss & Current Date Values
 
   const expiryProfit = await (
     await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
   ).jsonValue();
 
-  //  ? parse the value
   const expProftitValue = parseInt(expiryProfit);
 
   console.log(`        ${label} Expiry Profit Values : `, expProftitValue);
-  //   ? fetch expiry date
 
   const expiryDate = await (
     await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
@@ -28,7 +27,7 @@ const expiry_fun = async function (arg, label) {
 
   console.log(`        ${label} Expiry Date : `, expiryDate);
 
-  //   ? click expiry forward date increment button
+  //   ? click EXP Forward button
   const expiryIncre = await clicking_Button(
     arg,
     "//button [@id ='expiry-move-backword-btn']",
@@ -36,7 +35,7 @@ const expiry_fun = async function (arg, label) {
   );
   await hold(2000);
 
-  //  ? fetch increment profit loss value and increment date value :
+  // ? fetch Increment profit/loss value and increment date value
 
   const forwardDate = await (
     await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
@@ -52,11 +51,10 @@ const expiry_fun = async function (arg, label) {
 
   console.log(`        ${label} Expiry Forward Date Profit Loss Value : `, forwardDateIncreVal);
 
-  //  ? check if expiry increment button
+  //  ! check if expiry increment button
 
   if (forwardDate !== expiryDate) {
-    // ? condition passed
-    // ? click expiry backward button
+    // ? click EXP  backward button
 
     const expiryDec = await clicking_Button(
       arg,
@@ -64,7 +62,9 @@ const expiry_fun = async function (arg, label) {
       `    ${label} Expiry Backward`
     );
     await hold(2000);
-    // ? fetch backward date and backward values
+
+    // ? fetch Increment profit/loss value and increment date value
+
     const backwardDate = await (
       await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
     ).jsonValue();
@@ -79,29 +79,25 @@ const expiry_fun = async function (arg, label) {
 
     console.log(`        ${label} Expiry backward Date Profit Loss Value : `, backwardDateDecVal);
 
-    // ? check Backward button
+    // ! check Backward button
     if (backwardDate !== forwardDate) {
-      // ? if passed
       // ? click expiry Reset button
-
       const expReset = await clicking_Button(arg, "//p [@id ='expiry-target-reset-btn']", `    ${label} Expiry Reset`);
       await hold(3000);
-      //   ? fetch Reset Values
+
+      //   ? fetch Reset Profit/Loss Value & Date Values
       const expiryReset = await (
         await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
       ).jsonValue();
 
       const expiryResetVal = parseInt(expiryReset);
 
-      // ? fetch reset date values
       const resetDate = await (
         await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
       ).jsonValue();
 
-      //   ? check Reset values and expiry profit value are same
-
+      // ! check Reset values and expiry profit value are same
       if (resetDate === expiryDate) {
-        // ?
         console.log(`        ${label} Expiry Reset Date : `, resetDate);
         console.log(`        ${label} Expiry Reset Profit Loss Value : `, expiryResetVal);
       } else {
@@ -113,7 +109,7 @@ const expiry_fun = async function (arg, label) {
       await take_screenShot(arg, `${label} Expiry Backward`);
     }
   } else if (forwardDateIncreVal === expProftitValue) {
-    // ? check current date is expiry or not
+    // ? check current date is ->  expiry or not
     await hold(1000);
     const options = { weekday: 'long' };
 
@@ -122,7 +118,7 @@ const expiry_fun = async function (arg, label) {
     const checkDateValue = currentDate.toLocaleDateString('en-US', options);
 
     if ('Thursday' === checkDateValue) {
-      // ? if current day is expiry .... the process will be end
+      // ? if current day is expiry ->  the process will be end
       console.log(`        Today is Expiry 👍`);
     } else {
       // ?

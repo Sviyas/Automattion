@@ -14,8 +14,7 @@ const greeksTab = async function (ag, id, label) {
     // ? hold
     await hold(1000);
 
-    // ? fetch the button colors
-    // ? check functions
+    // ? Color Chooser
     await color_Greeks(ag);
 
     await hold(1000);
@@ -23,7 +22,6 @@ const greeksTab = async function (ag, id, label) {
     const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    Greeks Done');
 
     if (done) {
-      // ? condition passed
       await hold(2000);
 
       // ? Nifty Target Function
@@ -33,17 +31,16 @@ const greeksTab = async function (ag, id, label) {
       // ? Strikewise IV function
       await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
       // ? go to edit add
-      // ?
+
       const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    Greeks Edit/Add');
 
       if (greeksEdit) {
-        // ? click to restore
+        // ? Restore
         const LTPClick = await clicking_Button(ag, "//li [@id ='LTP-slider-header-btn']", '    Restore');
 
         if (LTPClick) {
-          // ? if condition passed
-          // ? clear the page
-          // ? after go homepage
+          // ? clear the page & go to homepage
+
           const clearPage = await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    🔄 Clear');
 
           if (clearPage) {
@@ -54,7 +51,7 @@ const greeksTab = async function (ag, id, label) {
 
             if (done && homepage) {
               console.log(`       🤝 Successfully Returned HomePage 🤝`);
-            } else if (done) {
+            } else if (!done) {
               // @ts-check
               await take_screenShot(ag, 'Done');
             } else {

@@ -1,7 +1,10 @@
-/** Trades
- *
- */
+const { hold } = require('../../utils');
 
-const tradesFun = async function (arg) {
-  // ? Find Trades Div Container Length
-};
+/**
+ *
+ * @param {*} arg - page
+ * @description - Trades
+ */
+const trades = async function (arg) {};
+
+module.exports.trades = trades;

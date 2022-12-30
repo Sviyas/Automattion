@@ -21,15 +21,9 @@ const OITab = async function (ag, id, label) {
     // ? hold
     await hold(2000);
 
-    // ? fetch color in OI Tab
-    // ? add one OI leg put buy
-
+    // ? Color Chooser a
     await color_OI(ag);
 
-    // ? condition passed
-    // ? remove one call sell
-
-    // ? condition passed
     await hold(1000);
 
     const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    OI Done');
@@ -47,6 +41,7 @@ const OITab = async function (ag, id, label) {
       // ? go to edit add
 
       const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    Greeks Edit/Add');
+
       if (!greeksEdit) {
         // @ts-check
         await take_screenShot(ag, 'Greeks Edit');

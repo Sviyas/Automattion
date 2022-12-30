@@ -18,14 +18,14 @@ const clicking_Button = async function (arg, id, label) {
   return clicking;
 };
 
-//  ? if function does not exists capture the error
-const errorIdentfier = async function (funct) {
-  try {
-    funct === undefined;
-  } catch (err) {
-    err.take_screenShot(arg);
-  }
-};
+// //  ? if function does not exists capture the error
+// const errorIdentfier = async function (funct) {
+//   try {
+//     funct === undefined;
+//   } catch (err) {
+//     err.take_screenShot(arg);
+//   }
+// };
 
 /**
  *

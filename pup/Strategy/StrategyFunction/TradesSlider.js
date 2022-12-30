@@ -16,7 +16,7 @@ const tradesSlider = async function (arg) {
   ).jsonValue();
 
   const divContainerlength = parseInt(tradesDivContainer);
-  // console.log('🚀 ~ file: Trades.js:16 ~ tradesFun ~ divContainerlength', divContainerlength);
+  console.log('        ', divContainerlength);
 
   // ! Generate Random Number using divlength -  10 times
 
@@ -28,75 +28,72 @@ const tradesSlider = async function (arg) {
 
   // ? Loop RandomNum 10 times
   const storelength = new Array();
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 7; i++) {
     storelength[i] = RandomNum();
   }
 
   // ? Split into CALL & PUT
 
-  const CALL = storelength.slice(0, 5);
-  // console.log('🚀 ~ file: Trades.js:38 ~ tradesFun ~ CALL', CALL);
-  const PUT = storelength.slice(5, 10);
-  // console.log('🚀 ~ file: Trades.js:40 ~ tradesFun ~ PUT', PUT);
+  const CALL = storelength.slice(0, 4);
+  console.log('        ', CALL);
+  const PUT = storelength.slice(4, 7);
+  console.log('        ', PUT);
 
-  if (CALL) {
-    // await hold(1000);
-    const c1 = "//div [@id ='" + CALL[0] + "-ltp-CE-BUY']";
+  //  ? CALL
+  const c1 = "//div [@id ='" + CALL[0] + "-ltp-CE-BUY']";
 
-    const c2 = "//div [@id ='" + CALL[1] + "-ltp-CE-SELL']";
-    const c3 = "//div [@id ='" + CALL[2] + "-ltp-CE-BUY']";
-    const c4 = "//div [@id ='" + CALL[3] + "-ltp-CE-SELL']";
-    const c5 = "//div [@id ='" + CALL[4] + "-ltp-CE-BUY']";
+  const c2 = "//div [@id ='" + CALL[1] + "-ltp-CE-SELL']";
 
-    await hold(1000);
+  const c3 = "//div [@id ='" + CALL[2] + "-ltp-CE-BUY']";
 
-    const call_1 = await clicking_Button(arg, c1, '    CE-BUY');
-
-    if (call_1) {
-      await hold(1000);
-      const call_2 = await clicking_Button(arg, c2, '    CE-SELL Button');
-      if (call_2) {
-        await hold(1000);
-        const call_3 = await clicking_Button(arg, c3, '    CE-BUY Button');
-        if (call_3) {
-          await hold(1000);
-          const call_4 = await clicking_Button(arg, c4, '    CE-SELL Button');
-          if (call_4) {
-            await hold(1000);
-            const call_5 = await clicking_Button(arg, c5, '    CE-BUY Button');
-            if (call_5) {
-              console.log('button  clicked pa');
-            } else {
-              console.log('button not clicked pa');
-            }
-          } else {
-            console.log('button not clicked pa');
-          }
-        } else {
-          console.log('button not clicked pa');
-        }
-      } else {
-        console.log('button not clicked pa');
-      }
-    } else {
-      console.log('button not clicked pa');
-    }
-  }
+  const c4 = "//div [@id ='" + CALL[3] + "-ltp-CE-SELL']";
 
   // ? PUT
-  if (PUT) {
-    const p1 = "//div [@id ='" + CALL[0] + "-ltp-CE-BUY']";
-    const p2 = "//div [@id ='" + CALL[1] + "-ltp-CE-SELL']";
-    const p3 = "//div [@id ='" + CALL[2] + "-ltp-CE-BUY']";
-    const p4 = "//div [@id ='" + CALL[3] + "-ltp-CE-SELL']";
-    const p5 = "//div [@id ='" + CALL[4] + "-ltp-CE-BUY']";
+  const p1 = "//div [@id ='" + PUT[0] + "-ltp-PE-BUY']";
 
-    // ?
-    // await hold(1000);
+  const p2 = "//div [@id ='" + PUT[1] + "-ltp-PE-SELL']";
 
-    // const put_1 = await clicking_Button(arg, p1, '    ');
-    // if (put_1) {
-    // aw
+  const p3 = "//div [@id ='" + PUT[2] + "-ltp-PE-BUY']";
+
+  if (CALL && PUT) {
+    await hold(1000);
+    const call_1 = await clicking_Button(arg, c1, '    CE-BUY');
+
+    await hold(1000);
+    const call_2 = await clicking_Button(arg, c2, '    CE-SELL');
+
+    await hold(1000);
+    const call_3 = await clicking_Button(arg, c3, '    CE-BUY');
+
+    await hold(1000);
+    const call_4 = await clicking_Button(arg, c4, '    CE-SELL');
+
+    await hold(1000);
+    const put_1 = await clicking_Button(arg, p1, '    PE-BUY');
+
+    await hold(1000);
+    const put_2 = await clicking_Button(arg, p2, '    PE-SELL');
+
+    await hold(1000);
+    const put_3 = await clicking_Button(arg, p3, '    PE-BUY');
+
+    if (put_3) {
+      const sliderViewCheck = await clicking_Button(
+        arg,
+        "//div [contains(text(),'Add Morethan 10 Legs')]",
+        '    Legs Check'
+      );
+
+      if (sliderViewCheck) {
+        console.log('        You Try To Add More Then 10 Legs');
+      }
+    }
+
+    // const sliderview =
+    // if (sliderview) {
+    //   console.log('        You try add more than 10 legs !!!');
+    // } else {
+    //   console.log('        Continue');
     // }
   }
 };

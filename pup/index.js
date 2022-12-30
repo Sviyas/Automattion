@@ -20,7 +20,7 @@ const testLogin = async (page, email, password) => {
   await page.goto('http://stilt.co.in/');
 
   // ? Login Page
-  const login = await clicking_Button(page, "//span[contains(text(),'Login with Email')]", '1   start');
+  const login = await clicking_Button(page, "//span[contains(text(),'Login with Email')]", '1     start');
 
   await hold(1000);
 
@@ -31,7 +31,7 @@ const testLogin = async (page, email, password) => {
     if (user.length > 0) {
       await user[0].click();
       await user[0].type(email);
-      console.log('    2   email :', email);
+      console.log('    2     email :', email);
     } else {
       await take_screenShot(page, 'User');
     }
@@ -42,20 +42,20 @@ const testLogin = async (page, email, password) => {
     if (pass.length > 0) {
       await pass[0].click();
       await pass[0].type(password);
-      console.log('    3   password :', password);
+      console.log('    3     password :', password);
     } else {
       await take_screenShot(page, 'Password');
     }
 
     // ? Loggin Processing
-    const login = await clicking_Button(page, "//button[contains(text(),'Continue')]", '4   Continue');
+    const login = await clicking_Button(page, "//button[contains(text(),'Continue')]", '4     Continue');
     if (login) {
       // ? if Logging failed
       const sc = await page.$x("//div[contains(text(),'Email or Password is Wrong')]");
 
       if (sc.length != 0) {
         await take_screenShot(page, 'login Failed');
-        console.log('    5   Failed login & Capture ScreenShot ');
+        console.log('    5     Failed login & Capture ScreenShot ');
       }
 
       if (!sc) {
@@ -67,7 +67,7 @@ const testLogin = async (page, email, password) => {
         }
       } else {
         // await page.$x("//a[contains(text(), 'User')]");
-        console.log('    6   login Successfull');
+        console.log('    6     login Successfull');
 
         await hold(1000);
         // ? futures Tab

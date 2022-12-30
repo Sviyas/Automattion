@@ -49,6 +49,8 @@ const Strategies = async function (arg, id, label) {
         // ? click LTP Sell button
         if (strategyDate) {
           await hold(1000);
+          // ?  Colors Chooser for current-strike price
+          await colorLTP(arg);
 
           // ? Trades Slider
           await tradesSlider(arg);
@@ -56,8 +58,6 @@ const Strategies = async function (arg, id, label) {
           // ? Trades
           // await trades(arg);
           await hold(1000);
-          // ?  Colors Chooser
-          await colorLTP(arg);
 
           await hold(1000);
 

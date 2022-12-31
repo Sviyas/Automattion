@@ -119,7 +119,7 @@ const expiry_fun = async function (arg, label) {
 
     if ('Thursday' === checkDateValue) {
       // ? if current day is expiry ->  the process will be end
-      console.log(`        Today is Expiry 👍`);
+      console.log(`        Today is Expiry 🤝`);
     } else {
       // ?
       await take_screenShot(arg, `${label} Expiry Forward`);

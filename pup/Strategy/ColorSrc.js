@@ -27,10 +27,10 @@ const colorLTP = async function (arg, label) {
 
   // * LTP -> CALL & PUT
   const CALL = [callBuy, callSell];
-  console.log('        ', CALL);
+  // console.log('        ', CALL);
 
   const PUT = [putBuy, putSell];
-  console.log('        ', PUT);
+  // console.log('        ', PUT);
 
   /**
    * ! SET Color as constant
@@ -56,7 +56,7 @@ const colorLTP = async function (arg, label) {
     }
   } else if (CALL.includes(redColor)) {
     await hold(1000);
-    // ? if above blue Color is not Match
+
     const ltpcallblue = await clicking_Button(
       arg,
       "//div [@id ='atm-strike-index-ltp-CE-BUY']",
@@ -67,7 +67,6 @@ const colorLTP = async function (arg, label) {
       await take_screenShot(arg, 'LTP CALL BUY');
     }
   } else if (CALL.includes(whiteColor)) {
-    // ? if above red colors is not match
     await hold(1000);
     const ltpwhite = await clicking_Button(
       arg,

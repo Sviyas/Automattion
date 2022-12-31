@@ -22,7 +22,7 @@ const OITab = async function (ag, id, label) {
     await hold(2000);
 
     // ? clear Strategy
-    await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    🔄 Clear LTP');
+    await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    🔄 Clear LTP 🔄');
 
     // ? Trades Slider
     await tradesSlider(ag, label, '-oi');
@@ -32,22 +32,22 @@ const OITab = async function (ag, id, label) {
 
     await hold(1000);
 
-    const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    ✅ Done');
+    const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    ✅ Done ✅');
 
     if (done) {
       await hold(2000);
 
       // ?  Nifty Target
-      // await niftyTarget_fun(ag, 'OI');
+      await niftyTarget_fun(ag, 'OI');
 
       // ? Expiry Date
-      // await expiry_fun(ag, 'OI');
+      await expiry_fun(ag, 'OI');
 
       // ? Strikewise IV
-      // await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'OI');
+      await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'OI');
 
       // ? Select Greeks Tab
-      const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add');
+      const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add ➕');
 
       if (!greeksEdit) {
         // @ts-check

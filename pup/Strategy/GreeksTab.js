@@ -16,7 +16,7 @@ const greeksTab = async function (ag, id, label) {
     await hold(1000);
 
     // ? clear Strategy
-    await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    🔄 Clear LTP');
+    await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    🔄 Clear OI 🔄');
 
     // ? Color Chooser
     // await color_Greeks(ag);
@@ -26,7 +26,7 @@ const greeksTab = async function (ag, id, label) {
 
     await hold(1000);
 
-    const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    Greeks Done');
+    const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '     ✅ Done  ✅ ');
 
     if (done) {
       await hold(2000);
@@ -39,11 +39,11 @@ const greeksTab = async function (ag, id, label) {
       // await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
       // ? go to edit add
 
-      const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    Greeks Edit/Add');
+      const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '      ➕ Edit/Add  ➕ ');
 
       if (greeksEdit) {
         // ? Restore
-        const LTPClick = await clicking_Button(ag, "//li [@id ='LTP-slider-header-btn']", '    Restore');
+        const LTPClick = await clicking_Button(ag, "//li [@id ='LTP-slider-header-btn']", '    🔄 Restore 🔄');
 
         if (LTPClick) {
           // ? clear the page & go to homepage
@@ -55,6 +55,9 @@ const greeksTab = async function (ag, id, label) {
             // ? click homepage
             const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    Done');
             const homepage = await clicking_Button(ag, "//span [@id = 'strategy-btn']", '    Home Page');
+
+            console.log(typeof done);
+            console.log(typeof homepage);
 
             if (done && homepage) {
               console.log(`       🤝 Successfully Returned HomePage 🤝`);

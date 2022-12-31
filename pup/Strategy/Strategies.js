@@ -28,7 +28,7 @@ const Strategies = async function (arg, id, label) {
     await hold(3000);
 
     // ? edit to select legs
-    const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    Edit/Add');
+    const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add  ➕');
 
     if (editadd) {
       await hold(1000);
@@ -57,22 +57,22 @@ const Strategies = async function (arg, id, label) {
 
           await hold(1000);
 
-          const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    ✅ Done');
+          const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    ✅ Done ✅');
 
           if (done) {
             await hold(1000);
 
             // ? Nifty Target Function
-            // await niftyTarget_fun(arg, 'LTP');
+            await niftyTarget_fun(arg, 'LTP');
 
             // ? Expiry Function
-            // await expiry_fun(arg, 'LTP');
+            await expiry_fun(arg, 'LTP');
 
             // ? StrikeWise IV
-            // await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
+            await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
 
             // ? OI
-            const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add');
+            const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add ➕');
 
             if (oiEdit) {
               await hold(2000);

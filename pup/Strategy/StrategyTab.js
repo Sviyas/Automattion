@@ -69,16 +69,16 @@ const strategy_Tab = async function (arg, brwsr) {
               // await Strategies(arg, "//div [@id ='Long Call']", '    Long Call');
 
               // ? Short Call
-              // await hold(1000);
-              // await Strategies(arg, "//div [@id ='Short Call']", '    Short Call');
+              await hold(1000);
+              await Strategies(arg, "//div [@id ='Short Call']", '    Short Call');
 
               // ? Long Put
               // await hold(1000);
               // await Strategies(arg, "//div [@id ='Long Put']", '    Long Put');
 
               // ? Short put
-              await hold(1000);
-              await Strategies(arg, "//div [@id = 'Short Put']", '    Short Put');
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id = 'Short Put']", '    Short Put');
 
               // ? Bull Call Spread
               // await hold(1000);

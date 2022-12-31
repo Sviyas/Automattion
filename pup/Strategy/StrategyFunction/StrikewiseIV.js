@@ -169,8 +169,8 @@ const strikewise_fun = async function (arg, id1, id2, label) {
     console.log('        Reset Successfully 🤝 ');
   } else {
     // @ts-expect-error if values are same not working or data loading problem
-    await take_screenShot(arg, `${label} Strike Reset`);
-    console.log('  ☠️ ☠️   Strike wise IV Values Not Change ☠️ ☠️');
+    // await take_screenShot(arg, `${label} Strike Reset`);
+    console.log('        ☠️ ☠️   Strike wise IV Values Not Change ☠️ ☠️');
   }
 };
 

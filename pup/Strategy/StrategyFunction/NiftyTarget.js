@@ -9,17 +9,16 @@ const { clicking_Button } = require('../Button');
 const niftyTarget_fun = async function (arg, label) {
   await hold(1000);
   console.log(`        ${label} ✅ NIFTY TARGET`);
-  // ?  fetch profit loss values in Nifty Target Price
+  // ?                        fetch profit loss values in Nifty Target Price
   const prolos = await (
     await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
   ).jsonValue();
 
-  // ? parse Value
   const profitLoss = parseInt(prolos);
 
   console.log(`        ${label} Nifty profit loss Value : `, profitLoss);
 
-  // ? nifty target price value :
+  // ?                        nifty target price value :
 
   const niftyPrice = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
 
@@ -27,24 +26,23 @@ const niftyTarget_fun = async function (arg, label) {
 
   console.log(`        ${label} Nifty Price Value : `, niftyPriceVal);
 
-  //  ? nifty target increment button
+  //  ?                      nifty target increment button
 
   await clicking_Button(arg, "//button [@id = 'target-addition-btn']", `    ${label} Nifty Increment`);
   await hold(2000);
 
-  //   ? fetch incrment value
+  //   ?                     fetch incrment value
   const niftyInc = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
 
   const incrementValue = parseFloat(niftyInc);
   console.log(`        ${label} Nifty Increment Price Value : `, incrementValue);
 
-  // ? if condition passed
   if (incrementValue !== niftyPriceVal) {
-    // ? click Decrement button
+    // ?                    click Decrement button
 
     await clicking_Button(arg, "//button[@id = 'target-subraction-btn']", `    ${label} Nifty Decrement`);
     await hold(2000);
-    //  ? fetch decrement values
+    // ?                    fetch decrement values
 
     const niftyDec = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
 
@@ -52,19 +50,18 @@ const niftyTarget_fun = async function (arg, label) {
 
     console.log(`        ${label} Nifty Decrement Price Value : `, decrementValue);
 
-    // ? check Decrement button
+    // ?                    check Decrement button
 
     if (decrementValue !== incrementValue) {
-      // ? click Nifty Reset Button
+      // ?                   click Nifty Reset Button
 
       await clicking_Button(arg, "//p[@id = 'target-reset-btn']", `    ${label} Nifty Reset`);
       await hold(2000);
-      //   ? fetch reset value
+      //   ?                fetch reset value
 
       const niftyres = await (
         await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')
       ).jsonValue();
-      //   ? parse value
 
       const niftyResetInttVal = parseInt(niftyres);
       const niftyResetVal = parseFloat(niftyres);

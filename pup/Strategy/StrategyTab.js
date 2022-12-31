@@ -11,11 +11,11 @@ const { hold, take_screenShot } = require('../utils');
 const strategy_Tab = async function (arg, brwsr) {
   // const strategyBuilder = await button(arg, "//a [@id ='header-link-StrategyBuilder']", '    Strategy Builder');
 
-  await hold(2000);
+  await hold(3000);
 
   // ? Strategy Builder Page
   const strategyBuilder = await arg.$x("//a [@id ='header-link-StrategyBuilder']");
-  console.log('        🚀  StrategyTab.js:20  strategyBuilder ', strategyBuilder.length);
+  // console.log('        🚀  StrategyTab.js:20  strategyBuilder ', strategyBuilder.length);
 
   if (strategyBuilder.length === 1) {
     await strategyBuilder[0].evaluate(el => {
@@ -77,8 +77,8 @@ const strategy_Tab = async function (arg, brwsr) {
               // await Strategies(arg, "//div [@id ='Long Put']", '    Long Put');
 
               // ? Short put
-              // await hold(1000);
-              // await Strategies(arg, "//div [@id = 'Short Put']", '    Short Put');
+              await hold(1000);
+              await Strategies(arg, "//div [@id = 'Short Put']", '    Short Put');
 
               // ? Bull Call Spread
               // await hold(1000);
@@ -105,8 +105,8 @@ const strategy_Tab = async function (arg, brwsr) {
               // await Strategies(arg, "// div [@id ='Short Straddle']", '    Short Straddle');
 
               // ? Long Strangle
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Strangle']", '    Long Strangle');
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Strangle']", '    Long Strangle');
 
               // ? Short Strangle
               // await hold(1000);

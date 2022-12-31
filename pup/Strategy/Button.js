@@ -5,7 +5,7 @@ const { take_screenShot } = require('../utils');
  *
  * @param {*} arg - page
  * @param {*} id  - element id
- * @param {*} label - element Tag name
+ * @param {*} label - Button Name
  * @returns
  */
 const clicking_Button = async function (arg, id, label) {
@@ -13,25 +13,16 @@ const clicking_Button = async function (arg, id, label) {
 
   if (clicking.length > 0) {
     await clicking[0].click();
-    console.log(`    ${label} button`);
+    console.log(`    ${label} `);
   }
   return clicking;
 };
-
-//  ? if function does not exists capture the error
-// const errorIdentfier = async function (funct) {
-//   try {
-//     funct === undefined;
-//   } catch (err) {
-//     err.take_screenShot(arg);
-//   }
-// };
 
 /**
  *
  * @param {*} arg - page
  * @param {*} id  - element id
- * @param {*} label - element tag name
+ * @param {*} label - Button Name
  * @returns
  */
 // ?? click button when length is 1
@@ -39,7 +30,7 @@ const click_Button = async function (arg, id, label) {
   const clicking = await arg.$x(`${id}`);
   if (clicking.length > 1) {
     await clicking[1].click();
-    console.log(`    ${label} button`);
+    console.log(`    ${label} `);
   }
   return clicking;
 };
@@ -49,7 +40,7 @@ const click_Button = async function (arg, id, label) {
  *
  * @param {*} arg -> page
  * @param {*} id  -> element id
- * @param {*} label  -> element tag name
+ * @param {*} label  -> Button Name
  * @returns
  */
 const button = async function (arg, id, label) {

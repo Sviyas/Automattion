@@ -13,7 +13,7 @@ const { tradesSlider } = require('./StrategyFunction/TradesSlider');
  *
  * @param {*} arg  -> page
  * @param {*} id  -> element id
- * @param {*} label -> element tag name
+ * @param {*} label -> strategy label name
  */
 
 // ? Strategy Function
@@ -23,8 +23,8 @@ const Strategies = async function (arg, id, label) {
   await hold(2000);
   // ? Strategy Name
   if (strategy) {
-    console.log(`        🚀  ${label} Strategy  🚀 `);
-    // ? hold
+    console.log(`                 🚀  ${label} Strategy  🚀 `);
+
     await hold(3000);
 
     // ? edit to select legs
@@ -46,55 +46,50 @@ const Strategies = async function (arg, id, label) {
           '    Strategy Date Picker'
         );
 
-        // ? click LTP Sell button
         if (strategyDate) {
-          await hold(1000);
           // ?  Colors Chooser for current-strike price
           await colorLTP(arg);
 
           // ? Trades Slider
-          await tradesSlider(arg);
+          await tradesSlider(arg, label, '-ltp');
 
           // ? Trades
-          // await trades(arg);
-          await hold(1000);
 
           await hold(1000);
 
-          // const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    Done');
+          const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    ✅ Done');
 
-          // if (done) {
-          //   await hold(3000);
+          if (done) {
+            await hold(1000);
 
-          // ? Nifty Target Function
-          // await niftyTarget_fun(arg, 'LTP');
+            // ? Nifty Target Function
+            // await niftyTarget_fun(arg, 'LTP');
 
-          // ? Expiry Function
-          // await expiry_fun(arg, 'LTP');
+            // ? Expiry Function
+            // await expiry_fun(arg, 'LTP');
 
-          // ? check striekwise ivs
-          // await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
+            // ? StrikeWise IV
+            // await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
 
-          // ? OI
-          // const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    LTP Edit/Add');
+            // ? OI
+            const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add');
 
-          // if (oiEdit) {
-          //   await hold(1000);
-          // ? if condition passed
+            if (oiEdit) {
+              await hold(2000);
 
-          //  ?  OI Page
-          //   await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
+              //  ?  OI Page
+              await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
 
-          // ? Greeks Page
-          //   await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
-          // } else {
-          // @ts-check
-          //   await take_screenShot(arg, 'OI Edit');
-          // }
-          // } else {
-          // @ts-check
-          //   await take_screenShot(arg, 'Done');
-          // }
+              // ? Greeks Page
+              await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
+            } else {
+              // @ts-check
+              await take_screenShot(arg, 'OI Edit');
+            }
+          } else {
+            // @ts-check
+            await take_screenShot(arg, 'Done');
+          }
         } else {
           // @ts-check
           await take_screenShot(arg, 'Strategy Date Picker');

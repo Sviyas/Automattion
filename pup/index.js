@@ -1,6 +1,6 @@
 const puppeteer = require('puppeteer');
 const { take_screenShot, hold } = require('./utils');
-const { clicking_Button, click_Button } = require('./Strategy/Button');
+const { clicking_Button } = require('./Strategy/Button');
 // const { futures_Tab } = require('./FuturesTab');
 // const { options_Tab } = require('./OptionsTab');
 // const { charts_Tab } = require('./ChartsTab');
@@ -20,7 +20,7 @@ const testLogin = async (page, email, password) => {
   await page.goto('http://stilt.co.in/');
 
   // ? Login Page
-  const login = await clicking_Button(page, "//span[contains(text(),'Login with Email')]", '1     start');
+  const login = await clicking_Button(page, "//span[contains(text(),'Login with Email')]", '1      start');
 
   await hold(1000);
 
@@ -31,7 +31,7 @@ const testLogin = async (page, email, password) => {
     if (user.length > 0) {
       await user[0].click();
       await user[0].type(email);
-      console.log('    2     email :', email);
+      console.log('    2      email :', email);
     } else {
       await take_screenShot(page, 'User');
     }
@@ -42,13 +42,13 @@ const testLogin = async (page, email, password) => {
     if (pass.length > 0) {
       await pass[0].click();
       await pass[0].type(password);
-      console.log('    3     password :', password);
+      console.log('    3      password :', password);
     } else {
       await take_screenShot(page, 'Password');
     }
 
     // ? Loggin Processing
-    const login = await clicking_Button(page, "//button[contains(text(),'Continue')]", '4     Continue');
+    const login = await clicking_Button(page, "//button[contains(text(),'Continue')]", '4      Continue');
     if (login) {
       // ? if Logging failed
       const sc = await page.$x("//div[contains(text(),'Email or Password is Wrong')]");
@@ -67,9 +67,9 @@ const testLogin = async (page, email, password) => {
         }
       } else {
         // await page.$x("//a[contains(text(), 'User')]");
-        console.log('    6     login Successfull');
+        console.log('    6      login Successfull');
 
-        await hold(1000);
+        await hold(2000);
         // ? futures Tab
         // console.log('    7     Navigating to Futures Tab');
         // await futures_Tab(page);
@@ -96,13 +96,6 @@ const testLogin = async (page, email, password) => {
 
         // ? user icon
         // await user_icon(page);
-        // ? Icon Tab
-        // await clicking_Button(page, "//img[@alt = 'User icon']", ' Icon');
-
-        //  ? user Logout
-        // await click_Button(page, "//button[contains(text(), 'Logout') ]", ' Logout');
-
-        // console.log('     Logout Successfull');
       }
     } else {
       // ? if login

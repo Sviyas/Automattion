@@ -4,6 +4,7 @@ const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
 const { color_Greeks } = require('./ColorSrc');
+const { tradesSlider } = require('./StrategyFunction/TradesSlider');
 
 const greeksTab = async function (ag, id, label) {
   // ? Greeks page
@@ -14,8 +15,14 @@ const greeksTab = async function (ag, id, label) {
     // ? hold
     await hold(1000);
 
+    // ? clear Strategy
+    await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    🔄 Clear LTP');
+
     // ? Color Chooser
-    await color_Greeks(ag);
+    // await color_Greeks(ag);
+    await hold(1000);
+    // ? Trades Slider
+    await tradesSlider(ag, label, '-greeks');
 
     await hold(1000);
 
@@ -25,11 +32,11 @@ const greeksTab = async function (ag, id, label) {
       await hold(2000);
 
       // ? Nifty Target Function
-      await niftyTarget_fun(ag, 'Greeks');
+      // await niftyTarget_fun(ag, 'Greeks');
       // ? Expiry Function
-      await expiry_fun(ag, 'Greeks');
+      // await expiry_fun(ag, 'Greeks');
       // ? Strikewise IV function
-      await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
+      // await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
       // ? go to edit add
 
       const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    Greeks Edit/Add');

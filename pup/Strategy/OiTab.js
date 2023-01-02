@@ -5,6 +5,7 @@ const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { color_OI } = require('./ColorSrc');
 const { tradesSlider } = require('./StrategyFunction/TradesSlider');
+const { trades } = require('./StrategyFunction/Trades');
 
 /**
  *
@@ -36,6 +37,9 @@ const OITab = async function (ag, id, label) {
 
     if (done) {
       await hold(2000);
+
+      // ? Trades
+      await trades(ag, 'OI');
 
       // ?  Nifty Target
       // await niftyTarget_fun(ag, 'OI');

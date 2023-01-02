@@ -1,6 +1,7 @@
-const { take_screenShot } = require('../utils');
-
 // ?? click button when length is 0
+
+const { hold } = require('../utils');
+
 /**
  *
  * @param {*} arg - page
@@ -45,7 +46,7 @@ const click_Button = async function (arg, id, label) {
  */
 const button = async function (arg, id, label) {
   const click = await arg.$x(`${id}`);
-  console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', click.length);
+  // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', click.length);
   if (click.length === 0) {
     await click[0].evaluate(el => {
       el.click();
@@ -71,4 +72,19 @@ const OpenAndClose = async function (arg, id) {
   return open;
 };
 
-module.exports = { clicking_Button, click_Button, OpenAndClose, button };
+/**
+ *
+ * @param {*} arg - page
+ * @param {*} id - Xpath Expression ID
+ * @description - CLick Multiple Times
+ */
+const clickMultiple = async (arg, id) => {
+  const multi = await arg.$x(`${id}`);
+
+  if (multi.length > 0) {
+    for (let i = 1; i <= 3; i++) {
+      await multi[0].click();
+    }
+  }
+};
+module.exports = { clicking_Button, click_Button, OpenAndClose, button, clickMultiple };

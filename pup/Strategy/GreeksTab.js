@@ -5,6 +5,7 @@ const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
 const { color_Greeks } = require('./ColorSrc');
 const { tradesSlider } = require('./StrategyFunction/TradesSlider');
+const { trades } = require('./StrategyFunction/Trades');
 
 const greeksTab = async function (ag, id, label) {
   // ? Greeks page
@@ -30,6 +31,9 @@ const greeksTab = async function (ag, id, label) {
 
     if (done) {
       await hold(2000);
+
+      // ? Trades
+      await trades(ag, 'Greeks');
 
       // ? Nifty Target Function
       // await niftyTarget_fun(ag, 'Greeks');

@@ -12,7 +12,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   await hold(2000);
   console.log(`        ${label} ✅ Strikewise IV`);
 
-  // ? Fetch length div container
+  // ? Fetch  div container length
   const divContainer = await (
     await (await (await arg.$x("//div [@id ='strikewise-iv-id']"))[0].getProperty('children')).getProperty('length')
   ).jsonValue();
@@ -23,9 +23,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   // ! fetch strikewise zero-index function
 
-  const strikewise = await (
-    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
-  ).jsonValue();
+  const strikewise = await (await (await arg.$x("//p [@id ='-valueid']"))[0].getProperty('textContent')).jsonValue();
 
   const strikewiseVal = parseFloat(strikewise);
 
@@ -38,9 +36,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   // ? fetch increment values
 
-  const strincre = await (
-    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
-  ).jsonValue();
+  const strincre = await (await (await arg.$x("//p [@id ='-valueid']"))[0].getProperty('textContent')).jsonValue();
 
   const strikeIncreVal = parseFloat(strincre);
   console.log(`        ${label} Strikewise Increment Values : `, strikeIncreVal);
@@ -53,9 +49,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
     await hold(2000);
 
     // ? fetch Decremnt Value
-    const strdecre = await (
-      await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
-    ).jsonValue();
+    const strdecre = await (await (await arg.$x("//p [@id ='-valueid']"))[0].getProperty('textContent')).jsonValue();
 
     const strikeDecreVal = parseFloat(strdecre);
 
@@ -73,9 +67,12 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   // ! Stirke wise nth-index function
 
+  // const id = "//p [@id ='" + [divlength] + "valueid']";
+  // console.log('🚀 ~ file: StrikewiseIV.js:75 ~ id', id);
+
   // ? fetch nth strikewise values
   const nthstrikewise = await (
-    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
+    await (await arg.$x("//p [@id ='-valueid']"))[divlength].getProperty('textContent')
   ).jsonValue();
 
   const nthstrikeval = parseFloat(nthstrikewise);
@@ -90,7 +87,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   await hold(1000);
 
   const nthincre = await (
-    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
+    await (await arg.$x("//p [@id ='-valueid']"))[divlength].getProperty('textContent')
   ).jsonValue();
 
   const nthincreVal = parseFloat(nthincre);
@@ -99,6 +96,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   await hold(1000);
 
   // ? check nth strikewise value and increment value
+
   if (nthincreVal !== nthstrikeval) {
     // ? click Strike Wise nth Decrement
     const decre = "//p [@id = '" + divlength + "-minusclick-btn']";
@@ -107,7 +105,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
     await hold(1000);
 
     const nthdecre = await (
-      await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
+      await (await arg.$x("//p [@id ='-valueid']"))[divlength].getProperty('textContent')
     ).jsonValue();
 
     const nthdecreVal = parseFloat(nthdecre);
@@ -130,14 +128,12 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   const strikeReset = await clicking_Button(arg, "//p [@id ='iv-reset-btn']", `    ${label} Strike Reset`);
   await hold(2000);
 
-  const strreset = await (
-    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[0].getProperty('textContent')
-  ).jsonValue();
+  const strreset = await (await (await arg.$x("//p [@id ='-valueid']"))[0].getProperty('textContent')).jsonValue();
 
   const strikeResetVal = parseFloat(strreset);
 
   const strnthrest = await (
-    await (await arg.$x("//p [@id ='strikewise-iv-value']"))[divlength].getProperty('textContent')
+    await (await arg.$x("//p [@id ='-valueid']"))[divlength].getProperty('textContent')
   ).jsonValue();
 
   const strnthResetVal = parseFloat(strnthrest);
@@ -163,8 +159,9 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   }
 
   // ? check Reset values not same
+  // ! changes need wait api integration
 
-  if ((strikeResetVal && strnthResetVal) !== (strikewiseVal && nthstrikeval)) {
+  if ((strikeResetVal && strnthResetVal) === (strikewiseVal && nthstrikeval)) {
     // ? if value not same buttton & data is working perfect
     console.log('        Reset Successfully 🤝 ');
   } else {

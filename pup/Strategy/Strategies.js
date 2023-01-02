@@ -8,6 +8,7 @@ const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { colorLTP } = require('./ColorSrc');
 // const { trades } = require('./StrategyFunction/Trades');
 const { tradesSlider } = require('./StrategyFunction/TradesSlider');
+const { trades } = require('./StrategyFunction/Trades');
 
 /**
  *
@@ -28,7 +29,7 @@ const Strategies = async function (arg, id, label) {
     await hold(3000);
 
     // ? edit to select legs
-    const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add ➕');
+    const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕  Edit/Add ➕');
 
     if (editadd) {
       await hold(1000);
@@ -53,14 +54,14 @@ const Strategies = async function (arg, id, label) {
           // ? Trades Slider
           await tradesSlider(arg, label, '-ltp');
 
-          // ? Trades
-
           await hold(1000);
 
           const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    ✅ Done ✅');
 
           if (done) {
             await hold(1000);
+            // ? Trades
+            await trades(arg, 'LTP');
 
             // ? Nifty Target Function
             // await niftyTarget_fun(arg, 'LTP');

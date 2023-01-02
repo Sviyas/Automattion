@@ -17,10 +17,10 @@ const { strategy_Tab } = require('./Strategy/StrategyTab');
  */
 const testLogin = async (page, email, password) => {
   // ? Browser Page
-  await page.goto('http://stilt.co.in/');
+  await page.goto('http://localhost:3000/broker/login');
 
   // ? Login Page
-  const login = await clicking_Button(page, "//span[contains(text(),'Login with Email')]", '1      start');
+  const login = await clicking_Button(page, "//span[contains(text(),'Login with your email')]", '1      start');
 
   await hold(1000);
 

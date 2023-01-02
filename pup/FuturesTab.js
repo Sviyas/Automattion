@@ -11,7 +11,8 @@ const futures_Tab = async function (arg, brwsr) {
   await hold(1000);
   //  ? Futures Tab open
 
-  await OpenAndClose(arg, "//button [@id = 'headlessui-popover-button-17']");
+  // await OpenAndClose(arg, "//button [@id = 'nav-Futures']");
+  await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
   await hold(1000);
 
   // ? Dashboard Tab
@@ -114,6 +115,8 @@ const futures_Tab = async function (arg, brwsr) {
   await hold(1000);
 
   // ? open tab
+  // await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
+  // await OpenAndClose(arg, "//button [@id = 'nav-Futures']");
   await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
 
   // ? Futures Heatmap

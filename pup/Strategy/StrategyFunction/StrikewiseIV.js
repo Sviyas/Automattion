@@ -1,12 +1,12 @@
 const { take_screenShot, hold } = require('../../utils');
-const { clicking_Button } = require('../Button');
+const { clicking_Button } = require('../ButtonFun');
 
 /**
  *
- * @param {arg} page - page
- * @param {*} id1 increment button
- * @param {*} id2  decrement button
- * @param {*} label like LTP, OI , Greeks
+ * @param {arg} page - Page
+ * @param {*} id1 Increment button
+ * @param {*} id2  Decrement button
+ * @param {*} label like < LTP, OI , Greeks >
  */
 const strikewise_fun = async function (arg, id1, id2, label) {
   await hold(2000);
@@ -66,9 +66,6 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   }
 
   // ! Stirke wise nth-index function
-
-  // const id = "//p [@id ='" + [divlength] + "valueid']";
-  // console.log('🚀 ~ file: StrikewiseIV.js:75 ~ id', id);
 
   // ? fetch nth strikewise values
   const nthstrikewise = await (

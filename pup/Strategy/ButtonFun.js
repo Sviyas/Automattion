@@ -1,13 +1,9 @@
-// ?? click button when length is 0
-
-const { hold } = require('../utils');
-
 /**
  *
  * @param {*} arg - page
- * @param {*} id  - element id
- * @param {*} label - Button Name
- * @returns
+ * @param {*} id  - Xpath expressions on element id
+ * @param {*} label - Button or Function Name
+ * @description - Elemet Click Function
  */
 const clicking_Button = async function (arg, id, label) {
   const clicking = await arg.$x(`${id}`);
@@ -22,11 +18,10 @@ const clicking_Button = async function (arg, id, label) {
 /**
  *
  * @param {*} arg - page
- * @param {*} id  - element id
- * @param {*} label - Button Name
- * @returns
+ * @param {*} id  - Xpath Expression Element id
+ * @param {*} label - Button or Function Name
+ * @description - Element Click Function and base length Value
  */
-// ?? click button when length is 1
 const click_Button = async function (arg, id, label) {
   const clicking = await arg.$x(`${id}`);
   if (clicking.length > 1) {
@@ -36,32 +31,30 @@ const click_Button = async function (arg, id, label) {
   return clicking;
 };
 
-// ?? evaluate function
 /**
  *
  * @param {*} arg -> page
- * @param {*} id  -> element id
- * @param {*} label  -> Button Name
- * @returns
+ * @param {*} id  -> Xpath Expression Element id
+ * @param {*} label  -> Button or Function Name
+ * @description -evaluate function
  */
 const button = async function (arg, id, label) {
   const click = await arg.$x(`${id}`);
-  // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', click.length);
+
   if (click.length === 0) {
     await click[0].evaluate(el => {
       el.click();
     });
 
-    console.log(`    ${label} button`);
+    console.log(`    ${label} `);
   }
 };
 
-// ? open and close function
 /**
  *
  * @param {*} arg -> page
- * @param {*} id -> element id
- * @returns
+ * @param {*} id -> Xpath Expression Element id
+ * @description - Page Open And Close
  */
 const OpenAndClose = async function (arg, id) {
   const open = await arg.$x(`${id}`);
@@ -75,16 +68,25 @@ const OpenAndClose = async function (arg, id) {
 /**
  *
  * @param {*} arg - page
- * @param {*} id - Xpath Expression ID
+ * @param {*} id - Xpath Expression Element ID
  * @description - CLick Multiple Times
  */
 const clickMultiple = async (arg, id) => {
   const multi = await arg.$x(`${id}`);
 
-  if (multi.length > 0) {
-    for (let i = 1; i <= 3; i++) {
-      await multi[0].click();
+  // if (multi.length > 0) {
+  //   for (let i = 1; i <= 3; i++) {
+  //     await multi[0].click();
+  //   }
+  // }
+
+  const interval = setInterval(async function () {
+    if (multi.length > 0) {
+      for (let i = 1; i <= 3; i++) {
+        await multi[0].click();
+        clearInterval(interval);
+      }
     }
-  }
+  }, 4000);
 };
 module.exports = { clicking_Button, click_Button, OpenAndClose, button, clickMultiple };

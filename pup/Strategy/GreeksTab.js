@@ -1,9 +1,9 @@
 const { hold, take_screenShot } = require('../utils');
-const { clicking_Button } = require('./Button');
+const { clicking_Button } = require('./ButtonFun');
 const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
-const { color_Greeks } = require('./ColorSrc');
+// const { color_Greeks } = require('./ColorSrc');
 const { tradesSlider } = require('./StrategyFunction/TradesSlider');
 const { trades } = require('./StrategyFunction/Trades');
 
@@ -36,11 +36,11 @@ const greeksTab = async function (ag, id, label) {
       await trades(ag, 'Greeks');
 
       // ? Nifty Target Function
-      // await niftyTarget_fun(ag, 'Greeks');
+      await niftyTarget_fun(ag, 'Greeks');
       // ? Expiry Function
-      // await expiry_fun(ag, 'Greeks');
+      await expiry_fun(ag, 'Greeks');
       // ? Strikewise IV function
-      // await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
+      await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
       // ? go to edit add
 
       const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '      ➕ Edit/Add ➕');

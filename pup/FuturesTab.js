@@ -1,5 +1,6 @@
 const { hold, take_screenShot } = require('./utils.js');
-const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
+// const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
+const { OpenAndClose, clicking_Button } = require('./Strategy/ButtonFun');
 
 /**
  *

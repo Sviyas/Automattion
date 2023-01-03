@@ -1,6 +1,7 @@
 const puppeteer = require('puppeteer');
 const { take_screenShot, hold } = require('./utils');
-const { clicking_Button } = require('./Strategy/Button');
+// const { clicking_Button } = require('./Strategy/Button');
+const { clicking_Button } = require('./Strategy/ButtonFun');
 // const { futures_Tab } = require('./FuturesTab');
 // const { options_Tab } = require('./OptionsTab');
 // const { charts_Tab } = require('./ChartsTab');
@@ -17,7 +18,8 @@ const { strategy_Tab } = require('./Strategy/StrategyTab');
  */
 const testLogin = async (page, email, password) => {
   // ? Browser Page
-  await page.goto('http://localhost:3000/broker/login');
+  // http://localhost:3000/broker/login
+  await page.goto('http://stilt.co.in');
 
   // ? Login Page
   const login = await clicking_Button(page, "//span[contains(text(),'Login with your email')]", '1      start');
@@ -48,54 +50,55 @@ const testLogin = async (page, email, password) => {
     }
 
     // ? Loggin Processing
-    const login = await clicking_Button(page, "//button[contains(text(),'Continue')]", '4      Continue');
-    if (login) {
+    const continueLogin = await clicking_Button(page, "//button[contains(text(),'Continue')]", '4      Continue');
+
+    if (continueLogin.length !== 0) {
+      await hold(2000);
       // ? if Logging failed
-      const sc = await page.$x("//div[contains(text(),'Email or Password is Wrong')]");
+      const sc = await page.$x("//div[contains(text(),'Email or Password is Wrong!')]");
 
       if (sc.length != 0) {
         await take_screenShot(page, 'login Failed');
         console.log('    5     Failed login & Capture ScreenShot ');
-      }
-
-      if (!sc) {
+      } else if (sc.length == 0) {
         // ?if user not found
-        const userFailed = page.$x("//div [contains(text(),'User not found')]", 'User Not Found');
+        const userFailed = await page.$x("//div [contains(text(),'User not found')]");
+
         await hold(1000);
         if (userFailed.length != 0) {
           await take_screenShot(page, 'User Not Found');
+        } else {
+          // await page.$x("//a[contains(text(), 'User')]");
+          console.log('    6      login Successfull');
+
+          await hold(2000);
+          // ? futures Tab
+          // console.log('    7     Navigating to Futures Tab');
+          // await futures_Tab(page);
+
+          // ? option Tab
+          // console.log('    8     Navigating to Options Tab');
+          // await options_Tab(page);
+
+          // ? chart Tab
+          // console.log('    9     Navigating to Charts Tab');
+          // await charts_Tab(page);
+
+          //  ? strategy  Tab
+          console.log('    10     Navigating to Strategy Tab');
+          await strategy_Tab(page);
+
+          // ? analysis Tab
+          // console.log('    11   Navigating to Analysis Tab');
+          // await analysis_Tab(page);
+
+          // ? FII_DII Tab
+          // console.log('    12   Navigating to FII/DII Tab');
+          // await fii_dii_Tab(page);
+
+          // ? user icon
+          // await user_icon(page);
         }
-      } else {
-        // await page.$x("//a[contains(text(), 'User')]");
-        console.log('    6      login Successfull');
-
-        await hold(2000);
-        // ? futures Tab
-        // console.log('    7     Navigating to Futures Tab');
-        // await futures_Tab(page);
-
-        // ? option Tab
-        // console.log('    8     Navigating to Options Tab');
-        // await options_Tab(page);
-
-        // ? chart Tab
-        // console.log('    9     Navigating to Charts Tab');
-        // await charts_Tab(page);
-
-        //  ? strategy  Tab
-        console.log('    10     Navigating to Strategy Tab');
-        await strategy_Tab(page);
-
-        // ? analysis Tab
-        // console.log('    11   Navigating to Analysis Tab');
-        // await analysis_Tab(page);
-
-        // ? FII_DII Tab
-        // console.log('    12   Navigating to FII/DII Tab');
-        // await fii_dii_Tab(page);
-
-        // ? user icon
-        // await user_icon(page);
       }
     } else {
       // ? if login
@@ -115,5 +118,5 @@ puppeteer
 
     // await testLogin(page, 'jacksparrow.mdjack@gmail.com', '123456'); // ? test 1
     // await testLogin(page, 'ithirajma.2001@gmail.com', '123490'); // ? test 2
-    await testLogin(page, 'ithiraj.tealvue@gmail.com', '1234567890'); // ? test 2
+    await testLogin(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
   });

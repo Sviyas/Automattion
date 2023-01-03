@@ -1,5 +1,5 @@
 const { hold, take_screenShot } = require('../utils');
-const { clicking_Button } = require('./Button');
+const { clicking_Button } = require('./ButtonFun');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
 const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
@@ -9,9 +9,9 @@ const { trades } = require('./StrategyFunction/Trades');
 
 /**
  *
- * @param {*} ag - page
- * @param {*} id - element id
- * @param {*} label - <Ltp,Oi,Greeks>
+ * @param {*} ag - Page
+ * @param {*} id - Xpath Expression Element id
+ * @param {*} label - < Ltp,Oi,Greek s>
  */
 
 const OITab = async function (ag, id, label) {
@@ -34,6 +34,7 @@ const OITab = async function (ag, id, label) {
     await hold(1000);
 
     const done = await clicking_Button(ag, "//button [@id ='stratrgy-done-btn']", '    ✅ Done ✅');
+    console.log('🚀 ~ file: OiTab.js:37 ~ OITab ~ done', done);
 
     if (done) {
       await hold(2000);
@@ -41,14 +42,16 @@ const OITab = async function (ag, id, label) {
       // ? Trades
       await trades(ag, 'OI');
 
+      await hold(2000);
+
       // ?  Nifty Target
-      // await niftyTarget_fun(ag, 'OI');
+      await niftyTarget_fun(ag, 'OI');
 
       // ? Expiry Date
-      // await expiry_fun(ag, 'OI');
+      await expiry_fun(ag, 'OI');
 
       // ? Strikewise IV
-      // await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'OI');
+      await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'OI');
 
       // ? Select Greeks Tab
       const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add ➕');

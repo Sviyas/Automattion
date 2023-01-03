@@ -1,20 +1,19 @@
 const { hold, take_screenShot } = require('../utils');
-const { clicking_Button } = require('./Button');
+const { clicking_Button } = require('./ButtonFun');
 const { OITab } = require('./OiTab');
 const { greeksTab } = require('./GreeksTab');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
 const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { colorLTP } = require('./ColorSrc');
-// const { trades } = require('./StrategyFunction/Trades');
 const { tradesSlider } = require('./StrategyFunction/TradesSlider');
 const { trades } = require('./StrategyFunction/Trades');
 
 /**
  *
- * @param {*} arg  -> page
- * @param {*} id  -> element id
- * @param {*} label -> strategy label name
+ * @param {*} arg  -> Page
+ * @param {*} id  -> xpath Expression element id
+ * @param {*} label -> Strategy label name
  */
 
 // ? Strategy Function
@@ -63,14 +62,16 @@ const Strategies = async function (arg, id, label) {
             // ? Trades
             await trades(arg, 'LTP');
 
+            await hold(1000);
+
             // ? Nifty Target Function
-            // await niftyTarget_fun(arg, 'LTP');
+            await niftyTarget_fun(arg, 'LTP');
 
             // ? Expiry Function
-            // await expiry_fun(arg, 'LTP');
+            await expiry_fun(arg, 'LTP');
 
             // ? StrikeWise IV
-            // await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
+            await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
 
             // ? OI
             const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add ➕');

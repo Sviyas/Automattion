@@ -1,10 +1,10 @@
 const { hold, take_screenShot } = require('../../utils');
-const { clicking_Button } = require('../Button');
+const { clicking_Button } = require('../ButtonFun');
 
 /**
  *
- * @param {*} arg -> page
- * @param {*} label -> like LTP, OI , Greeks
+ * @param {*} arg -> Page
+ * @param {*} label -> Like < LTP, OI , Greeks >
  */
 const niftyTarget_fun = async function (arg, label) {
   await hold(1000);
@@ -63,7 +63,10 @@ const niftyTarget_fun = async function (arg, label) {
         await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')
       ).jsonValue();
 
+      // ? check decrement and reset values are samoe or not
       const niftyResetInttVal = parseInt(niftyres);
+
+      // ? check nifty price previous value and nifty reset value same or not
       const niftyResetVal = parseFloat(niftyres);
 
       if (niftyResetVal !== niftyPriceVal && niftyResetInttVal !== decrementValue) {

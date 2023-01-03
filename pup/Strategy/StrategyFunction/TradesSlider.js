@@ -1,5 +1,5 @@
 const { hold } = require('../../utils');
-const { clicking_Button } = require('../Button');
+const { clicking_Button } = require('../ButtonFun');
 
 /**
  *
@@ -44,7 +44,6 @@ const tradesSlider = async function (arg, strategy, label) {
 
   //  ? CALL
   const c1 = "//div [@id ='" + CALL[0] + label + "-CE-BUY']";
-  // console.log(c1);
 
   const c2 = "//div [@id ='" + CALL[1] + label + "-CE-SELL']";
 
@@ -88,37 +87,37 @@ const tradesSlider = async function (arg, strategy, label) {
     '    Short Call Butterfly'
   ) {
     await hold(2000);
-    const call_1 = await clicking_Button(arg, c1, `    ${label} CE-BUY`);
+    const call_1 = await clicking_Button(arg, c1, `    ${label} CE-BUY Button 1`);
 
     await hold(2000);
-    const put_1 = await clicking_Button(arg, p1, `    ${label} PE-BUY`);
+    const put_1 = await clicking_Button(arg, p1, `    ${label} PE-BUY Button 2`);
 
     await hold(2000);
-    const call_2 = await clicking_Button(arg, c2, `    ${label} CE-SELL`);
+    const call_2 = await clicking_Button(arg, c2, `    ${label} CE-SELL Button 3`);
 
     await hold(2000);
-    const put_2 = await clicking_Button(arg, p2, `    ${label} PE-SELL`);
+    const put_2 = await clicking_Button(arg, p2, `    ${label} PE-SELL Button 4`);
 
     await hold(2000);
-    const call_3 = await clicking_Button(arg, c3, `    ${label} CE-BUY`);
+    const call_3 = await clicking_Button(arg, c3, `    ${label} CE-BUY Button 5`);
 
     await hold(2000);
-    const put_3 = await clicking_Button(arg, p3, `    ${label} PE-BUY`);
+    const put_3 = await clicking_Button(arg, p3, `    ${label} PE-BUY Button 6`);
 
     await hold(2000);
-    const call_4 = await clicking_Button(arg, c4, `    ${label} CE-SELL`);
+    const call_4 = await clicking_Button(arg, c4, `    ${label} CE-SELL Button 7`);
 
     await hold(2000);
-    const put_4 = await clicking_Button(arg, p4, `    ${label} PE-SELL`);
+    const put_4 = await clicking_Button(arg, p4, `    ${label} PE-SELL Button 8`);
 
     switch (label) {
       case `-oi`:
       case `-greeks`:
         await hold(2000);
-        const call_5 = await clicking_Button(arg, c5, `    ${label} CE-BUY`);
+        const call_5 = await clicking_Button(arg, c5, `    ${label} CE-BUY Button 9`);
 
         await hold(2000);
-        const put_5 = await clicking_Button(arg, p5, `    ${label} PE-BUY`);
+        const put_5 = await clicking_Button(arg, p5, `    ${label} PE-BUY Button 10`);
         console.log(`        Slider Function Finished 🫡`);
         break;
 

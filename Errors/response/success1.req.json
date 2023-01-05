@@ -1,9 +1,0 @@
-{
-  "underlying_symbol": "NIFTY",
-  "current_underlying_price": 18663.9,
-  "target_underlying_price": 18663.9,
-  "target_datetime": "2022-12-14T09:39:25.062Z",
-  "future_expiry_underlying_price": 0,
-  "expiry_at": "15-DEC-2022",
-  "strategy_type": "SHORT_CALL"
-}

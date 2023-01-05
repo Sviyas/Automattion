@@ -35,12 +35,14 @@ const greeksTab = async function (ag, id, label) {
       // ? Trades
       await trades(ag, 'Greeks');
 
+      await hold(2000);
+
       // ? Nifty Target Function
-      await niftyTarget_fun(ag, 'Greeks');
+      // await niftyTarget_fun(ag, 'Greeks');
       // ? Expiry Function
-      await expiry_fun(ag, 'Greeks');
+      // await expiry_fun(ag, 'Greeks');
       // ? Strikewise IV function
-      await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
+      // await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
       // ? go to edit add
 
       const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '      ➕ Edit/Add ➕');

@@ -48,7 +48,7 @@ const Strategies = async function (arg, id, label) {
 
         if (strategyDate) {
           // ?  Colors Chooser for current-strike price
-          await colorLTP(arg);
+          // await colorLTP(arg);
 
           // ? Trades Slider
           await tradesSlider(arg, label, '-ltp');
@@ -62,16 +62,16 @@ const Strategies = async function (arg, id, label) {
             // ? Trades
             await trades(arg, 'LTP');
 
-            await hold(1000);
+            await hold(2000);
 
             // ? Nifty Target Function
-            await niftyTarget_fun(arg, 'LTP');
+            // await niftyTarget_fun(arg, 'LTP');
 
             // ? Expiry Function
-            await expiry_fun(arg, 'LTP');
+            // await expiry_fun(arg, 'LTP');
 
             // ? StrikeWise IV
-            await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
+            // await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
 
             // ? OI
             const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add ➕');

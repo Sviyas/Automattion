@@ -110,8 +110,8 @@ const strategy_Tab = async function (arg, brwsr) {
               // await Strategies(arg, "//div [@id ='Short Strangle']", '    Short Strangle');
 
               // ? Long Iron Condor
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Iron Condor']", '    Long Iron Condor');
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Iron Condor']", '    Long Iron Condor');
 
               // ? Short Iron Condor
               // await hold(1000);
@@ -126,12 +126,12 @@ const strategy_Tab = async function (arg, brwsr) {
               // await Strategies(arg, "//div [@id ='Short Put Butterfly']", '    Short Put Butterfly');
 
               // ? Long Call Butterfly
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Call Butterfly']", '    Long Call Butterfly');
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Call Butterfly']", '    Long Call Butterfly');
 
               // ? Short Call Butterfly
-              // await hold(1000);
-              // await Strategies(arg, "//div [@id ='Short Call Butterfly']", '    Short Call Butterfly');
+              await hold(1000);
+              await Strategies(arg, "//div [@id ='Short Call Butterfly']", '    Short Call Butterfly');
             } else {
               // @ts-expect-error
               await take_screenShot(arg, 'Strateg Filter');

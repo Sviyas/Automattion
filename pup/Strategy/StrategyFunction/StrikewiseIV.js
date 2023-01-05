@@ -158,7 +158,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   // ? check Reset values not same
   // ! changes need wait api integration
 
-  if ((strikeResetVal && strnthResetVal) === (strikewiseVal && nthstrikeval)) {
+  if ((strikeResetVal && strnthResetVal) !== (strikewiseVal && nthstrikeval)) {
     // ? if value not same buttton & data is working perfect
     console.log('        Reset Successfully 🤝 ');
   } else {

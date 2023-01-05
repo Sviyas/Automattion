@@ -86,29 +86,32 @@ const tradesSlider = async function (arg, strategy, label) {
     '    Long Call Butterfly' ||
     '    Short Call Butterfly'
   ) {
-    await hold(2000);
+    // ?
+    await hold(1200);
     const call_1 = await clicking_Button(arg, c1, `    ${label} CE-BUY Button 1`);
 
-    await hold(2000);
+    await hold(1200);
     const put_1 = await clicking_Button(arg, p1, `    ${label} PE-BUY Button 2`);
 
-    await hold(2000);
+    await hold(1200);
     const call_2 = await clicking_Button(arg, c2, `    ${label} CE-SELL Button 3`);
 
-    await hold(2000);
+    await hold(1200);
     const put_2 = await clicking_Button(arg, p2, `    ${label} PE-SELL Button 4`);
 
-    await hold(2000);
+    await hold(1200);
     const call_3 = await clicking_Button(arg, c3, `    ${label} CE-BUY Button 5`);
 
-    await hold(2000);
+    await hold(1200);
     const put_3 = await clicking_Button(arg, p3, `    ${label} PE-BUY Button 6`);
 
-    await hold(2000);
+    await hold(1200);
     const call_4 = await clicking_Button(arg, c4, `    ${label} CE-SELL Button 7`);
 
-    await hold(2000);
+    await hold(1200);
     const put_4 = await clicking_Button(arg, p4, `    ${label} PE-SELL Button 8`);
+
+    // await hold(3000);
 
     switch (label) {
       case `-oi`:

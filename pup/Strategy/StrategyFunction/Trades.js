@@ -45,6 +45,7 @@ const trades = async function (arg, label) {
     const deleteLeg = await arg.$x("//span [contains(@id,'strategy-delele-btn')]");
     if (deleteLeg.length !== 0) {
       await deleteLeg[5].click();
+      console.log(`Trades Leg Delted`);
     }
   }
 
@@ -204,7 +205,7 @@ const trades = async function (arg, label) {
   ).jsonValue();
   const m5Values = parseInt(m_5);
   console.log(`        Trades Minus 5 Value : `, m5Values);
-  await hold(1000);
+  await hold(3000);
 };
 
 module.exports.trades = trades;

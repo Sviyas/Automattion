@@ -1,6 +1,5 @@
 const puppeteer = require('puppeteer');
 const { take_screenShot, hold } = require('./utils');
-// const { clicking_Button } = require('./Strategy/Button');
 const { clicking_Button } = require('./Strategy/ButtonFun');
 // const { futures_Tab } = require('./FuturesTab');
 // const { options_Tab } = require('./OptionsTab');
@@ -19,7 +18,7 @@ const { strategy_Tab } = require('./Strategy/StrategyTab');
 const testLogin = async (page, email, password) => {
   // ? Browser Page
   // http://localhost:3000/broker/login
-  await page.goto('http://stilt.co.in');
+  await page.goto('http://localhost:3000/broker/login');
 
   // ? Login Page
   const login = await clicking_Button(page, "//span[contains(text(),'Login with your email')]", '1      start');

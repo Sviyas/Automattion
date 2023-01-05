@@ -10,20 +10,20 @@ const { OpenAndClose, clicking_Button } = require('./Strategy/ButtonFun');
 const options_Tab = async function (arg, brwsr) {
   await hold(1000);
   // ? clicking option open and close tab
-  const open = await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
-
+  const open = await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
+  // OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
   if (open) {
     // ? Option Dashboard
     console.log('    8.1   Navigate to Option Page');
     const option = await clicking_Button(arg, "//p[contains(text(), 'Dashboard') ]", '    Option');
 
     if (option) {
-      await hold(1000);
+      // await hold(1000);
       // ? Check Dashboard
       const opt_Dash = await clicking_Button(arg, "//span [@id ='dashboard-btn']", '    Option Dashboard');
 
       if (opt_Dash) {
-        await hold(1000);
+        // await hold(1000);
         //  ?  Click Option Date Picker
 
         const opt_Datepicker = await clicking_Button(
@@ -34,22 +34,24 @@ const options_Tab = async function (arg, brwsr) {
 
         if (opt_Datepicker) {
           // ?  Click Again Open
-          await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
+          await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
           // ? click another button
           console.log('    8.2   Navigate to Option Screener Page');
           const opt_Screener = await clicking_Button(arg, "//a [@id ='navlink-1']", '    Option Screener');
+          console.log('🚀 ~ file: OptionsTab.js:41 ~ opt_Screener', opt_Screener);
 
           if (opt_Screener) {
             // ?
             // ? close button
-            // await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
+            await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
 
-            await hold(1000);
+            await hold(2000);
             const scree_Dash = await clicking_Button(
               arg,
               "//span[contains(text(), 'screener')]",
               '    Option Screener Dashboard'
             );
+            console.log('🚀 ~ file: OptionsTab.js:54 ~ scree_Dash', scree_Dash);
 
             if (scree_Dash) {
               await hold(1000);
@@ -60,6 +62,7 @@ const options_Tab = async function (arg, brwsr) {
                 "//div [@id = 'options-screener-select-with-title-date']",
                 '    Option Screener Date Picker'
               );
+              console.log('🚀 ~ file: OptionsTab.js:65 ~ scree_DatePicker', scree_DatePicker);
 
               if (scree_DatePicker) {
                 await hold(1000);
@@ -82,22 +85,24 @@ const options_Tab = async function (arg, brwsr) {
 
                   if (scree_Table) {
                     // ? Click to open
-                    await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
+                    await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
 
                     // ? Click Option Chain
                     console.log('    8.3   Navigate to Option  Chain Page');
                     const opt_Chain = await clicking_Button(arg, "//a [@id ='navlink-2']", '    Option Chain');
+                    console.log('🚀 ~ file: OptionsTab.js:93 ~ opt_Chain', opt_Chain);
                     // ? open tab
                     if (opt_Chain) {
                       await hold(1000);
                       // ?  close tab
-                      // await OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
+                      await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
 
                       const opt_ChaiDash = await clicking_Button(
                         arg,
                         "//span [@id ='chain-btn']",
                         '    Option Chain Dashboard'
                       );
+                      console.log('🚀 ~ file: OptionsTab.js:105 ~ opt_ChaiDash', opt_ChaiDash);
 
                       if (opt_ChaiDash) {
                         // ? click Search for Option chain

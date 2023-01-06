@@ -5,7 +5,6 @@ const { greeksTab } = require('./GreeksTab');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
 const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
-// const { colorLTP } = require('./ColorSrc');
 const { tradesSlider } = require('./StrategyFunction/TradesSlider');
 const { trades } = require('./StrategyFunction/Trades');
 
@@ -30,7 +29,7 @@ const Strategies = async function (arg, id, label) {
     const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕  Edit/Add ➕');
 
     if (editadd) {
-      await hold(1000);
+      await hold(2000);
 
       // ? click OPT button
       const opt = await clicking_Button(arg, "//li [@id = 'OPT-slider-header-btn']", '    OPT');

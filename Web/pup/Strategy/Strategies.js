@@ -42,12 +42,11 @@ const Strategies = async function (arg, id, label) {
         const strategyDate = await clicking_Button(
           arg,
           "//div [@id = 'strategy-view-select-with-title-st-slider-date']",
-          '    Strategy Date Picker'
+          '    Strategy Date Picker',
         );
 
         if (strategyDate) {
           // ?  Colors Chooser for current-strike price
-          
 
           // ? Trades Slider
           await tradesSlider(arg, label, '-ltp');
@@ -68,9 +67,9 @@ const Strategies = async function (arg, id, label) {
 
             // ? Expiry Function
             await expiry_fun(arg, 'LTP');
-
+            /* 0-strikevise-Id-minusclick-btn */
             // ? StrikeWise IV
-            await strikewise_fun(arg, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'LTP');
+            await strikewise_fun(arg, "//p [@id ='0-strikevise-Id-plusclick-btn']", "//p [@id ='0-strikevise-Id-minusclick-btn']", 'LTP');
 
             // ? OI
             const oiEdit = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add ➕');
@@ -82,7 +81,7 @@ const Strategies = async function (arg, id, label) {
               await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
 
               // ? Greeks Page
-              await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks',label);
+              await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks', label);
             } else {
               // @ts-check
               await take_screenShot(arg, 'OI Edit');

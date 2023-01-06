@@ -50,7 +50,7 @@ const OITab = async function (ag, id, label) {
       await expiry_fun(ag, 'OI');
 
       // ? Strikewise IV
-      await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'OI');
+      await strikewise_fun(ag, "//p [@id ='0-strikevise-Id-plusclick-btn']", "//p [@id ='0-strikevise-Id-minusclick-btn']", 'OI');
 
       // ? Select Greeks Tab
       const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '    ➕ Edit/Add ➕');

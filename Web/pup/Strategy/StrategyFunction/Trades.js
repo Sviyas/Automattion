@@ -87,7 +87,7 @@ const trades = async function (arg, label) {
   await hold(2000);
   await clickMultiple(arg, p1);
 
-  console.log('aaaaaaaaaaaaaaaaaaaaaaaaa');
+  // console.log('aaaaaaaaaaaaaaaaaaaaaaaaa');
 
   await hold(1000);
   const p_1 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[p1Ind].getProperty('textContent')).jsonValue();

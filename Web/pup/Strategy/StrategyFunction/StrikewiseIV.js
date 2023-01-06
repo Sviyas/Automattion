@@ -23,7 +23,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   // ! fetch strikewise zero-index function
 
-  const strikewise = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[0].getProperty('textContent')).jsonValue();
+  const strikewise = await (await (await arg.$x("//p [@id ='strikevise-valueid']"))[0].getProperty('textContent')).jsonValue();
 
   const strikewiseVal = parseFloat(strikewise);
 
@@ -36,7 +36,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   // ? fetch increment values
 
-  const strincre = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[0].getProperty('textContent')).jsonValue();
+  const strincre = await (await (await arg.$x("//p [@id ='strikevise-valueid']"))[0].getProperty('textContent')).jsonValue();
 
   const strikeIncreVal = parseFloat(strincre);
   console.log(`        ${label} Strikewise Increment Values : `, strikeIncreVal);
@@ -49,7 +49,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
     await hold(2000);
 
     // ? fetch Decremnt Value
-    const strdecre = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[0].getProperty('textContent')).jsonValue();
+    const strdecre = await (await (await arg.$x("//p [@id ='strikevise-valueid']"))[0].getProperty('textContent')).jsonValue();
 
     const strikeDecreVal = parseFloat(strdecre);
 
@@ -68,24 +68,21 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   // ! Stirke wise nth-index function
 
   // ? fetch nth strikewise values
-  const nthstrikewise = await (
-    await (await arg.$x("//p [@id ='strategy-valueid']"))[divlength].getProperty('textContent')
-  ).jsonValue();
+  const nthstrikewise = await (await (await arg.$x("//p [@id ='strikevise-valueid']"))[divlength].getProperty('textContent')).jsonValue();
 
   const nthstrikeval = parseFloat(nthstrikewise);
 
   console.log(`        ${label} Strikewise value 2️⃣  : `, nthstrikeval);
 
+  // 0-strikevise-Id-plusclick-btn
   // ? click nth strike wise iv increment button
-  const incre = "//p [@id = '" + divlength + "-plusclick-btn']";
+  const incre = "//p [@id ='" + divlength + "-strikevise-Id-plusclick-btn']";
 
   const nthstrikeinc = await clicking_Button(arg, incre, `    ${divlength} Strike Increment`);
 
   await hold(1000);
 
-  const nthincre = await (
-    await (await arg.$x("//p [@id ='strategy-valueid']"))[divlength].getProperty('textContent')
-  ).jsonValue();
+  const nthincre = await (await (await arg.$x("//p [@id ='strikevise-valueid']"))[divlength].getProperty('textContent')).jsonValue();
 
   const nthincreVal = parseFloat(nthincre);
 
@@ -96,14 +93,12 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   if (nthincreVal !== nthstrikeval) {
     // ? click Strike Wise nth Decrement
-    const decre = "//p [@id = '" + divlength + "-minusclick-btn']";
+    const decre = "//p [@id ='" + divlength + "-strikevise-Id-minusclick-btn']";
 
     const nthstrikedecre = await clicking_Button(arg, decre, `    ${divlength} Strike Decrement`);
     await hold(1000);
 
-    const nthdecre = await (
-      await (await arg.$x("//p [@id ='strategy-valueid']"))[divlength].getProperty('textContent')
-    ).jsonValue();
+    const nthdecre = await (await (await arg.$x("//p [@id ='strikevise-valueid']"))[divlength].getProperty('textContent')).jsonValue();
 
     const nthdecreVal = parseFloat(nthdecre);
 
@@ -125,27 +120,21 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   const strikeReset = await clicking_Button(arg, "//p [@id ='iv-reset-btn']", `    ${label} Strike Reset`);
   await hold(2000);
 
-  const strreset = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[0].getProperty('textContent')).jsonValue();
+  const strreset = await (await (await arg.$x("//p [@id ='strikevise-valueid']"))[0].getProperty('textContent')).jsonValue();
 
   const strikeResetVal = parseFloat(strreset);
 
-  const strnthrest = await (
-    await (await arg.$x("//p [@id ='strategy-valueid']"))[divlength].getProperty('textContent')
-  ).jsonValue();
+  const strnthrest = await (await (await arg.$x("//p [@id ='strikevise-valueid']"))[divlength].getProperty('textContent')).jsonValue();
 
   const strnthResetVal = parseFloat(strnthrest);
 
   // ? message log
   switch (true) {
     case divlength === 1:
-      console.log(
-        `        ${label} ${divlength} st Strikewise Reseted Values : ${strikeResetVal} and ${strnthResetVal}`
-      );
+      console.log(`        ${label} ${divlength} st Strikewise Reseted Values : ${strikeResetVal} and ${strnthResetVal}`);
       break;
     case divlength === 2:
-      console.log(
-        `        ${label} ${divlength} nd Strikewise Reseted Values : ${strikeResetVal} and ${strnthResetVal}`
-      );
+      console.log(`        ${label} ${divlength} nd Strikewise Reseted Values : ${strikeResetVal} and ${strnthResetVal}`);
       break;
     case divlength === 3:
       console.log(`        ${label} ${divlength} rd Strikewise Reset Values : ${strikeResetVal} and ${strnthResetVal}`);

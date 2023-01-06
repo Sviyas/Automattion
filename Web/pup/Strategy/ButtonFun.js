@@ -7,11 +7,11 @@
  */
 const clicking_Button = async function (arg, id, label) {
   const clicking = await arg.$x(`${id}`);
-
   if (clicking.length > 0) {
     await clicking[0].click();
     console.log(`    ${label} `);
   }
+
   return clicking;
 };
 
@@ -42,7 +42,7 @@ const button = async function (arg, id, label) {
   const click = await arg.$x(`${id}`);
 
   if (click.length === 0) {
-    await click[0].evaluate(el => {
+    await click[0].evaluate((el) => {
       el.click();
     });
 

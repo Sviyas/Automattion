@@ -10,13 +10,13 @@ const { hold, take_screenShot } = require('../utils');
 
 const strategy_Tab = async function (arg, brwsr) {
   await hold(3000);
-
+  console.log(`                                         `);
   // ? Strategy Builder Page
   const strategyBuilder = await arg.$x("//a [@id ='header-link-StrategyBuilder']");
   // console.log('        🚀  StrategyTab.js:20  strategyBuilder ', strategyBuilder.length);
 
   if (strategyBuilder.length === 1) {
-    await strategyBuilder[0].evaluate(el => {
+    await strategyBuilder[0].evaluate((el) => {
       el.click();
     });
   }
@@ -29,18 +29,14 @@ const strategy_Tab = async function (arg, brwsr) {
 
     if (strategyDash) {
       // ? click Strategy Search Field
-      const strategySearch = await clicking_Button(
-        arg,
-        "//div [@id ='strategy-dashboard-search']",
-        '    Strategy Search'
-      );
+      const strategySearch = await clicking_Button(arg, "//div [@id ='strategy-dashboard-search']", '    Strategy Search');
 
       if (strategySearch) {
         // ? click Strategy Date Picker Field
         const strategyDatePicker = await clicking_Button(
           arg,
           "//div [@id ='strategy-dashboard-select-with-title-date']",
-          '    Strategy Date Picker'
+          '    Strategy Date Picker',
         );
 
         if (strategyDatePicker) {
@@ -49,14 +45,14 @@ const strategy_Tab = async function (arg, brwsr) {
           const strategyFilter = await clicking_Button(
             arg,
             "//div [@id ='strategy-dashboard-select-with-title-st-dashboard']",
-            '    Strategy Filter'
+            '    Strategy Filter',
           );
 
           if (strategyFilter) {
             const removeStrategyFilter = await clicking_Button(
               arg,
               "//div [@id ='strategy-dashboard-select-with-title-st-dashboard']",
-              '    Strategy Filter OFF'
+              '    Strategy Filter OFF',
             );
 
             if (removeStrategyFilter) {

@@ -6,15 +6,14 @@ const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
 const { tradesSlider } = require('./StrategyFunction/TradesSlider');
 const { trades } = require('./StrategyFunction/Trades');
 
-
 /**
- * 
+ *
  * @param {*} ag - Page
  * @param {*} id - Xpath Expression Element id
- * @param {*} label 
- * @param {*} strategy 
+ * @param {*} label
+ * @param {*} strategy
  */
-const greeksTab = async function (ag, id, label,strategy) {
+const greeksTab = async function (ag, id, label, strategy) {
   // ? Greeks page
 
   const Greeks = await clicking_Button(ag, id, label);
@@ -50,7 +49,7 @@ const greeksTab = async function (ag, id, label,strategy) {
       await expiry_fun(ag, 'Greeks');
 
       // ? Strikewise IV function
-      await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
+      await strikewise_fun(ag, "//p [@id ='0-strikevise-Id-plusclick-btn']", "//p [@id ='0-strikevise-Id-minusclick-btn']", 'Greeks');
 
       // ? go to edit add
       const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '      ➕ Edit/Add ➕');
@@ -72,8 +71,9 @@ const greeksTab = async function (ag, id, label,strategy) {
 
             if (done && homepage) {
               console.log(`       🤝 Successfully Returned HomePage 🏡 🤝`);
-              if(strategy === `    Short Call Butterfly`) {
-              console.log(`        🫡   Successfully Navigated to Strategy Builder `)
+              if (strategy === `    Short Call Butterfly`) {
+                console.log('                                                             ');
+                console.log(`        🫡   Successfully Navigated to Strategy Builder `);
               }
             } else if (typeof done === 'undefined') {
               await take_screenShot(ag, 'Done');

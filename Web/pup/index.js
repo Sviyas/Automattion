@@ -1,9 +1,9 @@
 const puppeteer = require('puppeteer');
 const { take_screenShot, hold } = require('./utils');
 const { clicking_Button } = require('./Strategy/ButtonFun');
-const { futures_Tab } = require('./FuturesTab');
-const { options_Tab } = require('./OptionsTab');
-const { charts_Tab } = require('./ChartsTab');
+// const { futures_Tab } = require('./FuturesTab');
+// const { options_Tab } = require('./OptionsTab');
+// const { charts_Tab } = require('./ChartsTab');
 const { strategy_Tab } = require('./Strategy/StrategyTab');
 const { analysis_Tab } = require('./AnalysisTab');
 const { fii_dii_Tab } = require('./FiiDii');
@@ -88,8 +88,8 @@ const testLogin = async (page, email, password) => {
           await strategy_Tab(page);
 
           // ? analysis Tab
-          console.log('    11     Navigating to Analysis Tab');
-          await analysis_Tab(page);
+          // console.log('    11     Navigating to Analysis Tab');
+          // await analysis_Tab(page);
 
           // ? FII_DII Tab
           console.log('    12     Navigating to FII/DII Tab');
@@ -110,13 +110,11 @@ const testLogin = async (page, email, password) => {
   }
 };
 
-puppeteer
-  .launch({ headless: false, defaultViewport: null, args: ['--start-maximized'], slowMo: 100 })
-  .then(async browser => {
-    const page = (await browser.pages())[0];
+puppeteer.launch({ headless: false, defaultViewport: null, args: ['--start-maximized'], slowMo: 100 }).then(async (browser) => {
+  const page = (await browser.pages())[0];
 
-    // await testLogin(page, 'jacksparrow.mdjack@gmail.com', '123456'); // ? test 1
-    // await testLogin(page, 'ithirajma.2001@gmail.com', '123490'); // ? test 2
-    const testCase =await testLogin(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
-    // console.log(testCase)
-  });
+  // await testLogin(page, 'jacksparrow.mdjack@gmail.com', '123456'); // ? test 1
+  // await testLogin(page, 'ithirajma.2001@gmail.com', '123490'); // ? test 2
+  const testCase = await testLogin(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
+  // console.log(testCase)
+});

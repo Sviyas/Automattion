@@ -2,5 +2,5 @@
   "watch": ["./"],
   "ext": ".ts,.js",
   "ignore": [],
-  "exec": "node ./pup/index.js"
+  "exec": "node Web/pup/index.js"
 }

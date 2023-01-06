@@ -7,200 +7,113 @@ const { OpenAndClose, clicking_Button } = require('./Strategy/ButtonFun');
  * @param {*} brwsr - browser
  */
 const options_Tab = async function (arg, brwsr) {
-  await hold(1000);
+  // await hold(1000);
   // ? clicking option open and close tab
-  const open = await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
-  // OpenAndClose(arg, "//span[contains(text(), 'Options') ]");
-  if (open) {
-    // ? Option Dashboard
-    console.log('    8.1   Navigate to Option Page');
-    const option = await clicking_Button(arg, "//p[contains(text(), 'Dashboard') ]", '    Option');
+    await OpenAndClose(arg,"//div [@id = 'nav-Options']")
 
-    if (option) {
-      // await hold(1000);
-      // ? Check Dashboard
-      const opt_Dash = await clicking_Button(arg, "//span [@id ='dashboard-btn']", '    Option Dashboard');
 
-      if (opt_Dash) {
-        // await hold(1000);
-        //  ?  Click Option Date Picker
 
-        const opt_Datepicker = await clicking_Button(
-          arg,
-          "//div [@id = 'options-dashboard-select-with-title-date']",
-          '    Option DatePicker'
-        );
+    //  ? Dashboard
+    const dashboard = await clicking_Button(arg,"//a [@id ='navlink-0']",`    Option Page`);
 
-        if (opt_Datepicker) {
-          // ?  Click Again Open
-          await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
-          // ? click another button
-          console.log('    8.2   Navigate to Option Screener Page');
-          const opt_Screener = await clicking_Button(arg, "//a [@id ='navlink-1']", '    Option Screener');
-          console.log('🚀 ~ file: OptionsTab.js:41 ~ opt_Screener', opt_Screener);
+    if(dashboard) {
 
-          if (opt_Screener) {
-            // ?
-            // ? close button
-            await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
+      // ? check dashboard 
 
-            await hold(2000);
-            const scree_Dash = await clicking_Button(
-              arg,
-              "//span[contains(text(), 'screener')]",
-              '    Option Screener Dashboard'
-            );
-            console.log('🚀 ~ file: OptionsTab.js:54 ~ scree_Dash', scree_Dash);
+      const checkDash = await clicking_Button(arg,"//span [@id ='dashboard-btn']",`    Options Dashboard`);
 
-            if (scree_Dash) {
-              await hold(1000);
-              // ? screener Date Picker
+      if(checkDash) {
+        await hold(1000);
 
-              const scree_DatePicker = await clicking_Button(
-                arg,
-                "//div [@id = 'options-screener-select-with-title-date']",
-                '    Option Screener Date Picker'
-              );
-              console.log('🚀 ~ file: OptionsTab.js:65 ~ scree_DatePicker', scree_DatePicker);
+        const optDatePick = await clicking_Button(arg,"//div [@id ='options-dashboard-select-with-title-date']",`    Option Date Picker`);
 
-              if (scree_DatePicker) {
-                await hold(1000);
-                // ? CLICK Screener Filter Field
 
-                const scree_Filter = await clicking_Button(
-                  arg,
-                  "//div [@id = 'options-screener-select-with-title-filters']",
-                  '    Option Screener Filter'
-                );
 
-                if (scree_Filter) {
-                  await hold(1000);
-                  // ? click Screener Table
-                  const scree_Table = await clicking_Button(
-                    arg,
-                    "//div [@id = 'options-screener-table-id-undefined']",
-                    '    Option Screener Table'
-                  );
+      } else {
+        await take_screenShot(arg,`Options Dashboard`);
+      }
 
-                  if (scree_Table) {
-                    // ? Click to open
-                    await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
+    } else{
+      await take_screenShot(arg,`Option Page`);
+    }
 
-                    // ? Click Option Chain
-                    console.log('    8.3   Navigate to Option  Chain Page');
-                    const opt_Chain = await clicking_Button(arg, "//a [@id ='navlink-2']", '    Option Chain');
-                    console.log('🚀 ~ file: OptionsTab.js:93 ~ opt_Chain', opt_Chain);
-                    // ? open tab
-                    if (opt_Chain) {
-                      await hold(1000);
-                      // ?  close tab
-                      await OpenAndClose(arg, "//div [contains(@id,'nav-Options')]");
 
-                      const opt_ChaiDash = await clicking_Button(
-                        arg,
-                        "//span [@id ='chain-btn']",
-                        '    Option Chain Dashboard'
-                      );
-                      console.log('🚀 ~ file: OptionsTab.js:105 ~ opt_ChaiDash', opt_ChaiDash);
+    await OpenAndClose(arg,"//div [@id = 'nav-Options']");
+    // ? Option Screener
 
-                      if (opt_ChaiDash) {
-                        // ? click Search for Option chain
-                        const opt_ChaiSearch = await clicking_Button(
-                          arg,
-                          "//div [@id ='options-chain-search']",
-                          '    Option Chain Search'
-                        );
+    const option_Scrreener = await clicking_Button(arg,"//a [@id ='navlink-1']",`    Option Screener Page`);
 
-                        if (opt_ChaiSearch) {
-                          await hold(1000);
-                          // ?  click filter field option chain
-                          const opt_ChaiDatePicker = await clicking_Button(
-                            arg,
-                            "//div [@id ='options-chain-select-with-title-date']",
-                            '    Option Chain Date Picker'
-                          );
+    if(option_Scrreener) {
 
-                          if (opt_ChaiDatePicker) {
-                            await hold(1000);
-                            // ? option chain table
-                            const opt_ChaiTable = await clicking_Button(
-                              arg,
-                              "//div [@id ='options-chain-table-id-undefined']",
-                              '    Option Chain Table'
-                            );
+      await OpenAndClose(arg,"//div [@id = 'nav-Options']");
 
-                            if (opt_ChaiTable) {
-                              await hold(1000);
-                              // ? click homepage button
+      await hold(1500);
 
-                              const homepge = await clicking_Button(
-                                arg,
-                                "//span [@id ='options-btn']",
-                                '    Option Homepage'
-                              );
+      const optionDash = await clicking_Button(arg,"//span [@id ='screener-btn']", `    Option Screener Dashboard`);
 
-                              if (homepge) {
-                                console.log('          Option Homepage Successfully');
-                              } else {
-                                await hold(1000);
-                                await take_screenShot(arg, 'Option Homepage');
-                              }
-                            } else {
-                              await hold(1000);
-                              await take_screenShot(arg, 'Option Chain Table');
-                            }
-                          } else {
-                            await hold(1000);
-                            await take_screenShot(arg, 'Option Chain Date Picker');
-                          }
-                        } else {
-                          await hold(1000);
-                          await take_screenShot(arg, 'Option Chain Search');
-                        }
-                      } else {
-                        await hold(1000);
-                        await take_screenShot(arg, 'Option Chain Dashboard');
-                      }
-                    } else {
-                      await hold(1000);
-                      await take_screenShot(arg, 'Option Chain');
-                    }
-                  } else {
-                    await hold(1000);
-                    await take_screenShot(arg, 'Option Screener Table');
-                  }
-                } else {
-                  await hold(1000);
-                  await take_screenShot(arg, 'Option Screener Filter');
-                }
-              } else {
-                await hold(1000);
-                await take_screenShot(arg, 'Option Screener Date Picker');
-              }
-            } else {
-              await hold(1000);
-              await take_screenShot(arg, 'Option Screener Dashboard');
-            }
+
+      if(optionDash) {
+
+        const optionDatePick = await clicking_Button(arg,"//div [@id ='options-screener-select-with-title-date']",`    Option Screener Date Picker`);
+
+
+        if(optionDatePick) {
+
+          const optionFilter = await clicking_Button(arg,"//div [@id ='options-screener-select-with-title-filters']",`    Option Screener Filter`);
+
+          if(optionFilter) {
+            const optionTable = await clicking_Button(arg,"//div [@id ='options-screener-table-id-undefined']",`    Option Screener Table`);
+
           } else {
-            await hold(1000);
-            await take_screenShot(arg, 'Option Screener');
+            await take_screenShot(arg,`Option Screener Filter`);
           }
         } else {
-          await hold(1000);
-          await take_screenShot(arg, 'Option DatePicker');
+          await take_screenShot(arg,`Option Screener Date Picker`);
         }
       } else {
-        await hold(1000);
-        await take_screenShot(arg, 'Option Dashboard');
+        await take_screenShot(arg,`Option Screeneer Dashboard`);
       }
+
     } else {
-      await hold(1000);
-      await take_screenShot(arg, 'Option');
+      await take_screenShot(arg,`Option Screenr Page`);
     }
-  } else {
-    await hold(1000);
-    await take_screenShot(arg, 'Open Button');
-  }
+
+
+    // ? Option HeatMap
+    await OpenAndClose(arg,"//div [@id = 'nav-Options']");
+
+    const optionChain = await clicking_Button(arg,"//a [@id ='navlink-2']",`    Opiton Chain Page`);
+
+    if(optionChain) {
+       
+      await OpenAndClose(arg,"//div [@id = 'nav-Options']");
+
+      const optionchainDash = await clicking_Button(arg,"//span [@id ='chain-btn']", `    Option Chain Dashboard`);
+
+      if(optionchainDash) {
+
+        const optionchainSearch = await clicking_Button(arg,"//div [@id ='options-chain-search']",`    Option Chain Search`)
+
+        if(optionchainSearch) {
+
+          const optionchainDate = await clicking_Button(arg,"//div [@id ='options-chain-select-with-title-date']",`    Option Chain Date Picker`)
+
+          if(optionchainDate) {
+
+            console.log(`          Successfully Navigate to Option Page`);
+
+            const optionchainTable = await clicking_Button(arg,"//div [@id ='options-chain-table-id-undefined']",`    Option Chain Table`)
+          } else {
+            await take_screenShot(arg,`Option Chain Table`)
+          } 
+        }
+      } else {
+        await take_screenShot(arg,`Option Chain Dashboard`)
+      }
+
+    }else{
+      await take_screenShot(arg,`Option Chain`);
+    }
 };
 
 module.exports.options_Tab = options_Tab;

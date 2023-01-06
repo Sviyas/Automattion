@@ -22,7 +22,7 @@ const strategy_Tab = async function (arg, brwsr) {
   }
   if (strategyBuilder) {
     await hold(1000);
-    console.log('    10.1   Successfully Navigate to Strategy Page');
+    // console.log('    10.1   Successfully Navigate to Strategy Page');
 
     // ? Check Strategy Page Dashboard
     const strategyDash = await clicking_Button(arg, "//span[@id ='dashboard-btn']", '    Strategy Dashboard');

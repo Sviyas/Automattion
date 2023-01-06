@@ -1,5 +1,4 @@
 const { hold, take_screenShot } = require('./utils');
-// const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
 const { clicking_Button, OpenAndClose } = require('./Strategy/ButtonFun');
 
 /**
@@ -9,6 +8,7 @@ const { clicking_Button, OpenAndClose } = require('./Strategy/ButtonFun');
  */
 const analysis_Tab = async function (arg, brwsr) {
   await hold(1000);
+  console.log(`              Navigate to Analysis Page`);
   // ? clcik analysis page
   await OpenAndClose(arg, "//div [@id ='nav-Analysis']");
 
@@ -16,7 +16,6 @@ const analysis_Tab = async function (arg, brwsr) {
   const fundamental = await clicking_Button(arg, "//a [@id ='navlink-0']", '    Fundamental');
 
   if (fundamental) {
-    console.log('        11.1   Navigate to Analysis Page');
 
     await hold(1000);
     const fundamentalDate = await clicking_Button(
@@ -40,28 +39,28 @@ const analysis_Tab = async function (arg, brwsr) {
     // ?
     await OpenAndClose(arg, "//div [@id ='nav-Analysis']");
     // ?
-    const technical = await clicking_Button(arg, "//a [@id ='navlink-1']", '    Technical');
+    const technical = await clicking_Button(arg, "//a [@id ='navlink-1']", `    Technical`);
 
     if (technical) {
       await hold(1000);
       // ? click dashboard
-      const dash = await clicking_Button(arg, "//span [@id ='overview-btn']", '    Technical Dashboard');
+      const dash = await clicking_Button(arg, "//span [@id ='overview-btn']", `    Technical Dashboard`);
 
       if (dash) {
         // ? click search
-        const search = await clicking_Button(arg, "//div [@id ='technical-overview-search']", '    Technical Search');
+        const search = await clicking_Button(arg, "//div [@id ='technical-overview-search']", `    Technical Search`);
 
         if (search) {
           // ? click date picker
           const date = await clicking_Button(
             arg,
             "//div [@id ='technical-overview-select-with-title-date']",
-            '    Technical Date Picker'
+            `    Technical Date Picker`
           );
 
           if (date) {
             // ? technical page
-            const tp = await clicking_Button(arg, "//p [contains(text(),'Technical Page')]", '    Technical Page');
+            const tp = await clicking_Button(arg, "//p [contains(text(),'Technical Page')]", `    Technical Page`);
 
             if (tp) {
               await hold(1000);
@@ -69,36 +68,36 @@ const analysis_Tab = async function (arg, brwsr) {
               const pivot = await clicking_Button(
                 arg,
                 "//p [contains(text(),'Pivotspoint Table')]",
-                '    Technical Pivotspoint Table'
+                `    Technical Pivotspoint Table`
               );
 
               if (pivot) {
                 await hold(1000);
                 // ? homepage button
-                const homepage = await clicking_Button(arg, "//span [@id ='technical-btn']", '    Home Page');
+                const homepage = await clicking_Button(arg, "//span [@id ='technical-btn']", `    Home Page`);
 
                 if (homepage) {
                   await hold(1000);
-                  console.log('        Analysis Homepage Successfully');
+                  console.log(`        Analysis Homepage Successfully`);
                 }
               } else {
-                await take_screenShot(arg, 'Pivotspoint Table');
+                await take_screenShot(arg, `Pivotspoint Table`);
               }
             } else {
-              await take_screenShot(arg, 'Technical Page');
+              await take_screenShot(arg, `Technical Page`);
             }
           } else {
-            await take_screenShot(arg, 'Technical Date Picker');
+            await take_screenShot(arg, `Technical Date Picker`);
           }
         } else {
-          await take_screenShot(arg, 'Technical Search');
+          await take_screenShot(arg, `Technical Search`);
         }
       } else {
-        await take_screenShot(arg, 'Technical Dashboard');
+        await take_screenShot(arg, `Technical Dashboard`);
       }
     }
   } else {
-    await take_screenShot(arg, 'Fundamental');
+    await take_screenShot(arg, `Fundamental`);
   }
 };
 

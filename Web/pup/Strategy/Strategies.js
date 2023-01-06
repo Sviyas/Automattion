@@ -5,7 +5,7 @@ const { greeksTab } = require('./GreeksTab');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
 const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
-const { colorLTP } = require('./ColorSrc');
+// const { colorLTP } = require('./ColorSrc');
 const { tradesSlider } = require('./StrategyFunction/TradesSlider');
 const { trades } = require('./StrategyFunction/Trades');
 
@@ -16,7 +16,6 @@ const { trades } = require('./StrategyFunction/Trades');
  * @param {*} label -> Strategy label name
  */
 
-// ? Strategy Function
 const Strategies = async function (arg, id, label) {
   const strategy = await clicking_Button(arg, id, label);
 
@@ -48,7 +47,7 @@ const Strategies = async function (arg, id, label) {
 
         if (strategyDate) {
           // ?  Colors Chooser for current-strike price
-          // await colorLTP(arg);
+          
 
           // ? Trades Slider
           await tradesSlider(arg, label, '-ltp');
@@ -83,7 +82,7 @@ const Strategies = async function (arg, id, label) {
               await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
 
               // ? Greeks Page
-              await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks');
+              await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks',label);
             } else {
               // @ts-check
               await take_screenShot(arg, 'OI Edit');

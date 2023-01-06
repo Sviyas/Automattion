@@ -1,7 +1,7 @@
 /**
  *
  * @param {*} arg - page
- * @param {*} id  - Xpath expressions on element id
+ * @param {*} id  - Xpath expressions element id
  * @param {*} label - Button or Function Name
  * @description - Elemet Click Function
  */

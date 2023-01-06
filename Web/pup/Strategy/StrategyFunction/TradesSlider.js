@@ -37,6 +37,7 @@ const tradesSlider = async function (arg, strategy, label) {
   } while (storelength.length < 10);
 
   // ? Split into CALL & PUT
+
   const CALL = storelength.slice(0, 5);
   console.log(`        `, CALL);
   const PUT = storelength.slice(5, 10);
@@ -86,41 +87,41 @@ const tradesSlider = async function (arg, strategy, label) {
     '    Long Call Butterfly' ||
     '    Short Call Butterfly'
   ) {
-    // ?
+    // console.log('    10.1   Successfully Navigate to Strategy Page');
     await hold(1200);
-    const call_1 = await clicking_Button(arg, c1, `    ${label} CE-BUY Button 1`);
+    const call_1 = await clicking_Button(arg, c1, `    ${label} Button 1`);
 
     await hold(1200);
-    const put_1 = await clicking_Button(arg, p1, `    ${label} PE-BUY Button 2`);
+    const put_1 = await clicking_Button(arg, p1, `    ${label}  Button 2`);
 
     await hold(1200);
-    const call_2 = await clicking_Button(arg, c2, `    ${label} CE-SELL Button 3`);
+    const call_2 = await clicking_Button(arg, c2, `    ${label} Button 3`);
 
     await hold(1200);
-    const put_2 = await clicking_Button(arg, p2, `    ${label} PE-SELL Button 4`);
+    const put_2 = await clicking_Button(arg, p2, `    ${label}  Button 4`);
 
     await hold(1200);
-    const call_3 = await clicking_Button(arg, c3, `    ${label} CE-BUY Button 5`);
+    const call_3 = await clicking_Button(arg, c3, `    ${label} Button 5`);
 
     await hold(1200);
-    const put_3 = await clicking_Button(arg, p3, `    ${label} PE-BUY Button 6`);
+    const put_3 = await clicking_Button(arg, p3, `    ${label}  Button 6`);
 
     await hold(1200);
-    const call_4 = await clicking_Button(arg, c4, `    ${label} CE-SELL Button 7`);
+    const call_4 = await clicking_Button(arg, c4, `    ${label} Button 7`);
 
     await hold(1200);
-    const put_4 = await clicking_Button(arg, p4, `    ${label} PE-SELL Button 8`);
+    const put_4 = await clicking_Button(arg, p4, `    ${label}  Button 8`);
 
-    // await hold(3000);
+    
 
     switch (label) {
       case `-oi`:
       case `-greeks`:
         await hold(2000);
-        const call_5 = await clicking_Button(arg, c5, `    ${label} CE-BUY Button 9`);
+        const call_5 = await clicking_Button(arg, c5, `    ${label}  Button 9`);
 
         await hold(2000);
-        const put_5 = await clicking_Button(arg, p5, `    ${label} PE-BUY Button 10`);
+        const put_5 = await clicking_Button(arg, p5, `    ${label}   Button 10`);
         console.log(`        Slider Function Finished 🫡`);
         break;
 

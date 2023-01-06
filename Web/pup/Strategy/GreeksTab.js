@@ -3,11 +3,18 @@ const { clicking_Button } = require('./ButtonFun');
 const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');
-// const { color_Greeks } = require('./ColorSrc');
 const { tradesSlider } = require('./StrategyFunction/TradesSlider');
 const { trades } = require('./StrategyFunction/Trades');
 
-const greeksTab = async function (ag, id, label) {
+
+/**
+ * 
+ * @param {*} ag - Page
+ * @param {*} id - Xpath Expression Element id
+ * @param {*} label 
+ * @param {*} strategy 
+ */
+const greeksTab = async function (ag, id, label,strategy) {
   // ? Greeks page
 
   const Greeks = await clicking_Button(ag, id, label);
@@ -20,7 +27,6 @@ const greeksTab = async function (ag, id, label) {
     await clicking_Button(ag, "//button [@id ='strategy-clear-btn']", '    🔄 Clear OI 🔄');
 
     // ? Color Chooser
-    // await color_Greeks(ag);
     await hold(1000);
     // ? Trades Slider
     await tradesSlider(ag, label, '-greeks');
@@ -39,12 +45,14 @@ const greeksTab = async function (ag, id, label) {
 
       // ? Nifty Target Function
       await niftyTarget_fun(ag, 'Greeks');
+
       // ? Expiry Function
       await expiry_fun(ag, 'Greeks');
+
       // ? Strikewise IV function
       await strikewise_fun(ag, "//p [@id ='0-plusclick-btn']", "//p [@id ='0-minusclick-btn']", 'Greeks');
-      // ? go to edit add
 
+      // ? go to edit add
       const greeksEdit = await clicking_Button(ag, "//button [contains(text(), 'EDIT/ADD')]", '      ➕ Edit/Add ➕');
 
       if (greeksEdit) {
@@ -64,6 +72,9 @@ const greeksTab = async function (ag, id, label) {
 
             if (done && homepage) {
               console.log(`       🤝 Successfully Returned HomePage 🏡 🤝`);
+              if(strategy === `    Short Call Butterfly`) {
+              console.log(`        🫡   Successfully Navigated to Strategy Builder `)
+              }
             } else if (typeof done === 'undefined') {
               await take_screenShot(ag, 'Done');
               // @ts-check

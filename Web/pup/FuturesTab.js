@@ -1,5 +1,4 @@
 const { hold, take_screenShot } = require('./utils.js');
-// const { clicking_Button, OpenAndClose } = require('./Strategy/Button');
 const { OpenAndClose, clicking_Button } = require('./Strategy/ButtonFun');
 
 /**
@@ -11,18 +10,18 @@ const { OpenAndClose, clicking_Button } = require('./Strategy/ButtonFun');
 const futures_Tab = async function (arg, brwsr) {
   await hold(1000);
   //  ? Futures Tab open
-
-  // await OpenAndClose(arg, "//button [@id = 'nav-Futures']");
+  console.log(`                                                      `)
+  
   await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
   await hold(1000);
 
   // ? Dashboard Tab
-  const futureDash = await clicking_Button(arg, "//p[contains(text(), 'Dashboard') ]", '    Futures Page');
+  const futureDash = await clicking_Button(arg, "//p[contains(text(), 'Dashboard') ]", `    Future Dashboard Page`);
 
-  console.log('    7.1   Navigate to dashboard page');
+  // console.log(`          Navigate to Future Page`);
   if (!futureDash) {
-    // idenfity.push(await take_screenShot('Future dashboard'));
-    await take_screenShot(arg, 'Future dashboard');
+    
+    await take_screenShot(arg, `Future dashboard`);
   }
   await hold(1000);
 
@@ -32,10 +31,10 @@ const futures_Tab = async function (arg, brwsr) {
   await hold(1000);
 
   // ? check Dashboard
-  const checkDash = await clicking_Button(arg, "//span[contains(text(), 'dashboard')]", '    Futures Dashboard');
+  const checkDash = await clicking_Button(arg, "//span[contains(text(), 'dashboard')]", `     Dashboard`);
 
   if (!checkDash) {
-    await take_screenShot(arg, 'Future Dashboard');
+    await take_screenShot(arg, `Future Dashboard`);
   }
 
   await hold(1000);
@@ -48,7 +47,7 @@ const futures_Tab = async function (arg, brwsr) {
   );
 
   if (!futureDatepic) {
-    await take_screenShot(arg, 'Future Date Picker');
+    await take_screenShot(arg, `Future Date Picker`);
   }
   await hold(1000);
 
@@ -56,14 +55,14 @@ const futures_Tab = async function (arg, brwsr) {
   await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
 
   // ? Future Screener Tab
-  const futureScreener = await clicking_Button(arg, "//p[contains(text(), 'Future Screener') ]", '    Future Screener');
+  const futureScreener = await clicking_Button(arg, "//p[contains(text(), 'Future Screener') ]", `    Future Screener`);
 
   if (!futureScreener) {
-    await take_screenShot(arg, 'Future Screener page');
+    await take_screenShot(arg, `Future Screener page`);
   }
 
-  await hold(1000);
-  console.log('    7.2   Navigate to Future Screener page');
+  // await hold(1000);
+  // console.log(`          Navigate to Future Screener page`);
 
   // ? close the future tab
   // await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
@@ -71,10 +70,10 @@ const futures_Tab = async function (arg, brwsr) {
   await hold(2000);
 
   //  ?  check screener dashboard
-  const screenerDash = await clicking_Button(arg, "//span[contains(text(), 'screener')]", '    Screener');
+  const screenerDash = await clicking_Button(arg, "//span[contains(text(), 'screener')]", `    Screener Dashboard`);
 
   if (!screenerDash) {
-    await take_screenShot(arg, 'Future Screener Dashboard');
+    await take_screenShot(arg, `Future Screener Dashboard`);
   }
   await hold(1000);
 
@@ -82,7 +81,7 @@ const futures_Tab = async function (arg, brwsr) {
   const screenerDate = await clicking_Button(
     arg,
     "//div[@id='futures-screener-select-with-title-date']",
-    '    Future Screener Date Picker'
+    `    Future Screener Date Picker`
   );
 
   if (!screenerDate) {
@@ -95,47 +94,45 @@ const futures_Tab = async function (arg, brwsr) {
   const screenerFilter = await clicking_Button(
     arg,
     "//div[@id='futures-screener-select-with-title-filters']",
-    '    Future Screener Filter'
+    `    Future Screener Filter`
   );
 
   await hold(1000);
 
   if (!screenerFilter) {
-    await take_screenShot(arg, 'Screener Filter ');
+    await take_screenShot(arg, `Screener Filter `);
   }
   // ? screener Table
   const screenerTable = await clicking_Button(
     arg,
     "//div[@id ='futures-screener-table-id-undefined']",
-    '    Future Screener Table'
+    `    Future Screener Table`
   );
 
   if (!screenerTable) {
-    await take_screenShot(arg, 'Screener Table');
+    await take_screenShot(arg, `Screener Table`);
   }
   await hold(1000);
 
   // ? open tab
-  // await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
-  // await OpenAndClose(arg, "//button [@id = 'nav-Futures']");
+  
   await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
 
   // ? Futures Heatmap
-  const futureHeatmap = await clicking_Button(arg, "//p[contains(text(), 'Heatmap')]", '    Heatmap');
+  const futureHeatmap = await clicking_Button(arg, "//p[contains(text(), 'Heatmap')]", `    Heatmap`);
 
   if (!futureHeatmap) {
-    await take_screenShot(arg, 'Future Heatmap Page');
+    await take_screenShot(arg, `Future Heatmap Page`);
   }
   await hold(1000);
-  console.log('    7.3   Navigate to Heatmap page');
-
-  // await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
+  // console.log(`          Navigate to HeatMap page`);
+  
 
   // ? check heatmap
-  const futureHeat = await clicking_Button(arg, "//span[contains(text(), 'heatmap')]", '    Heatmap Dashboard');
+  const futureHeat = await clicking_Button(arg, "//span[contains(text(), 'heatmap')]", `    Heatmap Dashboard`);
 
   if (!futureHeat) {
-    await take_screenShot(arg, 'Future Heatmap ');
+    await take_screenShot(arg, `Future Heatmap `);
   }
   await hold(1000);
 
@@ -143,11 +140,11 @@ const futures_Tab = async function (arg, brwsr) {
   const heatmapDate = await clicking_Button(
     arg,
     "//div[@id='futures-heatmap-select-with-title-date']",
-    '    Heatmap Date Picker'
+    `    Heatmap Date Picker`
   );
 
   if (!heatmapDate) {
-    await take_screenShot(arg, 'Heatmap Date Picker');
+    await take_screenShot(arg, `Heatmap Date Picker`);
   }
   await hold(1000);
 
@@ -155,11 +152,11 @@ const futures_Tab = async function (arg, brwsr) {
   const heatmapPrice = await clicking_Button(
     arg,
     "//div[@id = 'futures-heatmap-select-with-title-f-heatmap']",
-    '    Heatmap Price Filter'
+    `    Heatmap Price Filter`
   );
 
   if (!heatmapPrice) {
-    await take_screenShot(arg, 'Heatmap Price');
+    await take_screenShot(arg, `Heatmap Price`);
   }
   await hold(1000);
 
@@ -167,25 +164,26 @@ const futures_Tab = async function (arg, brwsr) {
   const heatmapFilter = await clicking_Button(
     arg,
     "//div[@id = 'futures-heatmap-select-with-title-f-heatmap-inference']",
-    '    Heatmap Filter'
+    `    Heatmap Filter`
   );
 
   if (!heatmapFilter) {
-    await take_screenShot(arg, 'Heatmap Filter');
+    await take_screenShot(arg, `Heatmap Filter`);
   }
   await hold(1000);
 
   // ? heatmap table
-  const heatmapTable = await clicking_Button(arg, "//section[@id ='future-heatmap-id']", '    Heatmap Table');
+  const heatmapTable = await clicking_Button(arg, "//section[@id ='future-heatmap-id']", `    Heatmap Table`);
 
   if (!heatmapTable) {
-    await take_screenShot(arg, 'Heatmap Table');
+    await take_screenShot(arg, `Heatmap Table`);
   }
 
   // ? futures homepage
-  const homepage = await clicking_Button(arg, "//span [@id ='futures-btn']", '    Futures Homepage');
+  const homepage = await clicking_Button(arg, "//span [@id ='futures-btn']", `    Futures Homepage`);
+  console.log(`          Successfully Navigate to Futures Page 🫡`)
   if (!homepage) {
-    await take_screenShot(arg, 'Homepage');
+    await take_screenShot(arg, `Homepage`);
   }
 
   // ? when intenal server error finds

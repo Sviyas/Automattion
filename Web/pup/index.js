@@ -1,13 +1,13 @@
 const puppeteer = require('puppeteer');
 const { take_screenShot, hold } = require('./utils');
 const { clicking_Button } = require('./Strategy/ButtonFun');
-// const { futures_Tab } = require('./FuturesTab');
+const { futures_Tab } = require('./FuturesTab');
 const { options_Tab } = require('./OptionsTab');
-// const { charts_Tab } = require('./ChartsTab');
-// const { strategy_Tab } = require('./Strategy/StrategyTab');
-// const { analysis_Tab } = require('./AnalysisTab');
-// const { fii_dii_Tab } = require('./FiiDii');
-// const { user_icon } = require('./User');
+const { charts_Tab } = require('./ChartsTab');
+const { strategy_Tab } = require('./Strategy/StrategyTab');
+const { analysis_Tab } = require('./AnalysisTab');
+const { fii_dii_Tab } = require('./FiiDii');
+const { user_icon } = require('./User');
 
 /**
  *
@@ -72,31 +72,31 @@ const testLogin = async (page, email, password) => {
 
           await hold(2000);
           // ? futures Tab
-          // console.log('    7     Navigating to Futures Tab');
+          // console.log('    7      Navigating to Futures Tab');
           // await futures_Tab(page);
 
           // ? option Tab
-          console.log('    8     Navigating to Options Tab');
-          await options_Tab(page);
+          // console.log('    8      Navigating to Options Tab');
+          // await options_Tab(page);
 
           // ? chart Tab
-          // console.log('    9     Navigating to Charts Tab');
+          // console.log('    9      Navigating to Charts Tab');
           // await charts_Tab(page);
 
           //  ? strategy  Tab
-          // console.log('    10     Navigating to Strategy Tab');
-          // await strategy_Tab(page);
+          console.log('    10     Navigating to Strategy Tab');
+          await strategy_Tab(page);
 
           // ? analysis Tab
-          // console.log('    11   Navigating to Analysis Tab');
-          // await analysis_Tab(page);
+          console.log('    11     Navigating to Analysis Tab');
+          await analysis_Tab(page);
 
           // ? FII_DII Tab
-          // console.log('    12   Navigating to FII/DII Tab');
-          // await fii_dii_Tab(page);
+          console.log('    12     Navigating to FII/DII Tab');
+          await fii_dii_Tab(page);
 
           // ? user icon
-          // await user_icon(page);
+          await user_icon(page);
         }
       }
     } else {
@@ -117,5 +117,6 @@ puppeteer
 
     // await testLogin(page, 'jacksparrow.mdjack@gmail.com', '123456'); // ? test 1
     // await testLogin(page, 'ithirajma.2001@gmail.com', '123490'); // ? test 2
-    await testLogin(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
+    const testCase =await testLogin(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
+    // console.log(testCase)
   });

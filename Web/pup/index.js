@@ -18,7 +18,7 @@ const { user_icon } = require('./User');
 const testLogin = async (page, email, password) => {
   // ? Browser Page
   // http://localhost:3000/broker/login
-  await page.goto('http://localhost:3000/broker/login');
+  await page.goto('https://stilt.co.in/broker/login');
 
   // ? Login Page
   const login = await clicking_Button(page, "//span[contains(text(),'Login with your email')]", '1      start');
@@ -32,7 +32,7 @@ const testLogin = async (page, email, password) => {
     if (user.length > 0) {
       await user[0].click();
       await user[0].type(email);
-      console.log('    2      email :', email);
+      console.log('    2      email    :', email);
     } else {
       await take_screenShot(page, 'User');
     }
@@ -72,6 +72,7 @@ const testLogin = async (page, email, password) => {
 
           await hold(2000);
           // ? futures Tab
+          console.log(`                                                      `);
           console.log('    7      Navigating to Futures Tab');
           await futures_Tab(page);
 
@@ -96,6 +97,7 @@ const testLogin = async (page, email, password) => {
           await fii_dii_Tab(page);
 
           // ? user icon
+          console.log('    13     Navigating to User Profile');
           await user_icon(page);
         }
       }

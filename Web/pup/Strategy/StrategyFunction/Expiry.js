@@ -8,44 +8,34 @@ const { clicking_Button } = require('../ButtonFun');
  * @description - Expiry Target
  */
 const expiry_fun = async function (arg, label) {
+  console.log(`                                                      `);
+
   console.log(`        ${label} ✅ EXPIRY TARGET`);
 
   await hold(2000);
   // ? Fetch Expiry Profit/loss & Current Date Values
 
-  const expiryProfit = await (
-    await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-  ).jsonValue();
+  const expiryProfit = await (await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')).jsonValue();
 
   const expProftitValue = parseInt(expiryProfit);
 
   console.log(`        ${label} Expiry Profit Values : `, expProftitValue);
 
-  const expiryDate = await (
-    await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
-  ).jsonValue();
+  const expiryDate = await (await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')).jsonValue();
 
   console.log(`        ${label} Expiry Date : `, expiryDate);
 
   //   ? click EXP Forward button
-  const expiryIncre = await clicking_Button(
-    arg,
-    "//button [@id ='expiry-move-backword-btn']",
-    `    ${label} Expiry Forward`
-  );
+  const expiryIncre = await clicking_Button(arg, "//button [@id ='expiry-move-backword-btn']", `    ${label} Expiry Forward`);
   await hold(2000);
 
   // ? fetch Increment profit/loss value and increment date value
 
-  const forwardDate = await (
-    await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
-  ).jsonValue();
+  const forwardDate = await (await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')).jsonValue();
 
   console.log(`        ${label} Expiry Forward Date : `, forwardDate);
 
-  const forwardDateInc = await (
-    await (await arg.$x("//h3 [@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-  ).jsonValue();
+  const forwardDateInc = await (await (await arg.$x("//h3 [@id ='Profit-Loss-value']"))[0].getProperty('textContent')).jsonValue();
 
   const forwardDateIncreVal = parseInt(forwardDateInc);
 
@@ -56,24 +46,16 @@ const expiry_fun = async function (arg, label) {
   if (forwardDate !== expiryDate) {
     // ? click EXP  backward button
 
-    const expiryDec = await clicking_Button(
-      arg,
-      "//button [@id ='expiry-move-forword-btn']",
-      `    ${label} Expiry Backward`
-    );
+    const expiryDec = await clicking_Button(arg, "//button [@id ='expiry-move-forword-btn']", `    ${label} Expiry Backward`);
     await hold(2000);
 
     // ? fetch Increment profit/loss value and increment date value
 
-    const backwardDate = await (
-      await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
-    ).jsonValue();
+    const backwardDate = await (await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')).jsonValue();
 
     console.log(`        ${label} Expiry backward Date : `, backwardDate);
 
-    const backwardDateDec = await (
-      await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-    ).jsonValue();
+    const backwardDateDec = await (await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')).jsonValue();
 
     const backwardDateDecVal = parseInt(backwardDateDec);
 
@@ -86,20 +68,17 @@ const expiry_fun = async function (arg, label) {
       await hold(3000);
 
       //   ? fetch Reset Profit/Loss Value & Date Values
-      const expiryReset = await (
-        await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-      ).jsonValue();
+      const expiryReset = await (await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')).jsonValue();
 
       const expiryResetVal = parseInt(expiryReset);
 
-      const resetDate = await (
-        await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')
-      ).jsonValue();
+      const resetDate = await (await (await arg.$x("//p [@id ='expiry-value']"))[0].getProperty('textContent')).jsonValue();
 
       // ! check Reset values and expiry profit value are same
       if (resetDate === expiryDate) {
         console.log(`        ${label} Expiry Reset Date : `, resetDate);
         console.log(`        ${label} Expiry Reset Profit Loss Value : `, expiryResetVal);
+        console.log(`                                                      `);
       } else {
         // @ts-check
         await take_screenShot(arg, `${label} Expiry Backward`);
@@ -120,6 +99,7 @@ const expiry_fun = async function (arg, label) {
     if ('Thursday' === checkDateValue) {
       // ? if current day is expiry ->  the process will be end
       console.log(`        Today is Expiry 🤝`);
+      console.log(`                                                      `);
     } else {
       // ?
       await take_screenShot(arg, `${label} Expiry Forward`);

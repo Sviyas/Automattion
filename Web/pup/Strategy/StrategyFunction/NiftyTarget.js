@@ -8,15 +8,15 @@ const { clicking_Button } = require('../ButtonFun');
  */
 const niftyTarget_fun = async function (arg, label) {
   await hold(1000);
+  console.log(`                                                      `);
+
   console.log(`        ${label} ✅ NIFTY TARGET`);
   // ?                        fetch profit loss values in Nifty Target Price
-  const prolos = await (
-    await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')
-  ).jsonValue();
+  const prolos = await (await (await arg.$x("//h3[@id ='Profit-Loss-value']"))[0].getProperty('textContent')).jsonValue();
 
   const profitLoss = parseInt(prolos);
 
-  console.log(`        ${label} Nifty profit loss Value : `, profitLoss);
+  console.log(`        ${label} Nifty profit loss Value      : `, profitLoss);
 
   // ?                        nifty target price value :
 
@@ -24,7 +24,7 @@ const niftyTarget_fun = async function (arg, label) {
 
   const niftyPriceVal = parseFloat(niftyPrice);
 
-  console.log(`        ${label} Nifty Price Value : `, niftyPriceVal);
+  console.log(`        ${label} Nifty Price Value      : `, niftyPriceVal);
 
   //  ?                      nifty target increment button
 
@@ -59,9 +59,7 @@ const niftyTarget_fun = async function (arg, label) {
       await hold(2000);
       //   ?                fetch reset value
 
-      const niftyres = await (
-        await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')
-      ).jsonValue();
+      const niftyres = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
 
       // ? check decrement and reset values are samoe or not
       const niftyResetInttVal = parseInt(niftyres);
@@ -73,6 +71,7 @@ const niftyTarget_fun = async function (arg, label) {
         // @ts-check
         console.log(`        ${label} Nifty Reset Profit Loss Value : `, profitLoss);
         console.log(`        ${label} Nifty Reset Price Value : `, niftyResetVal);
+        console.log(`                                                      `);
       } else if (niftyResetVal === niftyPriceVal) {
         // @ts-check
         console.log(`        ⚡ ${label} Nifty Data Loading Problem ⚡`);

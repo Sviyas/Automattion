@@ -15,6 +15,7 @@ const { trades } = require('./StrategyFunction/Trades');
  */
 const greeksTab = async function (ag, id, label, strategy) {
   // ? Greeks page
+  console.log(`                                                      `);
 
   const Greeks = await clicking_Button(ag, id, label);
 
@@ -70,10 +71,12 @@ const greeksTab = async function (ag, id, label, strategy) {
             const homepage = await clicking_Button(ag, "//span [@id = 'strategy-btn']", '    Home Page 🏡');
 
             if (done && homepage) {
-              console.log(`       🤝 Successfully Returned HomePage 🏡 🤝`);
+              console.log(`       🤝 Successfully Returned HomePage 🤝`);
+              console.log(`                                                      `);
+
               if (strategy === `    Short Call Butterfly`) {
                 console.log('                                                             ');
-                console.log(`        🫡   Successfully Navigated to Strategy Builder `);
+                console.log(`        🫡   Successfully Navigated to Strategy Builder 🏡 `);
               }
             } else if (typeof done === 'undefined') {
               await take_screenShot(ag, 'Done');

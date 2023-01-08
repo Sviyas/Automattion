@@ -10,6 +10,7 @@ const { clicking_Button } = require('../ButtonFun');
  */
 const strikewise_fun = async function (arg, id1, id2, label) {
   await hold(2000);
+
   console.log(`        ${label} ✅ Strikewise IV`);
 
   // ? Fetch  div container length
@@ -150,10 +151,12 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   if ((strikeResetVal && strnthResetVal) !== (strikewiseVal && nthstrikeval)) {
     // ? if value not same buttton & data is working perfect
     console.log('        Reset Successfully 🤝 ');
+    console.log(`                                                      `);
   } else {
     // @ts-expect-error if values are same not working or data loading problem
     // await take_screenShot(arg, `${label} Strike Reset`);
     console.log('        ☠️ ☠️   Strike wise IV Values Not Change ☠️ ☠️');
+    console.log(`                                                      `);
   }
 };
 

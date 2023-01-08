@@ -8,7 +8,7 @@ const { clickMultiple } = require('../ButtonFun');
  * @description  Trades
  */
 const trades = async function (arg, label) {
-  await hold(3000);
+  await hold(2000);
   // ? Fetch Div Container Length on Trades
 
   const tradesContainerLength = await (
@@ -50,10 +50,10 @@ const trades = async function (arg, label) {
   // ! Split Minus & Plus
 
   const minus = storelength.slice(0, 5);
-  console.log(`        `, minus);
+  // console.log(`        `, minus);
 
   const plus = storelength.slice(5, 10);
-  console.log(`        `, plus);
+  // console.log(`        `, plus);
 
   //  ! Minuse
   const m1 = "//p [@id ='strategy-" + minus[0] + "-minusclick-btn']";
@@ -93,7 +93,7 @@ const trades = async function (arg, label) {
   const p_1 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[p1Ind].getProperty('textContent')).jsonValue();
 
   const p1Values = parseInt(p_1);
-  console.log(`        Trades Plus  1 Value : `, p1Values);
+  console.log(`        Trades Plus  Value : `, p1Values);
 
   await hold(2000);
 
@@ -104,7 +104,7 @@ const trades = async function (arg, label) {
   const m_1 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[m1Ind].getProperty('textContent')).jsonValue();
 
   const m1Values = parseInt(m_1);
-  console.log(`        Trades Minus  1 Value : `, m1Values);
+  console.log(`        Trades Minus Value : `, m1Values);
 
   await hold(2000);
 
@@ -115,7 +115,7 @@ const trades = async function (arg, label) {
   const p_2 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[p2Ind].getProperty('textContent')).jsonValue();
 
   const p2Values = parseInt(p_2);
-  console.log(`        Trades Plus  2 Value : `, p2Values);
+  console.log(`        Trades Plus  Value : `, p2Values);
 
   await hold(2000);
 
@@ -126,7 +126,7 @@ const trades = async function (arg, label) {
   const m_2 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[m2Ind].getProperty('textContent')).jsonValue();
 
   const m2Values = parseInt(m_2);
-  console.log(`        Trades Minus  2 Value : `, m2Values);
+  console.log(`        Trades Minus Value : `, m2Values);
 
   await hold(2000);
 
@@ -137,7 +137,7 @@ const trades = async function (arg, label) {
   const p_3 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[p3Ind].getProperty('textContent')).jsonValue();
 
   const p3Values = parseInt(p_3);
-  console.log(`        Trades Plus  3 Value : `, p3Values);
+  console.log(`        Trades Plus  Value : `, p3Values);
 
   await hold(2000);
 
@@ -148,7 +148,7 @@ const trades = async function (arg, label) {
   const m_3 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[m3Ind].getProperty('textContent')).jsonValue();
 
   const m3Values = parseInt(m_3);
-  console.log(`        Trades Minus 3 Value : `, m3Values);
+  console.log(`        Trades Minus Value : `, m3Values);
   await hold(2000);
 
   // ? Click plus 4 button
@@ -158,7 +158,7 @@ const trades = async function (arg, label) {
   const p_4 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[p4Ind].getProperty('textContent')).jsonValue();
 
   const p4Values = parseInt(p_4);
-  console.log(`        Trades Plus 4 Value : `, p4Values);
+  console.log(`        Trades Plus  Value : `, p4Values);
   await hold(2000);
 
   // ? Click minus 4 button
@@ -167,7 +167,7 @@ const trades = async function (arg, label) {
   await hold(1000);
   const m_4 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[m4Ind].getProperty('textContent')).jsonValue();
   const m4Values = parseInt(m_4);
-  console.log(`        Trades Minus 4 Value : `, m4Values);
+  console.log(`        Trades Minus Value : `, m4Values);
   await hold(2000);
 
   // ? Click plus 5 button
@@ -176,7 +176,7 @@ const trades = async function (arg, label) {
   await hold(1000);
   const p_5 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[p5Ind].getProperty('textContent')).jsonValue();
   const p5Values = parseInt(p_5);
-  console.log(`        Trades Plus 5 Value : `, p5Values);
+  console.log(`        Trades Plus  Value : `, p5Values);
   await hold(2000);
 
   // ? Click minus 5 button
@@ -185,7 +185,7 @@ const trades = async function (arg, label) {
   await hold(1000);
   const m_5 = await (await (await arg.$x("//p [@id ='strategy-valueid']"))[m5Ind].getProperty('textContent')).jsonValue();
   const m5Values = parseInt(m_5);
-  console.log(`        Trades Minus 5 Value : `, m5Values);
+  console.log(`        Trades Minus Value : `, m5Values);
   await hold(3000);
 };
 

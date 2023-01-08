@@ -8,96 +8,87 @@ const { clicking_Button, OpenAndClose } = require('./Strategy/ButtonFun');
  */
 const analysis_Tab = async function (arg, brwsr) {
   await hold(1000);
-  console.log(`              Navigate to Analysis Page`);
+  console.log(`                                                      `);
+  // console.log(`              Navigate to Analysis Page`);
   // ? clcik analysis page
   await OpenAndClose(arg, "//div [@id ='nav-Analysis']");
 
   //  ? click Fundamental tab
-  const fundamental = await clicking_Button(arg, "//a [@id ='navlink-0']", '    Fundamental');
+  await hold(1000);
+  // const fundamentalDate = await clicking_Button(
+  //   arg,
+  //   "//div [@id ='fundamental-select-with-title-date']",
+  //   '    Fechnical Date Picker'
+  // );
 
-  if (fundamental) {
+  // if (fundamentalDate) {
+  //   await hold(1000);
+  //   const fundamentalSearch = await clicking_Button(
+  //     arg,
+  //     "//span[@id ='react-select-5-live-region']",
+  //     'Fundamental Search'
+  //   );
+  // } else {
+  //   await take_screenShot(arg, '    Fundamental Search');
+  // }
 
+  await hold(1000);
+  // ?
+  // ?
+  const technical = await clicking_Button(arg, "//a [@id ='navlink-0']", `    Technical`);
+
+  if (technical) {
     await hold(1000);
-    const fundamentalDate = await clicking_Button(
-      arg,
-      "//div [@id ='fundamental-select-with-title-date']",
-      '    Fechnical Date Picker'
-    );
+    // ? click dashboard
+    const dash = await clicking_Button(arg, "//span [@id ='overview-btn']", `    Technical Dashboard`);
 
-    if (fundamentalDate) {
-      await hold(1000);
-      //   const fundamentalSearch = await clicking_Button(
-      //     arg,
-      //     "//span[@id ='react-select-5-live-region']",
-      //     'Fundamental Search'
-      //   );
-      // } else {
-      //   await take_screenShot(arg, '    Fundamental Search');
-    }
+    if (dash) {
+      // ? click search
+      const search = await clicking_Button(arg, "//div [@id ='technical-overview-search']", `    Technical Search`);
 
-    await hold(1000);
-    // ?
-    await OpenAndClose(arg, "//div [@id ='nav-Analysis']");
-    // ?
-    const technical = await clicking_Button(arg, "//a [@id ='navlink-1']", `    Technical`);
+      if (search) {
+        // ? click date picker
+        const date = await clicking_Button(arg, "//div [@id ='technical-overview-select-with-title-date']", `    Technical Date Picker`);
 
-    if (technical) {
-      await hold(1000);
-      // ? click dashboard
-      const dash = await clicking_Button(arg, "//span [@id ='overview-btn']", `    Technical Dashboard`);
+        if (date) {
+          // ? technical page
+          const tp = await clicking_Button(arg, "//p [contains(text(),'Technical Page')]", `    Technical Page`);
 
-      if (dash) {
-        // ? click search
-        const search = await clicking_Button(arg, "//div [@id ='technical-overview-search']", `    Technical Search`);
+          if (tp) {
+            await hold(1000);
+            //  ? pivotspoint table
+            const pivot = await clicking_Button(arg, "//p [contains(text(),'Pivotspoint Table')]", `    Technical Pivotspoint Table`);
 
-        if (search) {
-          // ? click date picker
-          const date = await clicking_Button(
-            arg,
-            "//div [@id ='technical-overview-select-with-title-date']",
-            `    Technical Date Picker`
-          );
-
-          if (date) {
-            // ? technical page
-            const tp = await clicking_Button(arg, "//p [contains(text(),'Technical Page')]", `    Technical Page`);
-
-            if (tp) {
+            if (pivot) {
               await hold(1000);
-              //  ? pivotspoint table
-              const pivot = await clicking_Button(
-                arg,
-                "//p [contains(text(),'Pivotspoint Table')]",
-                `    Technical Pivotspoint Table`
-              );
+              await OpenAndClose(arg, "//div [@id ='nav-Analysis']");
+              const technicalChart = await clicking_Button(arg, "//a [@id ='navlink-1']", `    Technical Chart `);
 
-              if (pivot) {
+              await hold(1000);
+              // ? homepage button
+              // const homepage = await clicking_Button(arg, "//span [@id ='technical-btn']", `    Home Page`);
+
+              if (technicalChart) {
                 await hold(1000);
-                // ? homepage button
-                const homepage = await clicking_Button(arg, "//span [@id ='technical-btn']", `    Home Page`);
-
-                if (homepage) {
-                  await hold(1000);
-                  console.log(`        Analysis Homepage Successfully`);
-                }
-              } else {
-                await take_screenShot(arg, `Pivotspoint Table`);
+                console.log(`                                                      `);
+                console.log(`        Successfully Navigated to Analysis Page 🫡`);
+                console.log(`                                                      `);
               }
             } else {
-              await take_screenShot(arg, `Technical Page`);
+              await take_screenShot(arg, `Pivotspoint Table`);
             }
           } else {
-            await take_screenShot(arg, `Technical Date Picker`);
+            await take_screenShot(arg, `Technical Page`);
           }
         } else {
-          await take_screenShot(arg, `Technical Search`);
+          await take_screenShot(arg, `Technical Date Picker`);
         }
       } else {
-        await take_screenShot(arg, `Technical Dashboard`);
+        await take_screenShot(arg, `Technical Search`);
       }
+    } else {
+      await take_screenShot(arg, `Technical Dashboard`);
     }
-  } else {
-    await take_screenShot(arg, `Fundamental`);
   }
 };
 

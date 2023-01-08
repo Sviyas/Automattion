@@ -1,4 +1,3 @@
-// const { OpenAndClose, clicking_Button } = require('./Strategy/Button.js');
 const { OpenAndClose, clicking_Button } = require('./Strategy/ButtonFun');
 const { hold, take_screenShot } = require('./utils.js');
 
@@ -10,10 +9,11 @@ const { hold, take_screenShot } = require('./utils.js');
 const charts_Tab = async function (arg, brwsr) {
   await hold(1000);
   //  ? Chart Tab Open
+  console.log(`                                                      `);
+
   await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
   // ? Charts IV Smile
-  // console.log('    9.1   Navigate to IV Smile Page');
 
   const iv_Smile = await clicking_Button(arg, "//p[contains(text(), 'IV Smile')]", `    IV Smile`);
 
@@ -31,44 +31,33 @@ const charts_Tab = async function (arg, brwsr) {
       if (iv_Search) {
         await hold(1000);
         // ? click IV Date Picker
-        const iv_Datepicker = await clicking_Button(
-          arg,
-          "//div[@id = 'charts-ivSmile-select-with-title-date']",
-          `    IV Date Picker`
-        );
+        const iv_Datepicker = await clicking_Button(arg, "//div[@id = 'charts-ivSmile-select-with-title-date']", `    IV Date Picker`);
 
         if (iv_Datepicker) {
           await hold(1000);
           // ? Next Option Interest
           await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
-          // console.log(`    9.2   Navigate to Open Interest Page`);
-          // console.log(`          Navigate to IV Smile page`);
           // ? Open Interest
-          const OI = await clicking_Button(arg, "//a [@id ='navlink-1']", `   Open Interest`);
+          const OI = await clicking_Button(arg, "//a [@id ='navlink-1']", `    Open Interest`);
 
           if (OI) {
             await hold(1000);
             //?  close button
-            // await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
             // ? OI dashboard
-            const oi_Dash = await clicking_Button(arg, "//span[contains(text(), 'oi')]", `   OI Dashboard`);
+            const oi_Dash = await clicking_Button(arg, "//span[contains(text(), 'oi')]", `    OI Dashboard`);
 
             if (oi_Dash) {
               // ?
               await hold(1000);
 
-              const oi_Search = await clicking_Button(arg, "//div [@id = 'charts-oi-search']", `   OI Search`);
+              const oi_Search = await clicking_Button(arg, "//div [@id = 'charts-oi-search']", `    OI Search`);
 
               if (oi_Search) {
                 await hold(1000);
                 // ?
-                const oi_Filter = await clicking_Button(
-                  arg,
-                  "//div [@id = 'charts-oi-select-with-title-c1']",
-                  `   OI Filter`
-                );
+                const oi_Filter = await clicking_Button(arg, "//div [@id = 'charts-oi-select-with-title-c1']", `    OI Filter`);
 
                 if (oi_Filter) {
                   // ?
@@ -78,7 +67,7 @@ const charts_Tab = async function (arg, brwsr) {
                   const oi_DatePicker = await clicking_Button(
                     arg,
                     "//div [@id = 'charts-oi-select-with-title-date']",
-                    `   OI Date Picker`
+                    `    OI Date Picker`,
                   );
 
                   if (oi_DatePicker) {
@@ -125,25 +114,23 @@ const charts_Tab = async function (arg, brwsr) {
   // ? Greeks Tab
 
   await OpenAndClose(arg, "//div [@id ='nav-Charts']");
-  // console.log('    9.3   Navigate to Greeks Page');
+
   await hold(1000);
 
-  const greeks = await clicking_Button(arg, "//a [@id ='navlink-2']", `   Greeks`);
+  const greeks = await clicking_Button(arg, "//a [@id ='navlink-2']", `    Greeks`);
 
   if (greeks) {
     await hold(2000);
     // ? close tab
 
-    // await OpenAndClose(arg, "//div [@id ='nav-Charts']");
-
     // ? Greeks Dashboard
-    const greeks_Dash = await clicking_Button(arg, "//span [@id ='greeks-btn']", `   Greek Dashhboard`);
+    const greeks_Dash = await clicking_Button(arg, "//span [@id ='greeks-btn']", `    Greek Dashhboard`);
 
     if (greeks_Dash) {
       //  ?
       await hold(1000);
 
-      const greeks_Search = await clicking_Button(arg, "//div [@id ='charts-greeks-search']", `   Greek Search`);
+      const greeks_Search = await clicking_Button(arg, "//div [@id ='charts-greeks-search']", `    Greek Search`);
 
       if (greeks_Search) {
         // ?
@@ -152,16 +139,15 @@ const charts_Tab = async function (arg, brwsr) {
         const greeks_DatePicker = await clicking_Button(
           arg,
           "//div [@id ='charts-greeks-select-with-title-date']",
-          `   Greek Date Picker`
+          `    Greek Date Picker`,
         );
 
         if (greeks_DatePicker) {
           await OpenAndClose(arg, "//div [@id ='charts-greeks-select-with-title-date']");
           await hold(1000);
           // ? Click Call button on chart
-          const call = await clicking_Button(arg, "//div [@id ='select-call-put-btn-true']", `   Greek Call`);
+          const call = await clicking_Button(arg, "//div [@id ='select-call-put-btn-true']", `    Greek Call`);
 
-          //  ?
           if (call) {
             await hold(1500);
             // ?  open again click Max Pain
@@ -169,24 +155,19 @@ const charts_Tab = async function (arg, brwsr) {
             await OpenAndClose(arg, "//div [@id ='nav-Charts']");
 
             // ? Max Pain Page
-            // console.log('    9.4   Navigate to MaxPain Page');
 
-            const maxPain = await clicking_Button(arg, "//a [@id ='navlink-3']", `   MaxPain`);
+            const maxPain = await clicking_Button(arg, "//a [@id ='navlink-3']", `    MaxPain`);
 
             if (maxPain) {
               await hold(1000);
-              // await OpenAndClose(arg, "//div [@id ='nav-Charts']");
+
               // ?
-              const maxpain_Dash = await clicking_Button(arg, "//span [@id ='maxpain-btn']", `   MaxPain Dashboard`);
+              const maxpain_Dash = await clicking_Button(arg, "//span [@id ='maxpain-btn']", `    MaxPain Dashboard`);
 
               if (maxpain_Dash) {
                 await hold(1000);
                 // ? click maxpain Search
-                const maxpain_Search = await clicking_Button(
-                  arg,
-                  "//div [@id ='charts-maxpain-search']",
-                  `   MaxPain Search`
-                );
+                const maxpain_Search = await clicking_Button(arg, "//div [@id ='charts-maxpain-search']", `    MaxPain Search`);
 
                 if (maxpain_Search) {
                   // ?
@@ -194,14 +175,15 @@ const charts_Tab = async function (arg, brwsr) {
                   const maxpain_Datepicker = await clicking_Button(
                     arg,
                     "//div [@id ='charts-maxpain-select-with-title-date']",
-                    `   Maxpain Date Picker`
+                    `    Maxpain Date Picker`,
                   );
 
                   if (maxpain_Datepicker) {
                     // ??   goto homepage
-                    const hompage = await clicking_Button(arg, "//span [@id ='charts-btn']", `   Maxpain Homepage`);
-
-                    console.log(`          Successfully Navigated to Charts Page`)
+                    const hompage = await clicking_Button(arg, "//span [@id ='charts-btn']", `    Maxpain Homepage`);
+                    console.log(`                                                      `);
+                    console.log(`          Successfully Navigated to Charts Page 🫡`);
+                    console.log(`                                                      `);
 
                     if (!hompage) {
                       await hold(1000);

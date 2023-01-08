@@ -25,18 +25,18 @@ const strategy_Tab = async function (arg, brwsr) {
     // console.log('    10.1   Successfully Navigate to Strategy Page');
 
     // ? Check Strategy Page Dashboard
-    const strategyDash = await clicking_Button(arg, "//span[@id ='dashboard-btn']", '    Strategy Dashboard');
+    const strategyDash = await clicking_Button(arg, "//span[@id ='dashboard-btn']", `    Strategy Dashboard`);
 
     if (strategyDash) {
       // ? click Strategy Search Field
-      const strategySearch = await clicking_Button(arg, "//div [@id ='strategy-dashboard-search']", '    Strategy Search');
+      const strategySearch = await clicking_Button(arg, "//div [@id ='strategy-dashboard-search']", `    Strategy Search`);
 
       if (strategySearch) {
         // ? click Strategy Date Picker Field
         const strategyDatePicker = await clicking_Button(
           arg,
           "//div [@id ='strategy-dashboard-select-with-title-date']",
-          '    Strategy Date Picker',
+          `    Strategy Date Picker`,
         );
 
         if (strategyDatePicker) {
@@ -45,72 +45,106 @@ const strategy_Tab = async function (arg, brwsr) {
           const strategyFilter = await clicking_Button(
             arg,
             "//div [@id ='strategy-dashboard-select-with-title-st-dashboard']",
-            '    Strategy Filter',
+            `    Strategy Filter`,
           );
 
           if (strategyFilter) {
             const removeStrategyFilter = await clicking_Button(
               arg,
               "//div [@id ='strategy-dashboard-select-with-title-st-dashboard']",
-              '    Strategy Filter OFF',
+              `    Strategy Filter OFF`,
             );
 
             if (removeStrategyFilter) {
               // !  Strategy Builders
               // ? long call
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Call']", '    Long Call');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Call']", `    Long Call`);
+
               // ? Short Call
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Short Call']", '    Short Call');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Short Call']", `   Short Call`);
+
               // ? Long Put
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Put']", '    Long Put');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Put']", `    Long Put`);
+
               // ? Short put
-              await hold(1000);
-              await Strategies(arg, "//div [@id = 'Short Put']", '    Short Put');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id = 'Short Put']", `    Short Put`);
+
               // ? Bull Call Spread
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Bull Call Spread']", '    Bull Call Spread');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Bull Call Spread']", `    Bull Call Spread`);
+
               // ? Bear Call Spread
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Bear Call Spread']", '    Bear Call Spread');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Bear Call Spread']", `    Bear Call Spread`);
+
               // ? Bull Put Spread
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Bull Put Spread']", '    Bull Put Spread');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Bull Put Spread']", `    Bull Put Spread`);
+
               // ? Bear Put Spread
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Bear Put Spread']", '    Bear Put Spread');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Bear Put Spread']", `    Bear Put Spread`);
+
               // ? Long Straddle
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Straddle']", '    Long Straddle');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Straddle']", `    Long Straddle`);
+
               // ? Short Straddle
-              await hold(1000);
-              await Strategies(arg, "// div [@id ='Short Straddle']", '    Short Straddle');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "// div [@id ='Short Straddle']", `    Short Straddle`);
+
               // ? Long Strangle
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Strangle']", '    Long Strangle');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Strangle']", `    Long Strangle`);
+
               // ? Short Strangle
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Short Strangle']", '    Short Strangle');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Short Strangle']", `    Short Strangle`);
+
               // ? Long Iron Condor
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Iron Condor']", '    Long Iron Condor');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Iron Condor']", `    Long Iron Condor`);
+
               // ? Short Iron Condor
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Short Iron Condor']", '    Short Iron Condor');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Short Iron Condor']", `    Short Iron Condor`);
+
               // ? Long Put Butterfly
+              console.log(`                                         `);
               await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Put Butterfly']", '    Long Put Butterfly'); //? pending
+              await Strategies(arg, "//div [@id ='Long Put Butterfly']", `    Long Put Butterfly`);
+
               // ? Short Put Butterfly
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Short Put Butterfly']", '    Short Put Butterfly'); //? pending
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Short Put Butterfly']", `    Short Put Butterfly`);
+
               // ? Long Call Butterfly
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Long Call Butterfly']", '    Long Call Butterfly');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Long Call Butterfly']", `    Long Call Butterfly`);
               // ? Short Call Butterfly
-              await hold(1000);
-              await Strategies(arg, "//div [@id ='Short Call Butterfly']", '    Short Call Butterfly');
+              // console.log(`                                         `);
+              // await hold(1000);
+              // await Strategies(arg, "//div [@id ='Short Call Butterfly']", `    Short Call Butterfly`);
             } else {
               // @ts-expect-error
               await take_screenShot(arg, 'Strateg Filter');

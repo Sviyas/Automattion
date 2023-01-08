@@ -18,7 +18,7 @@ const tradesSlider = async function (arg, strategy, label) {
   ).jsonValue();
 
   // const divContainerlength = parseInt(tradesDivContainer);
-  console.log(`        ${label} Slider Div Container Length : `, divContainerlength);
+  console.log(`        ${label} Slider Div Container Leg Values : `, divContainerlength);
 
   //                    ! Generate Random Number using divlength ->  10 times
 
@@ -39,9 +39,9 @@ const tradesSlider = async function (arg, strategy, label) {
   // ? Split into CALL & PUT
 
   const CALL = storelength.slice(0, 5);
-  console.log(`        `, CALL);
+  // console.log(`        `, CALL);
   const PUT = storelength.slice(5, 10);
-  console.log(`        `, PUT);
+  // console.log(`        `, PUT);
 
   //  ? CALL
   const c1 = "//div [@id ='" + CALL[0] + label + "-CE-BUY']";
@@ -92,50 +92,48 @@ const tradesSlider = async function (arg, strategy, label) {
     const call_1 = await clicking_Button(arg, c1, `    ${label} Button 1`);
 
     await hold(1200);
-    const put_1 = await clicking_Button(arg, p1, `    ${label}  Button 2`);
+    const put_1 = await clicking_Button(arg, p1, `    ${label} Button 2`);
 
     await hold(1200);
     const call_2 = await clicking_Button(arg, c2, `    ${label} Button 3`);
 
     await hold(1200);
-    const put_2 = await clicking_Button(arg, p2, `    ${label}  Button 4`);
+    const put_2 = await clicking_Button(arg, p2, `    ${label} Button 4`);
 
     await hold(1200);
     const call_3 = await clicking_Button(arg, c3, `    ${label} Button 5`);
 
     await hold(1200);
-    const put_3 = await clicking_Button(arg, p3, `    ${label}  Button 6`);
+    const put_3 = await clicking_Button(arg, p3, `    ${label} Button 6`);
 
     await hold(1200);
     const call_4 = await clicking_Button(arg, c4, `    ${label} Button 7`);
 
     await hold(1200);
-    const put_4 = await clicking_Button(arg, p4, `    ${label}  Button 8`);
-
-    
+    const put_4 = await clicking_Button(arg, p4, `    ${label} Button 8`);
 
     switch (label) {
+      case `-ltp`:
       case `-oi`:
       case `-greeks`:
         await hold(2000);
-        const call_5 = await clicking_Button(arg, c5, `    ${label}  Button 9`);
+        const call_5 = await clicking_Button(arg, c5, `    ${label} Button 9`);
 
         await hold(2000);
-        const put_5 = await clicking_Button(arg, p5, `    ${label}   Button 10`);
+        const put_5 = await clicking_Button(arg, p5, `    ${label} Button 10`);
         console.log(`        Slider Function Finished 🫡`);
+        console.log(`                                         `);
+
         break;
 
       default:
-        const sliderViewCheck = await clicking_Button(
-          arg,
-          "//div [contains(text(),'Add Morethan 10 Legs')]",
-          `    Check Legs`
-        );
+        const sliderViewCheck = await clicking_Button(arg, "//div [contains(text(),'Add Morethan 10 Legs')]", `    Check Legs`);
 
         if (sliderViewCheck.length !== 0) {
           console.log(`        You Try To Add More Then 10 Legs 🏁`);
         } else {
           console.log(`        Slider Function Finished 🫡`);
+          console.log(`                                         `);
         }
     }
   }

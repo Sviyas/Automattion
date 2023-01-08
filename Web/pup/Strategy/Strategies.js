@@ -22,17 +22,18 @@ const Strategies = async function (arg, id, label) {
   // ? Strategy Name
   if (strategy) {
     console.log(`                 🚀  ${label} Strategy  🚀 `);
+    console.log(`                                                      `);
 
-    await hold(3000);
+    await hold(4000);
 
     // ? edit to select legs
-    const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", '    ➕  Edit/Add ➕');
+    const editadd = await clicking_Button(arg, "//button [contains(text(), 'EDIT/ADD')]", `    ➕  Edit/Add ➕`);
 
     if (editadd) {
       await hold(2000);
 
       // ? click OPT button
-      const opt = await clicking_Button(arg, "//li [@id = 'OPT-slider-header-btn']", '    OPT');
+      const opt = await clicking_Button(arg, "//li [@id = 'OPT-slider-header-btn']", `    OPT TAB `);
 
       if (opt) {
         await hold(1000);
@@ -41,21 +42,23 @@ const Strategies = async function (arg, id, label) {
         const strategyDate = await clicking_Button(
           arg,
           "//div [@id = 'strategy-view-select-with-title-st-slider-date']",
-          '    Strategy Date Picker',
+          `    Strategy Date Picker`,
         );
 
         if (strategyDate) {
           // ?  Colors Chooser for current-strike price
+
+          const clearLTP = await clicking_Button(arg, "//button [@id ='strategy-clear-btn']", `    LTP Clear`);
 
           // ? Trades Slider
           await tradesSlider(arg, label, '-ltp');
 
           await hold(1000);
 
-          const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", '    ✅ Done ✅');
+          const done = await clicking_Button(arg, "//button [@id ='stratrgy-done-btn']", `    ✅ Done ✅`);
 
           if (done) {
-            await hold(1000);
+            await hold(2000);
             // ? Trades
             await trades(arg, 'LTP');
 
@@ -78,6 +81,7 @@ const Strategies = async function (arg, id, label) {
 
               //  ?  OI Page
               await OITab(arg, "//li [@id ='OI-slider-header-btn']", '    OI');
+              console.log(`                                                      `);
 
               // ? Greeks Page
               await greeksTab(arg, "//li [@id ='GREEKS-slider-header-btn']", '    Greeks', label);

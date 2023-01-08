@@ -16,6 +16,7 @@ const { trades } = require('./StrategyFunction/Trades');
 
 const OITab = async function (ag, id, label) {
   // ? Oi page
+  console.log(`                                                      `);
 
   const OI = await clicking_Button(ag, id, label);
 

@@ -88,5 +88,6 @@ const niftyTarget_fun = async function (arg, label) {
     await take_screenShot(arg, `${label} Nifty Increment`);
   }
 };
+console.log('🚀 ~ file: NiftyTarget.js:91 ~ button', button);
 
 module.exports.niftyTarget_fun = niftyTarget_fun;

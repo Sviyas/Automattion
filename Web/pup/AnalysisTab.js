@@ -64,7 +64,7 @@ const analysis_Tab = async function (arg, brwsr) {
               await OpenAndClose(arg, "//div [@id ='nav-Analysis']");
               const technicalChart = await clicking_Button(arg, "//a [@id ='navlink-1']", `    Technical Chart `);
 
-              await hold(1000);
+              await hold(3000);
               // ? homepage button
               // const homepage = await clicking_Button(arg, "//span [@id ='technical-btn']", `    Home Page`);
 

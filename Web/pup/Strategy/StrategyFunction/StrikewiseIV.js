@@ -20,7 +20,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   const divlength = divContainer - 1;
 
-  console.log(`        ${label} Div Container Length : `, divlength);
+  console.log(`        ${label} Strikewise Total Legs          : `, divlength);
 
   // ! fetch strikewise zero-index function
 
@@ -28,7 +28,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   const strikewiseVal = parseFloat(strikewise);
 
-  console.log(`        ${label} Strikewise Values 1️⃣  : `, strikewiseVal);
+  console.log(`        ${label} Strikewise Values 1️⃣            : `, strikewiseVal);
 
   // ? click strikwise increment
 
@@ -40,7 +40,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
   const strincre = await (await (await arg.$x("//p [@id ='strikevise-valueid']"))[0].getProperty('textContent')).jsonValue();
 
   const strikeIncreVal = parseFloat(strincre);
-  console.log(`        ${label} Strikewise Increment Values : `, strikeIncreVal);
+  console.log(`        ${label} Strikewise Increment Values    : `, strikeIncreVal);
 
   // ? check  incremnt button
   if (strikeIncreVal !== strikewiseVal) {
@@ -56,7 +56,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
     // ? check  decrement button
     if (strikeDecreVal !== strikeIncreVal) {
-      console.log(`        ${label} Strikewise Decrement Values : `, strikeDecreVal);
+      console.log(`        ${label} Strikewise Decrement Values    : `, strikeDecreVal);
     } else {
       // @ts-expect-error ! if decrement and increment value same
       await take_screenShot(arg, 'Strike Decrement');
@@ -73,7 +73,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   const nthstrikeval = parseFloat(nthstrikewise);
 
-  console.log(`        ${label} Strikewise value 2️⃣  : `, nthstrikeval);
+  console.log(`        ${label} Strikewise value 2️⃣             : `, nthstrikeval);
 
   // 0-strikevise-Id-plusclick-btn
   // ? click nth strike wise iv increment button
@@ -138,11 +138,11 @@ const strikewise_fun = async function (arg, id1, id2, label) {
       console.log(`        ${label} ${divlength} nd Strikewise Reseted Values : ${strikeResetVal} and ${strnthResetVal}`);
       break;
     case divlength === 3:
-      console.log(`        ${label} ${divlength} rd Strikewise Reset Values : ${strikeResetVal} and ${strnthResetVal}`);
+      console.log(`        ${label} ${divlength} rd Strikewise Reset Values   : ${strikeResetVal} and ${strnthResetVal}`);
       break;
     default:
       divlength >= 4;
-      console.log(`        ${label} ${divlength}th Strikewise Reset Values : ${strikeResetVal} and ${strnthResetVal}`);
+      console.log(`        ${label} ${divlength}th Strikewise Reset Values    : ${strikeResetVal} and ${strnthResetVal}`);
   }
 
   // ? check Reset values not same

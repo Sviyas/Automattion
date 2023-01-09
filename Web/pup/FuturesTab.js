@@ -18,16 +18,30 @@ const futures_Tab = async function (arg, brwsr) {
   // ? Dashboard Tab
   const futureDash = await clicking_Button(arg, "//p[contains(text(), 'Dashboard') ]", `    Future Dashboard Page`);
 
-  // console.log(`          Navigate to Future Page`);
   if (!futureDash) {
     await take_screenShot(arg, `Future dashboard`);
   }
-  await hold(1000);
+  await hold(3000);
 
-  // ? Close Futures tab
-  // await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
+  // ? if Dashboard Page Data not Found error throws
 
-  await hold(1000);
+  const data = {
+    price_gainers: await OpenAndClose(arg, "/h2 [@id ='PRICE-GAINERS-no-data-future']"),
+    price_losers: await OpenAndClose(arg, "//h2 [@id ='PRICE-LOSERS-no-data-future']"),
+    contract_gainers: await OpenAndClose(arg, "//h2 [@id ='CONTRACT-GAINERS-no-data-future']"),
+    active_contracts: await OpenAndClose(arg, "//h2 [@id ='ACTIVE-CONTRACTS-no-data-found']"),
+    oi_gainers: await OpenAndClose(arg, "//h2 [@id ='OI-GAINERS-no-data-found']"),
+    oi_losers: await OpenAndClose(arg, "//h2 [@id ='OI-LOSERS-no-data-found']"),
+    premium: await OpenAndClose(arg, "//h2 [@id ='PREMIUM-no-data-found']"),
+    discount: await OpenAndClose(arg, "//h2 [@id ='DISCOUNT-no-data-found']"),
+  };
+  const property = Object.values(data);
+
+  for (let value in property) {
+    if (value.length > 2) {
+      console.log(`Values Length check :`);
+    }
+  }
 
   // ? check Dashboard
   const checkDash = await clicking_Button(arg, "//span[contains(text(), 'dashboard')]", `    Dashboard`);
@@ -55,12 +69,6 @@ const futures_Tab = async function (arg, brwsr) {
   if (!futureScreener) {
     await take_screenShot(arg, `Future Screener page`);
   }
-
-  // await hold(1000);
-  // console.log(`          Navigate to Future Screener page`);
-
-  // ? close the future tab
-  // await OpenAndClose(arg, "//span[contains(text(), 'Futures') ]");
 
   await hold(2000);
 
@@ -156,6 +164,14 @@ const futures_Tab = async function (arg, brwsr) {
 
   // ? heatmap table
   const heatmapTable = await clicking_Button(arg, "//section[@id ='future-heatmap-id']", `    Heatmap Table`);
+
+  if (heatmapTable) {
+    const stocks = await (
+      await (await (await arg.$x("//section [@id ='future-heatmap-id']"))[0].getProperty('children')).getProperty('length')
+    ).jsonValue();
+
+    console.log(`        Futures HeatMap Total Stocks :`, stocks);
+  }
 
   if (!heatmapTable) {
     await take_screenShot(arg, `Heatmap Table`);

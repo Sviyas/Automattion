@@ -69,7 +69,7 @@ const Strategies = async function (arg, id, label) {
 
             // ? Expiry Function
             await expiry_fun(arg, 'LTP');
-            /* 0-strikevise-Id-minusclick-btn */
+
             // ? StrikeWise IV
             await strikewise_fun(arg, "//p [@id ='0-strikevise-Id-plusclick-btn']", "//p [@id ='0-strikevise-Id-minusclick-btn']", 'LTP');
 

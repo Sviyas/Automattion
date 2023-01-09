@@ -72,33 +72,33 @@ const testLogin = async (page, email, password) => {
 
           await hold(2000);
           // ? futures Tab
-          console.log(`                                                      `);
-          console.log('    7      Navigating to Futures Tab');
-          await futures_Tab(page);
+          // console.log(`                                                      `);
+          // console.log('    7      Navigating to Futures Tab');
+          // await futures_Tab(page);
 
           // ? option Tab
-          console.log('    8      Navigating to Options Tab');
-          await options_Tab(page);
+          // console.log('    8      Navigating to Options Tab');
+          // await options_Tab(page);
 
           // ? chart Tab
-          console.log('    9      Navigating to Charts Tab');
-          await charts_Tab(page);
+          // console.log('    9      Navigating to Charts Tab');
+          // await charts_Tab(page);
 
           //  ? strategy  Tab
           console.log('    10     Navigating to Strategy Tab');
           await strategy_Tab(page);
 
           // ? analysis Tab
-          console.log('    11     Navigating to Analysis Tab');
-          await analysis_Tab(page);
+          // console.log('    11     Navigating to Analysis Tab');
+          // await analysis_Tab(page);
 
           // ? FII_DII Tab
-          console.log('    12     Navigating to FII/DII Tab');
-          await fii_dii_Tab(page);
+          // console.log('    12     Navigating to FII/DII Tab');
+          // await fii_dii_Tab(page);
 
           // ? user icon
-          console.log('    13     Navigating to User Profile');
-          await user_icon(page);
+          // console.log('    13     Navigating to User Profile');
+          // await user_icon(page);
         }
       }
     } else {
@@ -117,6 +117,6 @@ puppeteer.launch({ headless: false, defaultViewport: null, args: ['--start-maxim
 
   // await testLogin(page, 'jacksparrow.mdjack@gmail.com', '123456'); // ? test 1
   // await testLogin(page, 'ithirajma.2001@gmail.com', '123490'); // ? test 2
-  const testCase = await testLogin(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
+  await testLogin(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
   // console.log(testCase)
 });

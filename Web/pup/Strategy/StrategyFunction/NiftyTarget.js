@@ -16,7 +16,7 @@ const niftyTarget_fun = async function (arg, label) {
 
   const profitLoss = parseInt(prolos);
 
-  console.log(`        ${label} Nifty profit loss Value      : `, profitLoss);
+  console.log(`        ${label} Nifty profit loss Value       : `, profitLoss);
 
   // ?                        nifty target price value :
 
@@ -24,7 +24,7 @@ const niftyTarget_fun = async function (arg, label) {
 
   const niftyPriceVal = parseFloat(niftyPrice);
 
-  console.log(`        ${label} Nifty Price Value      : `, niftyPriceVal);
+  console.log(`        ${label} Nifty Price Value             : `, niftyPriceVal);
 
   //  ?                      nifty target increment button
 
@@ -35,7 +35,7 @@ const niftyTarget_fun = async function (arg, label) {
   const niftyInc = await (await (await arg.$x("//p[@id ='target-value']"))[0].getProperty('textContent')).jsonValue();
 
   const incrementValue = parseFloat(niftyInc);
-  console.log(`        ${label} Nifty Increment Price Value : `, incrementValue);
+  console.log(`        ${label} Nifty Increment Price Value   : `, incrementValue);
 
   if (incrementValue !== niftyPriceVal) {
     // ?                    click Decrement button
@@ -48,7 +48,7 @@ const niftyTarget_fun = async function (arg, label) {
 
     const decrementValue = parseFloat(niftyDec);
 
-    console.log(`        ${label} Nifty Decrement Price Value : `, decrementValue);
+    console.log(`        ${label} Nifty Decrement Price Value   : `, decrementValue);
 
     // ?                    check Decrement button
 
@@ -70,7 +70,7 @@ const niftyTarget_fun = async function (arg, label) {
       if (niftyResetVal !== niftyPriceVal && niftyResetInttVal !== decrementValue) {
         // @ts-check
         console.log(`        ${label} Nifty Reset Profit Loss Value : `, profitLoss);
-        console.log(`        ${label} Nifty Reset Price Value : `, niftyResetVal);
+        console.log(`        ${label} Nifty Reset Price Value       : `, niftyResetVal);
         console.log(`                                                      `);
       } else if (niftyResetVal === niftyPriceVal) {
         // @ts-check
@@ -88,6 +88,5 @@ const niftyTarget_fun = async function (arg, label) {
     await take_screenShot(arg, `${label} Nifty Increment`);
   }
 };
-console.log('🚀 ~ file: NiftyTarget.js:91 ~ button', button);
 
 module.exports.niftyTarget_fun = niftyTarget_fun;

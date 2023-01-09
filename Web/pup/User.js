@@ -30,7 +30,7 @@ const user_icon = async function (arg, brwsr) {
 
       // ?  click support
 
-      const support = await clicking_Button(arg, "//buton [@id ='Support-btn']", `        User Support`);
+      const support = await clicking_Button(arg, "//button [@id = 'Support-btn']", `        User Support`);
 
       if (support) {
         await hold(1000);

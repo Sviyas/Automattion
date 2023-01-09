@@ -118,5 +118,4 @@ puppeteer.launch({ headless: false, defaultViewport: null, args: ['--start-maxim
   // await testLogin(page, 'jacksparrow.mdjack@gmail.com', '123456'); // ? test 1
   // await testLogin(page, 'ithirajma.2001@gmail.com', '123490'); // ? test 2
   await testLogin(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
-  // console.log(testCase)
 });

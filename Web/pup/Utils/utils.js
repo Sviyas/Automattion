@@ -7,10 +7,8 @@ const path = require('path');
  * @description - ScreenShot Function
  */
 const take_screenShot = async function (sh, pic) {
-  // const leng = label.length;
-  // console.log('lable  : ', leng);
   await hold(1000);
-  await sh.screenshot({ path: path.resolve(__dirname, `../Errors`, `${pic}.png`) });
+  await sh.screenshot({ path: path.resolve(__dirname, `../../Errors`, `${pic}.png`) });
   console.log(`${pic} `);
 };
 
@@ -19,7 +17,6 @@ const take_screenShot = async function (sh, pic) {
  * @param {*} timeout - delay
  * @description - TimeOut Function
  */
-
 const hold = async (timeout) => {
   await new Promise((resolve) => setTimeout(resolve, timeout));
 };

@@ -1,5 +1,5 @@
-const { hold } = require('../../utils');
-const { clicking_Button } = require('../ButtonFun');
+const { hold } = require('../../Utils/utils');
+const { clicking_Button } = require('../../Utils/Functions');
 
 /**
  *

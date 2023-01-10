@@ -1,5 +1,5 @@
-const { take_screenShot, hold } = require('../utils');
-const { clicking_Button } = require('./ButtonFun');
+const { take_screenShot, hold } = require('../Utils/utils');
+const { clicking_Button } = require('../Utils/Functions');
 
 /**
  *
@@ -10,18 +10,10 @@ const { clicking_Button } = require('./ButtonFun');
 const colorLTP = async function (arg, label) {
   await hold(2000);
   // ? LTP Colors
-  const callBuy = await arg.$eval('#atm-strike-index-ltp-CE-BUY', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
-  );
-  const callSell = await arg.$eval('#atm-strike-index-ltp-CE-SELL', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
-  );
-  const putBuy = await arg.$eval('#atm-strike-index-ltp-PE-BUY', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
-  );
-  const putSell = await arg.$eval('#atm-strike-index-ltp-PE-SELL', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
-  );
+  const callBuy = await arg.$eval('#atm-strike-index-ltp-CE-BUY', (n) => JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)));
+  const callSell = await arg.$eval('#atm-strike-index-ltp-CE-SELL', (n) => JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)));
+  const putBuy = await arg.$eval('#atm-strike-index-ltp-PE-BUY', (n) => JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)));
+  const putSell = await arg.$eval('#atm-strike-index-ltp-PE-SELL', (n) => JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)));
 
   // * Split An Array
 
@@ -45,11 +37,7 @@ const colorLTP = async function (arg, label) {
   // ? LTP CALL
 
   if (CALL.includes(blueColor)) {
-    const ltpred = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-ltp-CE-SELL']",
-      '    LTP Call SELL Current Strike Price'
-    );
+    const ltpred = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-SELL']", '    LTP Call SELL Current Strike Price');
 
     if (!ltpred) {
       await take_screenShot(arg, 'LTP CALL SELL');
@@ -57,22 +45,14 @@ const colorLTP = async function (arg, label) {
   } else if (CALL.includes(redColor)) {
     await hold(1000);
 
-    const ltpcallblue = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-ltp-CE-BUY']",
-      '    LTP Call BUY Current Strike Price'
-    );
+    const ltpcallblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP Call BUY Current Strike Price');
 
     if (!ltpcallblue) {
       await take_screenShot(arg, 'LTP CALL BUY');
     }
   } else if (CALL.includes(whiteColor)) {
     await hold(1000);
-    const ltpwhite = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-ltp-CE-BUY']",
-      '    LTP Call BUY Current Strike Price'
-    );
+    const ltpwhite = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-CE-BUY']", '    LTP Call BUY Current Strike Price');
 
     if (!ltpwhite) {
       await take_screenShot(arg, 'LTP CALL BUY');
@@ -82,31 +62,19 @@ const colorLTP = async function (arg, label) {
 
   //  ? LTP PUT
   if (PUT.includes(blueColor)) {
-    const ltpputred = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-ltp-PE-SELL']",
-      '    LTP PUT SELL Current Strike Price'
-    );
+    const ltpputred = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL Current Strike Price');
     await hold(1000);
     if (!ltpputred) {
       await take_screenShot(arg, 'LTP PUT SELL');
     }
   } else if (PUT.includes(redColor)) {
-    const ltpputblue = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-ltp-PE-BUY']",
-      '    LTP PUT BUY Current Strike Price'
-    );
+    const ltpputblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-BUY']", '    LTP PUT BUY Current Strike Price');
     await hold(1000);
     if (!ltpputblue) {
       await take_screenShot(arg, 'LTP PUT BUY');
     }
   } else if (PUT.includes(whiteColor)) {
-    const ltpputwhite = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-ltp-PE-SELL']",
-      '    LTP PUT SELL Current Strike Price'
-    );
+    const ltpputwhite = await clicking_Button(arg, "//div [@id ='atm-strike-index-ltp-PE-SELL']", '    LTP PUT SELL Current Strike Price');
     await hold(1000);
     if (!ltpputwhite) {
       await take_screenShot(arg, 'LTP PUT SELL');
@@ -121,21 +89,13 @@ const colorLTP = async function (arg, label) {
  */
 const color_OI = async function (arg) {
   // ? OI Colors
-  const callBuy = await arg.$eval('#atm-strike-index-oi-CE-BUY', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
-  );
+  const callBuy = await arg.$eval('#atm-strike-index-oi-CE-BUY', (n) => JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)));
 
-  const callSell = await arg.$eval('#atm-strike-index-oi-CE-SELL', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
-  );
+  const callSell = await arg.$eval('#atm-strike-index-oi-CE-SELL', (n) => JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)));
 
-  const putBuy = await arg.$eval('#atm-strike-index-oi-PE-BUY', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
-  );
+  const putBuy = await arg.$eval('#atm-strike-index-oi-PE-BUY', (n) => JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)));
 
-  const putSell = await arg.$eval('#atm-strike-index-oi-PE-SELL', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
-  );
+  const putSell = await arg.$eval('#atm-strike-index-oi-PE-SELL', (n) => JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)));
 
   // * OI  -> CALL & PUT
   const CALL = [callBuy, callSell];
@@ -157,21 +117,13 @@ const color_OI = async function (arg) {
   // ? OI CALL
 
   if (CALL.includes(blueColor)) {
-    const oicallred = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-oi-CE-SELL']",
-      '    OI CALL SELL Current Strike Price'
-    );
+    const oicallred = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-CE-SELL']", '    OI CALL SELL Current Strike Price');
     await hold(1000);
     if (!oicallred) {
       await take_screenShot(arg, 'OI CALL SELL');
     }
   } else if (CALL.includes(redColor)) {
-    const oicallblue = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-oi-CE-BUY']",
-      '    OI CALL BUY Current Strike Price'
-    );
+    const oicallblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-CE-BUY']", '    OI CALL BUY Current Strike Price');
     await hold(1000);
     if (!oicallblue) {
       await take_screenShot(arg, 'OI CALL BUY');
@@ -181,21 +133,13 @@ const color_OI = async function (arg) {
   // ? OI PUT
 
   if (PUT.includes(redColor)) {
-    const oiputblue = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-oi-PE-BUY']",
-      '    OI PUT BUY Current Strike Price'
-    );
+    const oiputblue = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-PE-BUY']", '    OI PUT BUY Current Strike Price');
     await hold(1000);
     if (!oiputblue) {
       await take_screenShot(arg, 'OI PUT BUY');
     }
   } else if (PUT.includes(blueColor)) {
-    const oiputred = await clicking_Button(
-      arg,
-      "//div [@id ='atm-strike-index-oi-PE-SELL']",
-      '    OI PUT SELL Current Strike Price'
-    );
+    const oiputred = await clicking_Button(arg, "//div [@id ='atm-strike-index-oi-PE-SELL']", '    OI PUT SELL Current Strike Price');
     await hold(1000);
     if (!oiputred) {
       await take_screenShot(arg, 'OI PUT SELL');
@@ -210,20 +154,18 @@ const color_OI = async function (arg) {
 
 const color_Greeks = async function (arg) {
   // ? Greeks Colors
-  const callBuy = await arg.$eval('#atm-strike-index-greeks-CE-BUY', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
+  const callBuy = await arg.$eval('#atm-strike-index-greeks-CE-BUY', (n) =>
+    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)),
   );
 
-  const callSell = await arg.$eval('#atm-strike-index-greeks-CE-SELL', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
+  const callSell = await arg.$eval('#atm-strike-index-greeks-CE-SELL', (n) =>
+    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)),
   );
 
-  const putBuy = await arg.$eval('#atm-strike-index-greeks-PE-BUY', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
-  );
+  const putBuy = await arg.$eval('#atm-strike-index-greeks-PE-BUY', (n) => JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)));
 
-  const putSell = await arg.$eval('#atm-strike-index-greeks-PE-SELL', n =>
-    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor))
+  const putSell = await arg.$eval('#atm-strike-index-greeks-PE-SELL', (n) =>
+    JSON.parse(JSON.stringify(getComputedStyle(n).backgroundColor)),
   );
 
   // * Greeks CALL & PUT
@@ -249,7 +191,7 @@ const color_Greeks = async function (arg) {
     const greekscallsell = await clicking_Button(
       arg,
       "//div [@id ='atm-strike-index-greeks-CE-SELL']",
-      '    GREEKS CALL SELL Current Strike Price'
+      '    GREEKS CALL SELL Current Strike Price',
     );
     await hold(1000);
     if (!greekscallsell) {
@@ -259,7 +201,7 @@ const color_Greeks = async function (arg) {
     const greekcallbuy = await clicking_Button(
       arg,
       "//div [@id = 'atm-strike-index-greeks-CE-BUY']",
-      '    GREEKS CALL BUY Current Strike Price'
+      '    GREEKS CALL BUY Current Strike Price',
     );
     await hold(1000);
     if (!greekcallbuy) {
@@ -273,7 +215,7 @@ const color_Greeks = async function (arg) {
     const greeksputsell = await clicking_Button(
       arg,
       "//div [@id ='atm-strike-index-greeks-PE-SELL']",
-      '    GREEKS PUT SELL Current Strike Price'
+      '    GREEKS PUT SELL Current Strike Price',
     );
     await hold(1000);
     if (!greeksputsell) {
@@ -283,7 +225,7 @@ const color_Greeks = async function (arg) {
     const greeksputbuy = await clicking_Button(
       arg,
       "//div [@id ='atm-strike-index-greeks-PE-BUY']",
-      '    GREEKS PUT BUY Current Strike Price'
+      '    GREEKS PUT BUY Current Strike Price',
     );
     await hold(1000);
     if (!greeksputbuy) {

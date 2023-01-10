@@ -1,6 +1,8 @@
-const { hold, take_screenShot } = require('./utils');
-const { clicking_Button, OpenAndClose } = require('./Strategy/ButtonFun');
+// const { hold, take_screenShot } = require('../Utils/utils');
+// const { clicking_Button, OpenAndClose } = require('../Utils/Functions');
 
+const { hold, take_screenShot } = require('../Utils/utils');
+const { clicking_Button, OpenAndClose } = require('../Utils/Functions');
 /**
  *
  * @param {*} arg  - page

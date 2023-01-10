@@ -1,6 +1,6 @@
-const { button, clicking_Button, click_Button } = require('./ButtonFun');
+const { button, clicking_Button, click_Button } = require('../Utils/Functions');
 const { Strategies } = require('./Strategies');
-const { hold, take_screenShot } = require('../utils');
+const { hold, take_screenShot } = require('../Utils/utils');
 
 /**
  *

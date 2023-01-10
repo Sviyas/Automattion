@@ -1,5 +1,5 @@
-const { take_screenShot, hold } = require('../../utils');
-const { clicking_Button } = require('../ButtonFun');
+const { take_screenShot, hold } = require('../../Utils/utils');
+const { clicking_Button } = require('../../Utils/Functions');
 
 /**
  *
@@ -55,7 +55,10 @@ const strikewise_fun = async function (arg, id1, id2, label) {
     const strikeDecreVal = parseFloat(strdecre);
 
     // ? check  decrement button
-    if (strikeDecreVal !== strikeIncreVal) {
+    if (strikeDecreVal === 0) {
+      // ! Pending
+      console.log(`        ${label} Can't Decrement Strikewise Value  : `, strikeDecreVal);
+    } else if (strikeDecreVal > 1 !== strikeIncreVal) {
       console.log(`        ${label} Strikewise Decrement Values    : `, strikeDecreVal);
     } else {
       // @ts-expect-error ! if decrement and increment value same
@@ -87,7 +90,7 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
   const nthincreVal = parseFloat(nthincre);
 
-  console.log(`        ${label} ${divlength}  Strikewise Increment Values : `, nthincreVal);
+  console.log(`        ${label} Strikewise Increment Values    : `, nthincreVal);
   await hold(1000);
 
   // ? check nth strikewise value and increment value
@@ -105,8 +108,10 @@ const strikewise_fun = async function (arg, id1, id2, label) {
 
     // ? check nth strikewise increment and decrement values not same
 
-    if (nthdecreVal !== nthincreVal) {
-      console.log(`        ${label} ${divlength}  Strikewise Decrement Values : `, nthdecreVal);
+    if (nthdecreVal === 0) {
+      console.log(`        ${label} Strikewise Decrement Values    : `, nthdecreVal);
+    } else if (nthdecreVal > 1 !== nthincreVal) {
+      console.log(`        ${label} Strikewise Decrement Values    : `, nthdecreVal);
     } else {
       // @ts-expect-error : if decrement and increment value same
       await take_screenShot(arg, `${divlength} strike decrement`);

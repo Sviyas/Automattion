@@ -1,5 +1,5 @@
-const { hold, take_screenShot } = require('../../utils');
-const { clickMultiple } = require('../ButtonFun');
+const { hold, take_screenShot } = require('../../Utils/utils');
+const { clickMultiple } = require('../../Utils/Functions');
 
 /**
  *

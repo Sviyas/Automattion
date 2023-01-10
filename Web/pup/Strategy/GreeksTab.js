@@ -1,5 +1,5 @@
-const { hold, take_screenShot } = require('../utils');
-const { clicking_Button } = require('./ButtonFun');
+const { hold, take_screenShot } = require('../Utils/utils');
+const { clicking_Button } = require('../Utils/Functions');
 const { niftyTarget_fun } = require('./StrategyFunction/NiftyTarget');
 const { expiry_fun } = require('./StrategyFunction/Expiry');
 const { strikewise_fun } = require('./StrategyFunction/StrikewiseIV');

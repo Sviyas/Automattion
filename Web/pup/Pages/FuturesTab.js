@@ -23,8 +23,8 @@ const futures_Tab = async function (arg, brwsr) {
   }
   await hold(3000);
 
-  // ? if Dashboard Page Data not Found error throws
-
+  // ? if Dashboard Page Data not Found
+  /* pending */
   const data = {
     price_gainers: await OpenAndClose(arg, "/h2 [@id ='PRICE-GAINERS-no-data-future']"),
     price_losers: await OpenAndClose(arg, "//h2 [@id ='PRICE-LOSERS-no-data-future']"),

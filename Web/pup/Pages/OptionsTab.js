@@ -20,6 +20,10 @@ const options_Tab = async function (arg, brwsr) {
   if (dashboard) {
     // ? check dashboard
 
+    // ? if data not found
+
+    const optionData = {};
+
     const checkDash = await clicking_Button(arg, "//span [@id ='dashboard-btn']", `    Options Dashboard`);
 
     if (checkDash) {
@@ -100,7 +104,7 @@ const options_Tab = async function (arg, brwsr) {
           console.log(`          Successfully Navigate to Option Page 🫡`);
           console.log(`                                                      `);
 
-          await hold(1000);
+          await hold(2000);
         } else {
           await take_screenShot(arg, `Option Chain Table`);
         }

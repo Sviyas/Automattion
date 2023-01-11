@@ -16,7 +16,7 @@ const charts_Tab = async function (arg, brwsr) {
 
   // ? Charts IV Smile
 
-  const iv_Smile = await clicking_Button(arg, "//p[contains(text(), 'IV Smile')]", `    IV Smile`);
+  const iv_Smile = await clicking_Button(arg, "//a [@id ='navlink-0']", `    IV Skew`);
 
   if (iv_Smile) {
     await hold(1500);

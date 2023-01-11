@@ -9,13 +9,13 @@ const { page_navigations } = require('./Pages/Script');
  * @param {*} email - email id
  * @param {*} password - password
  */
-const testLogin = async (page, email, password) => {
+const automate_script = async (page, email, password) => {
   // ? Browser Page
   // http://localhost:3000/broker/login
-  await page.goto('https://stilt.co.in/broker/login');
+  await page.goto('http://localhost:3000/broker/login');
 
-  // ? Login Page
-  const login = await clicking_Button(page, "//span[contains(text(),'Login with your email')]", '1      start');
+  // ? Login Page Land
+  const login = await clicking_Button(page, "//p [@id ='sigin']", '1      start');
 
   await hold(1000);
 
@@ -80,7 +80,7 @@ const testLogin = async (page, email, password) => {
 puppeteer.launch({ headless: false, defaultViewport: null, args: ['--start-maximized'], slowMo: 100 }).then(async (browser) => {
   const page = (await browser.pages())[0];
 
-  // await testLogin(page, 'jacksparrow.mdjack@gmail.com', '123456'); // ? test 1
-  // await testLogin(page, 'ithirajma.2001@gmail.com', '123490'); // ? test 2
-  await testLogin(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
+  // await automate_script(page, 'jacksparrow.mdjack@gmail.com', '123456'); // ? test 1
+  // await automate_script(page, 'ithirajma.2001@gmail.com', '123490'); // ? test 2
+  await automate_script(page, 'ithiraj.tealvue@gmail.com', '123123'); // ? test 2
 });
